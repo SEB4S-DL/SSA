@@ -1,0 +1,12 @@
+.container{
+    background-color: #F0F0F0;
+    position: inherit;
+    height: 100vh;
+    right: 0;
+    
+    h1{
+        position: absolute;
+        color: red;
+        
+    }
+}
