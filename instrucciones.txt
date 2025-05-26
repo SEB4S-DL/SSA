@@ -1,0 +1,21 @@
+Para mostrar la info en div's y tipo flex:
+<?php
+// Supongamos que ya tienes la conexión $conn lista
+$sql = "SELECT nombre, descripcion FROM productos";
+$resultado = $conn->query($sql);
+
+echo '<div class="contenedor">';
+
+if ($resultado->num_rows > 0) {
+    while($producto = $resultado->fetch_assoc()) {
+        echo '<div class="card">';
+        echo '<h3>' . htmlspecialchars($producto["nombre"]) . '</h3>';
+        echo '<p>' . htmlspecialchars($producto["descripcion"]) . '</p>';
+        echo '</div>';
+    }
+} else {
+    echo "<p>No hay productos disponibles.</p>";
+}
+
+echo '</div>';
+?>
