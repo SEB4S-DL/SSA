@@ -5,15 +5,17 @@
 
 .header{
     display: flex;
-    justify-content: space-around;
-    background-color: #Ffff;
-    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    width:82.2%;
     position: absolute;
     right: 0;
     padding: 20px;
 
     h1{
         color: black;
+        font-size: 18px;
         padding: 5px;
     }
     
