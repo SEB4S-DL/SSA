@@ -1,7 +1,5 @@
 function activarModoOscuro(...excluded) {
 
-  localStorage.setItem("userThemePreference", "light");
-
   const userThemePreference = localStorage.getItem("userThemePreference") ?? "light";
 
   if (userThemePreference === "light") return;
