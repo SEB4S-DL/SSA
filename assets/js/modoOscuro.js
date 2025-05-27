@@ -1,5 +1,7 @@
 function activarModoOscuro(...excluded) {
 
+  localStorage.setItem("userThemePreference", "light");
+
   const userThemePreference = localStorage.getItem("userThemePreference") ?? "light";
 
   if (userThemePreference === "light") return;
@@ -9,7 +11,9 @@ function activarModoOscuro(...excluded) {
   links.forEach(link => {
     const href = link.getAttribute("href");
 
-    if (excluded.some(content => !href.includes(content))) {
+    let condition = excluded.some(content => href.includes(content));
+
+    if (!condition) {
       const newHref = href.replace(/\.css$/, '-dark.css');
       link.setAttribute("href", newHref);
     }

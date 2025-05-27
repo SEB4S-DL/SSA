@@ -9,7 +9,7 @@
     <link rel="icon" href="../assets/img/sena-logo.png">
     <title>Login</title>
 </head>
-<body>
+<body onload="activarModoOscuro('global.css')">
     <div class="diagonal-div"></div>
     <div class="diagonal-div-2"></div>
 
@@ -37,5 +37,7 @@
             <input type="submit" value="Iniciar sesión">
         </form>
     </div>
+
+    <script src="../assets/js/modoOscuro.js"></script>
 </body>
 </html>

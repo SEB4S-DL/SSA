@@ -1,4 +1,4 @@
-*{
+.container *{
   color: #fff;
 }
 
@@ -50,7 +50,7 @@
   gap: 1em;
 }
 
-.buttons-container button, .buttons-container input[type="submit"]{
+.buttons-container a, .buttons-container input[type="submit"]{
   padding: 0.5em;
   border: none;
   border-radius: 5px;
@@ -58,11 +58,11 @@
   transition: background 100ms;
 }
 
-.buttons-container button{
+.buttons-container a{
   background-color: #FF0000;
 }
 
-.buttons-container button:hover{
+.buttons-container a:hover{
   background-color: #ab0000;
   cursor: pointer;
 }

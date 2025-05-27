@@ -1,36 +1,97 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fafafa;
-    width:82.2%;
-    position: absolute;
-    right: 0;
+    background-color: #fff;
+    width:100%;
     padding: 20px;
+    box-shadow: 0 2px 4px #00000040;
+    z-index: 10;
+}
 
-    h1{
-        color: black;
-        font-size: 18px;
-        padding: 5px;
+.header > span > i{
+    display: none;
+    font-size: 30px;
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header img{
+    display: none;
+}
+
+.header h1{
+    color: black;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.header > div{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.header > div > i{
+    font-size: 25px;
+}
+
+.header button{
+    background-color: #F0F0F0;
+    border: none;
+    border-radius: 5px;
+    padding: 1em 3em;
+    color: red;
+    cursor: pointer;
+    box-shadow: 0 4px 4px #00000040;
+
+    transition: background 100ms;
+}
+
+.header button:hover{
+    background-color: #E0E0E0;
+}
+
+/* Media queries */
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .header > div > a > button{
+    padding: 1em 2em;
+  }
+
+  .header > div > h1{
+    display: none;
+  }
+}
+
+@media (max-width: 480px){
+    .header{
+        padding: 1em;
+        justify-content: center;
+        align-items: center;
+        position: relative;
     }
-    
-    a{
-        padding: 5px;
-        button{
-            background-color: #F0F0F0;
-            border: none;
-            cursor: pointer;
-            width: 170px;
-            padding: 15px;
-            color: red;
-        }
+
+    .header img{
+        display: block;
+        height: 4em;
     }
-    button:hover{
-        background-color: rgb(204, 158, 158);
-    }
+  .header > div > a > button{
+    display: none;
+  }
+
+  .header > div > i{
+    display: none;
+  }
+
+  .header  h1{
+    display: none;
+  }
+
+  .header > span > i{
+    display: block;
+  }
 }
