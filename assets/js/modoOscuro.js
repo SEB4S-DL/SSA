@@ -1,6 +1,6 @@
 function activarModoOscuro(...excluded) {
 
-  const userThemePreference = localStorage.getItem("userThemePreference") ?? "light";
+  const userThemePreference = getTheme();
 
   if (userThemePreference === "light") return;
 
@@ -16,4 +16,52 @@ function activarModoOscuro(...excluded) {
       link.setAttribute("href", newHref);
     }
   });
+}
+
+function setTheme(theme){
+  let newTheme;
+
+  switch (theme){
+    case "light":
+      newTheme = "light";
+      break;
+    
+    case "dark":
+      newTheme = "dark";
+      break;
+
+    case "system":
+      newTheme = "system";
+      break;
+
+    default:
+      newTheme = "light";
+      break;
+  }
+
+  localStorage.setItem("userThemePreference", newTheme);
+
+  location.reload();
+}
+
+function getTheme(){
+  let storedTheme = localStorage.getItem("userThemePreference") ?? "light";
+
+  switch (storedTheme) {
+    case "light":
+      return "light";
+  
+    case "dark":
+      return "dark";
+
+    case "system":
+      const preference_isDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+      if (preference_isDark.matches){
+        return "dark";
+      }
+      else{
+        return "light";
+      }
+  }
 }

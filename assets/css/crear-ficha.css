@@ -55,6 +55,7 @@
 
 .buttons-container a{
   background-color: #FF0000;
+  text-align: center;
 }
 
 .buttons-container a:hover{

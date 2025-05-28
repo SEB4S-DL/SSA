@@ -23,5 +23,8 @@
     </main>
 
     <script src="./assets/js/modoOscuro.js"></script>
+    <script src="./assets/js/toggleMenu.js"></script>
+    <script src="./assets/js/toggleTheme.js"></script>
+    <script src="./assets/js/switchLanguage.js"></script>
 </body>
 </html>

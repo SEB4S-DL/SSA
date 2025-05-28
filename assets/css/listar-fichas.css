@@ -184,6 +184,7 @@
   .listar-fichas-top-container button{
     position: initial;
     margin-top: 0.5em;
+    padding: 1em;
   }
 
   .card button{
@@ -211,6 +212,7 @@
   .listar-fichas-top-container button{
     position: initial;
     margin-top: 0.5em;
+    padding: 1em;
   }
 
   .card{
