@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./assets/css/info-user.css">
+<title>Visualizar usuario</title>
 
 <?php
     // Datos del usuario
@@ -17,7 +18,7 @@
 <div class="visualizar-usuario">
   <div class="visualizar-usuario-top">
     <h1>Visualizar usuario</h1>
-    <button onclick="window.location.href = '.?page=fichas/crear_ficha'"> Editar </button>
+    <button onclick="window.location.href = '.?page=cuentas/editar_info'"> Editar </button>
   </div>
 
 

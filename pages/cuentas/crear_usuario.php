@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./assets/css/crear-usuario.css">
+<title>Crear usuario</title>
  
         
 <div class="container">
@@ -82,7 +83,7 @@
 
             <div class="button-group">
                 <button type="button" class="btn btn-cancel" onclick="window.history.back()">Cancelar</button>
-                <button type="submit" class="btn btn-create">Crear aprendiz</button>
+                <button type="submit" class="btn btn-create">Crear</button>
             </div>
         </form>
         </div>

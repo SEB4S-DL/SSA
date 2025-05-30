@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./assets/css/editar-info.css">
+<title>Editar usuario</title>
 
 <?php
     // Datos del usuario
@@ -18,12 +19,12 @@
 <div class="editar-container">
     <div class="visualizar-usuario">
       <div class="visualizar-usuario-top">
-        <h1>Visualizar usuario</h1>
+        <h1>Editar usuario</h1>
       </div>
     
     
     
-            <div class="user-info">
+            <form action="" class="user-info" id="editarInfoForm">
                 <div class="label">Nombre completo</div>
                 <input class="value" type="text" placeholder="<?php echo $usuario['nombre']; ?>" value="<?php echo $usuario['nombre']; ?>">
                 
@@ -57,12 +58,14 @@
                 
                 <div class="label two-line">Fecha de finalización de contrato</div>
                 <input class="value" type="text" placeholder="<?php echo $usuario['tipo_instructor']; ?>" value="<?php echo $usuario['tipo_instructor']; ?>">
-            </div>
+            </form>
         </div>
     
         <div class="acciones">
-        <button class="cancelar">Cancelar</button>
-        <button class="actualizar">Actualizar</button>
+        <button class="cancelar" onclick="window.location.href = '.?page=cuentas/listar_cuentas'">Cancelar</button>
+        <button class="actualizar" onclick="submitForm('editarInfoForm')">Actualizar</button>
     </div>
 </div>
  
+
+<script src="./assets/js/submitForm.js"></script>

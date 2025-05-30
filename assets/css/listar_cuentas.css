@@ -61,6 +61,11 @@
     text-align: center;
 }
 
+.card:hover{
+  background-color: #f6f6f6;
+  cursor: pointer;
+}
+
 .card p {
     margin: 10px 0;
 }
