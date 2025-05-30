@@ -56,8 +56,6 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-
-    transition: margin 100ms;
 }
 
 .card:hover{
@@ -98,7 +96,7 @@
     z-index: 20;
     left: 0;
     top: 0;
-    background-color: #00000050;
+    background-color: #000000cc;
     width: 100dvw;
     height: 100dvh;
 }

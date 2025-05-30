@@ -1,5 +1,5 @@
 <?php
-  $page = $_GET["page"] ?? "/fichas/listar_fichas";
+  $page = $_GET["page"] ?? "fichas/listar_fichas";
 
   $file = "pages/$page.php";
 

@@ -1,0 +1,142 @@
+.crear-aprendiz-container{
+  background-color: #272727;
+  padding-bottom: 2em;
+}
+
+.crear-aprendiz-container *{
+  color: #fff;
+}
+
+.top-container__text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+  position: relative;
+}
+
+.top-container-title{
+  font-weight: 400;
+}
+
+.top-container-button{
+  position: absolute;
+  right: 0;
+  background-color: #39A900;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.top-container-button:hover{
+  background-color: #2a7f00;
+}
+
+.top-container-button:active{
+  background-color: #1e5a00;
+}
+
+.crear-aprendiz-form{
+  width: 90%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-aprendiz-form h3{
+  font-weight: 400;
+
+  margin: 1em 0;
+}
+
+.crear-aprendiz-form input[type="text"], .crear-aprendiz-form select{
+  background-color: #323232;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.simpleLabel{
+  margin-bottom: 5px;
+}
+
+.form-buttons-container{
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.form-buttons-container *{
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-buttons-container *:hover{
+  filter: brightness(90%);
+  cursor: pointer;
+}
+
+.form-buttons-container *:active{
+  filter: brightness(80%);
+}
+
+.form-buttons-container button{
+  background-color: #ff0000;
+}
+
+.form-buttons-container input[type="submit"]{
+  background-color: #39a900;
+}
+
+/* Portatiles */
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .top-container__text{
+    flex-direction: column;
+  } 
+
+  .top-container-button{
+    position: initial;
+    margin-top: 1em;
+  }
+}
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .top-container__text{
+    flex-direction: column;
+  } 
+
+  .top-container-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .form-buttons-container{
+    flex-direction: column;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .top-container__text{
+    flex-direction: column;
+  }
+
+  .top-container-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .form-buttons-container{
+    flex-direction: column;
+  }
+}
