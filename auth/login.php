@@ -9,13 +9,18 @@
     <link rel="icon" href="../assets/img/sena-logo.png">
     <title>Login</title>
 </head>
-<body onload="activarModoOscuro('global.css')">
+<body onload="activarModoOscuro('global.css', 'bootstrap-icons')">
     <div class="diagonal-div"></div>
     <div class="diagonal-div-2"></div>
 
     <div class="toggle-theme-login">
-        <p>Cambiar tema:</p>
-        <i class="bi bi-moon-fill"></i>
+        <p class="theme-trigger" onclick="showThemeSelector()">Cambiar tema:</p>
+        <i class="bi bi-moon-fill theme-trigger" onclick="showThemeSelector()"></i>
+
+        <div class="theme-selector-container">
+            <div class="selector" onclick="setTheme('light')">Claro <i class="bi bi-brightness-high-fill"></i></div>
+            <div class="selector" onclick="setTheme('dark')">Oscuro <i class="bi bi-moon-fill"></i></div>
+        </div>
     </div>
 
     <div class="login-form-container">
@@ -32,12 +37,19 @@
             <input type="text" name="email" id="emailInput" placeholder="Ingrese su correo">
 
             <label for="passwordInput">Contraseña</label>
-            <input type="text" name="password" id="passwordInput" placeholder="Ingrese su contraseña">
+             <div class="password-input-container">
+                <div class="view-password-container">
+                    <i class="bi bi-eye" id="toggleIcon" onclick="togglePassword()"></i>
+                </div>
+                 <input type="password" name="password" id="passwordInput" placeholder="Ingrese su contraseña">
+             </div>
 
             <input type="submit" value="Iniciar sesión">
         </form>
     </div>
 
     <script src="../assets/js/modoOscuro.js"></script>
+    <script src="../assets/js/toggleThemeLogin.js"></script>
+    <script src="../assets/js/togglePassword.js"></script>
 </body>
 </html>

@@ -41,6 +41,47 @@ body{
   top: 1em;
 }
 
+.toggle-theme-login p:hover, .toggle-theme-login i:hover{
+  cursor: pointer;
+  color: #ddd;
+}
+
+.theme-selector-container{
+  width: 100%;
+  display: none;
+  background-color: #2A7E00;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.visible-theme-selector-container{
+  display: block;
+}
+
+.selector{
+  padding: 10px;
+  text-align: center;
+}
+
+.selector:first-child{
+  border-radius: 5px 5px 0 0;
+}
+
+.selector:last-child{
+  border-radius: 0 0 5px 5px;
+}
+
+.selector:hover{
+  background-color: #272727;
+  cursor: pointer;
+}
+
+
 .login-form-container{
   position: absolute;
   left: 50%;
@@ -88,7 +129,7 @@ body{
   color: #fff;
 }
 
-.login-form input[type="text"]{
+.login-form input[type="text"], .login-form input[type="password"]{
   padding: 8px;
   border: none;
   border-radius: 10px;
@@ -99,7 +140,28 @@ body{
   color: #fff;
 }
 
-.login-form input[type="text"]:focus{
+.password-input-container{
+  position: relative;
+  height: fit-content;
+  margin-bottom: 2em;
+}
+
+.view-password-container{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.view-password-container > i{
+  font-size: 16px;
+}
+
+.view-password-container > i:hover{
+  cursor: pointer;
+}
+
+.login-form input[type="text"]:focus, .login-form input[type="password"]:focus{
   outline: 2px solid #000;
 }
 
@@ -123,6 +185,11 @@ body{
   color: #002F4D;
 }
 
+#passwordInput{
+  width: 100%;
+  margin-bottom: 0;
+}
+
 /* Media queries */
 
 /* Portatiles */
@@ -144,6 +211,9 @@ body{
 /* Móviles */
 
 @media (max-width: 480px){
+  .selector{
+    padding: 1em;
+  }
   .login-form-container{
     width: 80%;
     padding: 1em 2em;

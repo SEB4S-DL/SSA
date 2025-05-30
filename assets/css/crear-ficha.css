@@ -84,11 +84,28 @@
 
 /* Media queries */
 
+/* Portatiles */
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .buttons-container{
+    margin-top: 1em;
+  }
+}
+
+/* Tablets */
+
+@media (min-width: 480px) and (max-width: 768px){
+  .buttons-container{
+    margin-top: 1em;
+    flex-direction: column;
+  }
+}
 
 /* Móviles */
 
 @media (max-width: 480px){
   .buttons-container{
+    margin-top: 1em;
     flex-direction: column;
   }
 }

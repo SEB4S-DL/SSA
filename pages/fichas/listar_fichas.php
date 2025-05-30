@@ -23,7 +23,7 @@
   
   <?php if ($resultado->num_rows > 0): ?>
       <?php while($dato = $resultado->fetch_assoc()): ?>
-        <div class="card" onclick="window.location.href = '.?page=cuentas'">
+        <div class="card" onclick="window.location.href = '.?page=fichas/visualizar_ficha'">
           <button onclick="event.stopPropagation()" title="Editar ficha" class="editarFichaTrigger" customValue="<?= $dato["nro_ficha"] ?>"><i class="bi bi-pencil-fill"></i></button>
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
           <p><strong>Ficha:</strong> <?= htmlspecialchars($dato["nro_ficha"]) ?></p>
