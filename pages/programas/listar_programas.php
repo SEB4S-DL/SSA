@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="./assets/css/listar_programas.css">
+<title>Listar programas</title>
+
+<?php   
+    $sql = "SELECT id,nombre_programa, total_horas, nivel from programa_formacion";
+
+    $resultado = $conn->query($sql);
+
+?>
+<div class="listar-fichas-container">
+  <div class="listar-fichas-top-container">
+    <h1>Listado de programas</h1>
+    <button onclick="window.location.href = '.?page=programas/crear_programa'">Crear programa <i class="bi bi-plus-lg"></i></button>
+  </div>
+      
+  <div class="contenedor">
+  
+  <?php if ($resultado->num_rows > 0): ?>
+      <?php while($dato = $resultado->fetch_assoc()): ?>
+        <div class="card" onclick="window.location.href = '.?page=programas/listar_competencias&programa=<?= $dato['id']; ?>'">
+          <button 
+  onclick="event.stopPropagation()" 
+  title="Editar programa" 
+  class="editarTrigger"
+  data-tipo="programa"
+  data-id="<?= $dato['id'] ?>"
+  data-nombre="<?= htmlspecialchars($dato['nombre_programa']), ENT_QUOTES ?>"
+  data-horas="<?= htmlspecialchars($dato['total_horas']), ENT_QUOTES ?>"
+  data-nivel="<?= htmlspecialchars($dato['nivel']), ENT_QUOTES ?>"
+>
+  <i class="bi bi-pen-fill"></i>
+</button>
+
+          <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
+          <p><strong>Horas:</strong> <?= htmlspecialchars($dato["total_horas"]) ?></p>
+          <p> <?= htmlspecialchars($dato["nivel"]) ?></p>
+        </div>
+    <?php endwhile; ?>
+    
+    <?php else: ?>
+      <p>No hay programas disponibles.</p>
+  <?php endif; ?>
+  
+  </div>
+</div>
+
+
+<!-- Modal para editar fichas -->
+<div class="modal-bg">
+  <div class="editar-fichas-modal">
+    <span class="exitModal"><i class="bi bi-x-lg"></i></span>
+
+    <h1>Editar programa</h1>
+
+    <form action="/SSA/functions/editarPrograma.php" method="POST">
+      <label for="nombrePrograma">
+        <h3>Nombre del programa</h3>
+      </label>
+      <input type="text" class="input_edit_program" id="nombrePrograma" name="nombre_programa" required>
+
+      <input type="hidden" id="idPrograma" name="id_programa">
+
+      <label for="cantidadHoras">
+        <h3>Cantidad de horas</h3>
+      </label>
+      <input type="text" class="input_edit_program" id="cantidadHoras" name="horas" placeholder="Ingrese la cantidad de horas" required>
+
+      <label for="nivel">
+        <h3>Nivel</h3>
+      </label>
+      <select class="input_edit_program" id="nivel" name="nivel" required>
+        <option value="tecnico">Técnico</option>
+        <option value="tecnologo">Tecnólogo</option>
+      </select>
+
+      <input type="submit" value="Editar programa">
+    </form>
+  </div>
+</div>
+
+
+
+
+<script src="./assets/js/modalEditarFicha.js"></script>
