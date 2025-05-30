@@ -1,0 +1,150 @@
+     .visualizar-usuario{
+    background-color: #272727;
+}
+
+.visualizar-usuario *{
+    color: #fff;
+}
+
+.visualizar-usuario-top{
+    display: flex;
+    margin: 2em auto;
+    justify-content: center;
+    position: relative;
+}
+
+.visualizar-usuario-top> h1{
+    font-weight: 400;
+}
+
+.visualizar-usuario-top> button{
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    right: 2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #FBC210;
+    color: black;
+    font-size: large;
+    padding: 0.5em 1em;
+}
+
+.visualizar-usuario-top> button:hover{
+    cursor: pointer;
+    background-color: #FBC210;
+}
+
+        .user-info {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 30px;
+            margin: 40px ;
+            
+        }
+        
+        .label, .value {
+            background-color: #323232;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .label {
+            font-weight: bold;
+            
+        }
+        .value select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+        
+        
+        /* Para campos que ocupan dos líneas */
+        .two-line {
+            line-height: 1.2;
+            display: flex;
+          
+           
+        }
+ 
+        /* responsive */
+
+/* Portátiles */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .visualizar-usuario-top > button {
+        width: 25%;
+        right: 1em;
+    }
+
+    .user-info {
+        grid-template-columns: 1fr;
+    }
+
+    .label{
+        background-color: #4d4d4d;
+    }
+}
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px) {
+    .visualizar-usuario-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .visualizar-usuario-top > button {
+        position: static;
+        width: 60%;
+        margin-top: 1em;
+    }
+
+    .user-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .label{
+        background-color: #4d4d4d;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .container {
+        padding: 1em;
+    }
+
+    .visualizar-usuario-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .visualizar-usuario-top > button {
+        position: static;
+        width: 80%;
+        margin-top: 1em;
+    }
+
+    .user-info {
+        grid-template-columns: 1fr;
+        margin: 20px 10px;
+        gap: 15px;
+    }
+
+    .label,
+    .value {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .label{
+        background-color: #4d4d4d;
+    }
+}

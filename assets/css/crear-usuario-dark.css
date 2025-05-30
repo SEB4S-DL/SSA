@@ -1,0 +1,286 @@
+.container {
+          
+            padding: 0 2em;
+            background-color: #272727;
+           
+        }
+
+        .container *{
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: normal;
+            margin-bottom: 30px;
+            
+            margin: 20px;
+          
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+            
+            font-weight: bold;
+         
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row input {
+            flex: 1;
+        }
+
+        .form-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #202020;
+            color: #999;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            outline: none;
+            color: #333;
+        }
+        input[type="texto"],select{
+          
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #202020;
+            color: #999;  
+        }
+
+        input[type="ref"],select{
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #202020;
+            color: #999;  
+
+        }
+        select {
+            cursor: pointer;
+            color: #333;
+        }
+
+        .document-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .document-type {
+            flex: 0 0 200px;
+        }
+
+        .document-number {
+            flex: 1;
+            width: 50%;
+            font-weight: 100;
+        }
+
+        .role-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .role-select {
+            flex: 0 0 150px;
+        }
+
+        .role-info {
+            color: black;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .instructor-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .instructor-select {
+            flex: 0 0 150px;
+        }
+
+        .instructor-info {
+            color: black;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .contract-row {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .contract-row input {
+            flex: 1;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 2em;
+            justify-content: center;
+            margin-top: 30px;
+            margin: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-cancel {
+            background-color: red;
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background-color: red;
+        }
+
+        .btn-create {
+            background-color: #39a900;
+            color: white;
+        }
+
+        .btn-create:hover {
+            background-color: #39a900;
+        }
+
+        .optional {
+            font-size: 12px;
+        }
+        /*responsive*/
+
+/* Media queries */
+
+/* Portátiles (768px a 1024px) */
+@media (min-width: 768px) and (max-width: 1024px){
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%;
+    }
+}
+
+/* Tablets (480px a 768px) */
+@media (min-width: 480px) and (max-width: 768px){
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .form-group label,
+    .role-info,
+    .instructor-info {
+        font-size: 0.95em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Móviles (menos de 480px) */
+@media (max-width: 480px){
+    .container {
+        padding: 0 1em;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    .form-group label,
+    .role-info,
+    .instructor-info {
+        font-size: 0.9em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    input[type="texto"],
+    input[type="ref"] {
+        width: 100%;
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .document-type,
+    .document-number,
+    .role-select,
+    .instructor-select {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+
+
+        
