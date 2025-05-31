@@ -77,7 +77,7 @@ if (!$resultado) {
         <?php while($dato = $resultado->fetch_assoc()): ?>
           <div class="table-row">
             <div><?= htmlspecialchars($dato["nombre_rae"]) ?></div>
-            <div><?= htmlspecialchars($dato["total_horas"]) ?></div>
+            <div>Horas: <?= htmlspecialchars($dato["total_horas"]) ?></div>
           </div>
         <?php endwhile; ?>
 
