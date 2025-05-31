@@ -23,7 +23,7 @@
 
   <form action="" enctype="multipart/form-data" class="importar-form">
     <label for="fileInput">Seleccionar archivo</label>
-    <input type="file" name="excel" id="fileInput" accept=".xls, .xlsx">
+    <input type="file" name="excel" id="fileInput" accept=".xls, .xlsx" required>
 
     <input type="submit" value="Importar aprendices">
   </form>

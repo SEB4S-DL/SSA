@@ -15,7 +15,7 @@
     <!-- Nombres aprendiz -->
     <h3>Nombres aprendiz</h3>
 
-    <input type="text" name="primer_nombre" id="" placeholder="Primer nombre">
+    <input type="text" name="primer_nombre" id="" placeholder="Primer nombre"  required>
     <input type="text" name="segundo_nombre" id="" placeholder="Segundo nombre">
 
 
@@ -23,7 +23,7 @@
     <!-- Apellidos aprendiz -->
     <h3>Apellidos aprendiz</h3>
 
-    <input type="text" name="primer_apellido" id="" placeholder="Primer apellido">
+    <input type="text" name="primer_apellido" id="" placeholder="Primer apellido" required>
     <input type="text" name="segundo_apellido" id="" placeholder="Segundo apellido">
 
 
@@ -33,13 +33,13 @@
 
     <label for="apprenticeDocumentType" class="simpleLabel">Tipo de documento</label>
 
-    <select name="tipo_documento" id="apprenticeDocumentType">
+    <select name="tipo_documento" id="apprenticeDocumentType" required>
       <option value="">Tarjeta de identidad</option>
       <option value="">Cédula de ciudadanía</option>
       <option value="">Cédula de extranjería</option>
     </select>
 
-    <input type="text" name="nro_documento" placeholder="Numero de documento">
+    <input type="text" name="nro_documento" placeholder="Numero de documento" required>
 
 
 
@@ -48,7 +48,7 @@
       <h3>Estado del aprendiz</h3>
     </label>
 
-    <select name="estado" id="apprenticeState">
+    <select name="estado" id="apprenticeState" required>
       <option value="">En formación</option>
       <option value="">Deserción</option>
       <option value="">Cancelado</option>
@@ -58,11 +58,11 @@
 
 
     <!-- Ficha del aprendiz -->
-    <label for="apprenticeFile">
+    <label for="apprenticeFile" required>
       <h3>Ficha del aprendiz</h3>
     </label>
 
-    <select name="ficha" id="apprenticeFile">
+    <select name="ficha" id="apprenticeFile" required>
       <option value="">2895664</option>
       <option value="">7625311</option>
     </select>

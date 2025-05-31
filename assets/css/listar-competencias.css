@@ -1,0 +1,324 @@
+.listar-fichas-container{
+    background-color: #F0F0F0;
+    padding: 0 0 2em 0;
+}
+
+.listar-fichas-top-container{
+    display: flex;
+    margin: 2em auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.listar-fichas-top-container > h1{
+    font-weight: 400;
+    text-align: center;
+}
+
+.listar-fichas-top-container > button{
+    border: none;
+    border-radius: 5px;
+    background-color: #39A900;
+    color: #fff;
+}
+
+.crear-button{
+    position: absolute;
+    right: 2em;
+    padding: 1em;
+}
+
+.crear-button:hover{
+    cursor: pointer;
+    background-color: #2A7E00;
+}
+
+.button-volver{
+  position: absolute;
+  left: 2em;
+  padding: 1em;
+}
+
+.button-volver:hover{
+    cursor: pointer;
+    background-color: #2A7E00;
+}
+
+.contenedor {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    justify-items: center;
+}
+
+.card {
+    width: 100%;
+    padding: 1.5em 1em;
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    transition: margin 100ms;
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: #F6F6F6;
+    /* margin-bottom: 1em; */
+}
+
+.card button{
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    border: none;
+    font-size: large;
+    background-color: #00000000;
+}
+
+.card button:hover{
+    cursor: pointer;
+    color: #000000aa;
+}
+
+.card-first-p{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.input_edit_program{
+  padding: 1em;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+/* Modal */
+
+.modal-bg{
+    display: none;
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    background-color: #00000050;
+    width: 100dvw;
+    height: 100dvh;
+}
+
+.visible{
+    display: block;
+}
+
+.editar-fichas-modal{
+    background-color: #fff;
+    padding: 2em 4em;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editar-fichas-modal span{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    font-size: large;
+    cursor: pointer;
+}
+
+.editar-fichas-modal span:hover{
+    color: #000000aa;
+}
+
+.editar-fichas-modal h1{
+  text-align: center;
+    font-weight: 400;
+}
+
+.editar-fichas-modal form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editar-fichas-modal label h3{
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-align: center;
+}
+
+.editar-fichas-modal select:focus{
+    outline: 2px solid #0000FFAA;
+}
+
+.editar-fichas-modal input[type="submit"]{
+    padding: 1em;
+    width: 70%;
+    margin: 1em auto 0 auto;
+    border: none;
+    background-color: #FBC210;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editar-fichas-modal input[type="submit"]:hover{
+    background-color: #ca9800;
+}
+
+.editar-fichas-modal input[type="submit"]:active{
+    background-color: #000;
+    color: #fff;
+}
+
+/* Media queries */
+
+/* Portatiles */
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .listar-fichas-top-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .listar-fichas-top-container button{
+    padding: 1em;
+  }
+
+  .crear-button{
+    position: initial;
+    margin-top: 0.5em;
+  }
+
+  .button-volver{
+    top: 0;
+  }
+}
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .contenedor{
+    grid-template-columns: 1fr;
+  }
+
+  .listar-fichas-top-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .crear-button{
+    position: initial;
+    margin-top: 0.5em;
+  }
+
+  .button-volver{
+    padding: 0.5em;
+    top: 0;
+  }
+
+  .listar-fichas-container h1{
+    width: 50%;
+    font-size: 25px;
+  }
+
+  .card button{
+    font-size: 25px;
+  }
+
+  .editar-fichas-modal{
+    width: 70%;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .contenedor{
+    grid-template-columns: 1fr;
+    width: 85%;
+  }
+
+  .listar-fichas-top-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .crear-button{
+    position: initial;
+    margin-top: 0.5em;
+  }
+
+  .button-volver{
+    padding: 0.5em;
+    top: 0;
+  }
+
+  .listar-fichas-container h1{
+    width: 50%;
+    font-size: 25px;
+  }
+
+  .card{
+    align-items: center;
+  }
+
+  .card button{
+    font-size: 25px;
+  }
+
+  .card-first-p{
+    width: 60%;
+  }
+
+  .card  p{
+    word-wrap: break-word;
+  }
+
+  /* Modal */
+
+  .editar-fichas-modal{
+    width: 80%;
+    padding: 1em 5px;
+  }
+
+  .editar-fichas-modal h1{
+    font-size: 20px;
+  }
+
+  .editar-fichas-modal span{
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 30px;
+  }
+
+  .editar-fichas-modal form{
+    width: 70%;
+  }
+
+  .editar-fichas-modal form label h3{
+    font-size: 16px;
+  }
+
+  .editar-fichas-modal input[type="submit"]{
+    width: 70%;
+  }
+}
+

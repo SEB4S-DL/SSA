@@ -2,13 +2,14 @@
 <title>Listar fichas</title>
 
 <?php   
-    $sql = "SELECT p.nombre_programa, f.nro_ficha, 
+    $sql = "SELECT p.nombre_programa, f.nro_ficha, f.id_jefe_ficha, f.jornada,
     CONCAT_WS(' ', u.nombre , u.segundo_nombre , u.apellido , u.segundo_apellido) AS 'nombre_jefe', f.tipo_oferta 
     from fichas f
     JOIN programa_formacion p
     ON f.id_programa_formacion = p.id
     JOIN usuarios u
-    ON f.id_jefe_ficha = u.nro_documento WHERE f.etapa = 'lectiva'";
+    ON f.id_jefe_ficha = u.nro_documento 
+    WHERE f.etapa = 'lectiva'";
 
     $resultado = $conn->query($sql);
 
@@ -24,7 +25,19 @@
   <?php if ($resultado->num_rows > 0): ?>
       <?php while($dato = $resultado->fetch_assoc()): ?>
         <div class="card" onclick="window.location.href = '.?page=fichas/visualizar_ficha'">
-          <button onclick="event.stopPropagation()" title="Editar ficha" class="editarFichaTrigger" customValue="<?= $dato["nro_ficha"] ?>"><i class="bi bi-pencil-fill"></i></button>
+          <button 
+          onclick="event.stopPropagation()" 
+          title="Editar ficha" 
+          class="editarTrigger"
+          data-tipo="ficha"
+          data-id="<?= $dato['nro_ficha'] ?>"
+          data-jefe="<?= $dato['nombre_jefe'] ?>"
+          data-jefeid="<?= $dato['id_jefe_ficha'] ?>"
+          data-jornada="<?= $dato['jornada'] ?>"
+          customValue="<?= $dato["nro_ficha"] ?>">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
           <p><strong>Ficha:</strong> <?= htmlspecialchars($dato["nro_ficha"]) ?></p>
           <p><strong>Jefe:</strong> <?= htmlspecialchars($dato["nombre_jefe"]) ?></p>
@@ -52,18 +65,20 @@
       <label for="jefeGrupoSelect">
         <h3>Jefe de grupo</h3>
       </label>
-      <select name="jefe_grupo" id="jefeGrupoSelect">
-        <option value="">Andrés Felipe Cardona Muñoz</option>
+      <select name="jefe_grupo" id="jefeGrupoSelect" required>
+        <option value="123456789">Andrés Felipe Cardona Muñoz</option>
       </select>
 
       <label for="jornadaSelect">
         <h3>Jornada</h3>
       </label>
-      <select name="ficha_jornada" id="jornadaSelect">
-        <option value="">Diurna</option>
+      <select name="ficha_jornada" id="jornadaSelect" required>
+        <option value="diurna">Diurna</option>
+        <option value="mixta">Mixta</option>
+        <option value="nocturna">Nocturna</option>
       </select>
 
-      <input type="submit" value="Editar ficha">
+      <input type="submit" id="submitInput">
     </form>
   </div>
 </div>

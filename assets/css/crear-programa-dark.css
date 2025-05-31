@@ -1,0 +1,141 @@
+.container{
+  padding: 1em;
+  background-color: #323232;
+}
+
+.container *{
+  color: #fff;
+}
+
+.top-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.container h1{
+  font-weight: 400;
+  text-align: center;
+}
+
+.crear-ficha-form{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-ficha-form label, .crear-ficha-form input[type="text"], .crear-ficha-form select{
+  margin-bottom: 0.5em;
+}
+
+.crear-ficha-form input[type="text"]{
+  background-color: #202020;
+  padding: 1em;
+  border-radius: 5px;
+  border: 1px solid #000;
+
+  transition: outline 50ms;
+}
+
+.crear-ficha-form input[type="text"]:focus{
+  border: 1px solid #00000000;
+  outline: 2px solid blue;
+}
+
+.crear-ficha-form select{
+  padding: 1em;
+  background-color: #202020;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.buttons-container{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.buttons-container a, .buttons-container input[type="submit"]{
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  transition: background 100ms;
+}
+
+.buttons-container a{
+  background-color: #FF0000;
+  text-align: center;
+}
+
+.buttons-container a:hover{
+  background-color: #ab0000;
+  cursor: pointer;
+}
+
+.buttons-container input[type="submit"]{
+  background-color: #39A900;
+}
+
+.buttons-container input[type="submit"]:hover{
+  background-color: #297c00;
+  cursor: pointer;
+}
+
+.buttons-container button:active{
+  background-color: #fff;
+  color: #FF0000;
+}
+
+.buttons-container input[type="submit"]:active{
+  background-color: #fff;
+  color: #39A900;
+}
+.button-volver{
+  position: absolute;
+  left: 0;
+  background-color: #39A900;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button-volver:hover{
+    cursor: pointer;
+    background-color: #297c00;
+}
+/* Media queries */
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .button-volver{
+    margin-top: 1em;
+    position: initial;
+    padding: 1em;
+  }
+
+  .top-container{
+    flex-direction: column;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .button-volver{
+    margin-top: 1em;
+    position: initial;
+    padding: 1em;
+  }
+
+  .top-container{
+    flex-direction: column;
+  }
+  
+  .buttons-container{
+    flex-direction: column;
+  }
+}
