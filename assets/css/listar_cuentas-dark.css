@@ -163,12 +163,6 @@
     width: 80%;
   }
 
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
   .crear-btn {
     width: 100%;
     text-align: center;

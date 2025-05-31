@@ -90,7 +90,7 @@
 }
 .button-volver{
   position: absolute;
-  left: 0;
+  right: 0;
   background-color: #39A900;
   color: #fff;
   border: none;

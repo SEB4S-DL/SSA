@@ -50,10 +50,13 @@ if (!$resultado) {
     <h1>Listado de resultados de aprendizaje</h1>
 
     <!-- Botón para volver a la lista de competencias del programa correspondiente -->
-    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_competencias&programa=<?= $id_programa ?>'">Volver</button>
+    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_competencias&programa=<?= $id_programa ?>'">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </button>
 
     <!-- Botón para ir a la creación de un nuevo RAE -->
-    <button onclick="window.location.href = '.?page=programas/crear_rae'">
+    <button class="action-button" onclick="window.location.href = '.?page=programas/crear_rae'">
       Crear RAE <i class="bi bi-plus-lg"></i>
     </button>
   </div>
@@ -74,7 +77,7 @@ if (!$resultado) {
         <?php while($dato = $resultado->fetch_assoc()): ?>
           <div class="table-row">
             <div><?= htmlspecialchars($dato["nombre_rae"]) ?></div>
-            <div><?= htmlspecialchars($dato["total_horas"]) ?></div>
+            <div>Horas: <?= htmlspecialchars($dato["total_horas"]) ?></div>
           </div>
         <?php endwhile; ?>
 

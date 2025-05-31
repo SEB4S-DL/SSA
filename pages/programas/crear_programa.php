@@ -4,22 +4,29 @@
 
 <div class="container">
   <br>
-    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_rae='">Volver</button>
+  <div class="top-container">
+    <h1>Crear programa</h1>
 
-  <h1>Crear programa</h1>
-<br>  
+    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </button>
+  </div>
+
+  <br>  
+
   <form action="" method="POST" class="crear-ficha-form">
     <label for="fichaNumber">Nombre del programa</label>
-    <input type="text" name="numero_ficha" id="fichaNumber" placeholder="Ingrese el nombre del programa">
+    <input type="text" name="numero_ficha" id="fichaNumber" placeholder="Ingrese el nombre del programa" required>
 
     <label for="groupManager">Nivel del programa</label>
-    <select name="jefe_grupo" id="groupManager">
+    <select name="jefe_grupo" id="groupManager" required>
         <option value="">Técnico</option>
         <option value="">Tecnólogo</option>
     </select>
 
     <label for="day">Total horas del programa</label>
-      <input type="text">
+      <input type="text" placeholder="Ingrese las horas" required>
     
 
     <div class="buttons-container">

@@ -1,6 +1,10 @@
 .container{
   padding: 1em;
-  background-color: #F0F0F0;
+  background-color: #272727;
+}
+
+.container *{
+  color: #fff;
 }
 
 .top-container{
@@ -11,13 +15,27 @@
   margin-bottom: 1em;
 }
 
-.container h1{
+.top-container h1{
   font-weight: 400;
   text-align: center;
 }
 
+.button-volver{
+  position: absolute;
+  left: 0;
+  background-color: #39A900;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button-volver:hover{
+    cursor: pointer;
+    background-color: #297c00;
+}
+
 .crear-ficha-form{
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -26,24 +44,19 @@
   margin-bottom: 0.5em;
 }
 
-.crear-ficha-form input[type="text"]{
+.crear-ficha-form input[type="text"], .crear-ficha-form select{
+  width: 100%;
+  max-width: 100%;
   padding: 1em;
   border-radius: 5px;
-  border: 1px solid #000;
-
+  background-color: #272727;
+  border: 1px solid #fff;
   transition: outline 50ms;
 }
 
 .crear-ficha-form input[type="text"]:focus{
   border: 1px solid #00000000;
   outline: 2px solid blue;
-}
-
-.crear-ficha-form select{
-  padding: 1em;
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 5px;
 }
 
 .buttons-container{
@@ -88,48 +101,22 @@
   background-color: #fff;
   color: #39A900;
 }
-.button-volver{
-  position: absolute;
-  left: 0;
-  background-color: #39A900;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.button-volver:hover{
-    cursor: pointer;
-    background-color: #297c00;
-}
 /* Media queries */
 
 /* Tablets */
 @media (min-width: 480px) and (max-width: 768px){
-  .button-volver{
-    margin-top: 1em;
-    position: initial;
-    padding: 1em;
-  }
-
-  .top-container{
-    flex-direction: column;
+  .top-container h1{
+    font-size: 25px;
   }
 }
 
 /* Móviles */
 
 @media (max-width: 480px){
-  .button-volver{
-    margin-top: 1em;
-    position: initial;
-    padding: 1em;
+  .top-container h1{
+    font-size: 25px;
   }
 
-  .top-container{
-    flex-direction: column;
-  }
-  
   .buttons-container{
     flex-direction: column;
   }

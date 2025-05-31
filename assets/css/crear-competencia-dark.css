@@ -1,6 +1,10 @@
 .container{
   padding: 1em;
-  background-color: #F0F0F0;
+  background-color: #272727;
+}
+
+.container  *{
+  color: #fff;
 }
 
 .top-container{
@@ -27,9 +31,10 @@
 }
 
 .crear-ficha-form input[type="text"]{
+  background-color: #323232;
   padding: 1em;
   border-radius: 5px;
-  border: 1px solid #000;
+  border: 1px solid #fff;
 
   transition: outline 50ms;
 }
@@ -41,8 +46,8 @@
 
 .crear-ficha-form select{
   padding: 1em;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #323232;
+  border: 1px solid #fff;
   border-radius: 5px;
 }
 
@@ -90,7 +95,7 @@
 }
 .button-volver{
   position: absolute;
-  left: 0;
+  right: 0;
   background-color: #39A900;
   color: #fff;
   border: none;

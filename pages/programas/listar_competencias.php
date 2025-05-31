@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./assets/css/listar_programas.css">
+<link rel="stylesheet" href="./assets/css/listar-competencias.css">
 <title>Listar competencias</title>
 
 <?php
@@ -8,13 +8,7 @@ if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
 }
 
 $programa_id = intval($_GET["programa"]); // seguridad básica
-$sql = "
-    SELECT c.id, c.nombre_competencia, COUNT(r.id) AS cant_rae, c.total_horas
-    FROM competencias c 
-    LEFT JOIN resultados_aprendizaje r ON r.id_competencia = c.id
-    WHERE c.id_programa_formacion = $programa_id
-    GROUP BY c.id;
-";
+$sql = "SELECT c.id, c.nombre_competencia, COUNT(r.id) AS 'cant_rae', c.total_horas FROM competencias c JOIN resultados_aprendizaje r ON r.id_competencia = c.id WHERE id_programa_formacion = " . $_GET["programa"] . " GROUP BY c.id";
 
 $resultado = $conn->query($sql);
 
@@ -27,8 +21,11 @@ if (!$resultado) {
 <div class="listar-fichas-container">
   <div class="listar-fichas-top-container">
     <h1>Listado de competencias</h1>
-    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">Volver</button>
-    <button onclick="window.location.href = '.?page=programas/crear_competencia'">Crear competencia <i class="bi bi-plus-lg"></i></button>
+    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </button>
+    <button class="crear-button" onclick="window.location.href = '.?page=programas/crear_competencia'">Crear competencia <i class="bi bi-plus-lg"></i></button>
   </div>
       
   <div class="contenedor">
@@ -37,19 +34,27 @@ if (!$resultado) {
       <?php while($dato = $resultado->fetch_assoc()): ?>
         <div class="card" onclick="window.location.href = '.?page=programas/listar_rae&competencia=<?= $dato['id']; ?>'">
           <button
-  onclick="event.stopPropagation()"
-  title="Editar competencia"
-  class="editarTrigger"
-  data-tipo="competencia"
-  data-id="<?= $dato['id'] ?>"
-  data-nombre="<?= htmlspecialchars($dato['nombre_competencia'], ENT_QUOTES) ?>"
-  data-horas="<?= htmlspecialchars($dato['total_horas'], ENT_QUOTES) ?>"
->
-  <i class="bi bi-pen-fill"></i>
-</button>
+            onclick="event.stopPropagation()"
+            title="Editar competencia"
+            class="editarTrigger"
+            data-tipo="competencia"
+            data-id="<?= $dato['id'] ?>"
+            data-nombre="<?= htmlspecialchars($dato['nombre_competencia'], ENT_QUOTES) ?>"
+            data-horas="<?= htmlspecialchars($dato['total_horas'], ENT_QUOTES) ?>"
+          >
+            <i class="bi bi-pencil-fill"></i>
+          </button>
 
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_competencia"]) ?></p>
+
           <p><strong>Horas:</strong> <?= htmlspecialchars($dato["total_horas"]) ?></p>
+
+          <p>
+            <strong>
+              RAE:
+            </strong>
+            <?= $dato["cant_rae"] ?>
+          </p>
         </div>
     <?php endwhile; ?>
     
@@ -61,8 +66,6 @@ if (!$resultado) {
 </div>
 
 
-<!-- Modal para editar fichas -->
-
 <div class="modal-bg">
   <div class="editar-fichas-modal">
     <span class="exitModal"><i class="bi bi-x-lg"></i></span>
@@ -70,7 +73,7 @@ if (!$resultado) {
     <h1>Editar competencia</h1>
 
     <form action="/SSA/functions/editarCompetencia.php" method="POST">
-  <input type="hidden" name="id_competencia" id="idCompetencia">
+  <input type="hidden" name="id_competencia" id="idCompetencia" required>
   <input type="hidden" name="id_programa" id="idPrograma" value="<?= $programa_id ?>">
 
   <label for="nombreCompetencia">
@@ -83,7 +86,7 @@ if (!$resultado) {
   </label>
   <input type="text" class="input_edit_program" id="cantidadHoras" name="horas" placeholder="Ingrese la cantidad de horas" required>
 
-  <input type="submit" value="Editar programa">
+  <input type="submit" id="submitInput">
 </form>
 
   </div>

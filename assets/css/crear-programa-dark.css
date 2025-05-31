@@ -1,6 +1,10 @@
 .container{
   padding: 1em;
-  background-color: #F0F0F0;
+  background-color: #323232;
+}
+
+.container *{
+  color: #fff;
 }
 
 .top-container{
@@ -27,6 +31,7 @@
 }
 
 .crear-ficha-form input[type="text"]{
+  background-color: #202020;
   padding: 1em;
   border-radius: 5px;
   border: 1px solid #000;
@@ -41,7 +46,7 @@
 
 .crear-ficha-form select{
   padding: 1em;
-  background-color: #fff;
+  background-color: #202020;
   border: 1px solid #000;
   border-radius: 5px;
 }

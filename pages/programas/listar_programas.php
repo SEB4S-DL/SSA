@@ -28,7 +28,7 @@
   data-horas="<?= htmlspecialchars($dato['total_horas'], ENT_QUOTES )?>"
   data-nivel="<?= htmlspecialchars($dato['nivel'], ENT_QUOTES )?>"
 >
-  <i class="bi bi-pen-fill"></i>
+  <i class="bi bi-pencil-fill"></i>
 </button>
 
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
@@ -44,8 +44,6 @@
   </div>
 </div>
 
-
-<!-- Modal para editar fichas -->
 <div class="modal-bg">
   <div class="editar-fichas-modal">
     <span class="exitModal"><i class="bi bi-x-lg"></i></span>
@@ -73,7 +71,7 @@
         <option value="tecnologo">Tecnólogo</option>
       </select>
 
-      <input type="submit" value="Editar programa">
+      <input type="submit" id="submitInput">
     </form>
   </div>
 </div>
