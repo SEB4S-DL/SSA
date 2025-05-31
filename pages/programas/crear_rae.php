@@ -31,7 +31,7 @@ $resultado = $conn->query($sql);
     
 
     <div class="buttons-container">
-      <a href="/SSA/pages/programas/listar_rae.php">
+      <a href=".?page=programas/listar_rae">
         Cancelar
       </a>
 

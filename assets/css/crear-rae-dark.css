@@ -1,0 +1,123 @@
+.container{
+  padding: 1em;
+  background-color: #272727;
+}
+
+.container *{
+  color: #fff;
+}
+
+.top-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.top-container h1{
+  font-weight: 400;
+  text-align: center;
+}
+
+.button-volver{
+  position: absolute;
+  left: 0;
+  background-color: #39A900;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button-volver:hover{
+    cursor: pointer;
+    background-color: #297c00;
+}
+
+.crear-ficha-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-ficha-form label, .crear-ficha-form input[type="text"], .crear-ficha-form select{
+  margin-bottom: 0.5em;
+}
+
+.crear-ficha-form input[type="text"], .crear-ficha-form select{
+  width: 100%;
+  max-width: 100%;
+  padding: 1em;
+  border-radius: 5px;
+  background-color: #272727;
+  border: 1px solid #fff;
+  transition: outline 50ms;
+}
+
+.crear-ficha-form input[type="text"]:focus{
+  border: 1px solid #00000000;
+  outline: 2px solid blue;
+}
+
+.buttons-container{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.buttons-container a, .buttons-container input[type="submit"]{
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  transition: background 100ms;
+}
+
+.buttons-container a{
+  background-color: #FF0000;
+  text-align: center;
+}
+
+.buttons-container a:hover{
+  background-color: #ab0000;
+  cursor: pointer;
+}
+
+.buttons-container input[type="submit"]{
+  background-color: #39A900;
+}
+
+.buttons-container input[type="submit"]:hover{
+  background-color: #297c00;
+  cursor: pointer;
+}
+
+.buttons-container button:active{
+  background-color: #fff;
+  color: #FF0000;
+}
+
+.buttons-container input[type="submit"]:active{
+  background-color: #fff;
+  color: #39A900;
+}
+/* Media queries */
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .top-container h1{
+    font-size: 25px;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .top-container h1{
+    font-size: 25px;
+  }
+
+  .buttons-container{
+    flex-direction: column;
+  }
+}
