@@ -24,9 +24,9 @@
   class="editarTrigger"
   data-tipo="programa"
   data-id="<?= $dato['id'] ?>"
-  data-nombre="<?= htmlspecialchars($dato['nombre_programa']), ENT_QUOTES ?>"
-  data-horas="<?= htmlspecialchars($dato['total_horas']), ENT_QUOTES ?>"
-  data-nivel="<?= htmlspecialchars($dato['nivel']), ENT_QUOTES ?>"
+  data-nombre="<?= htmlspecialchars($dato['nombre_programa'], ENT_QUOTES )?>"
+  data-horas="<?= htmlspecialchars($dato['total_horas'], ENT_QUOTES )?>"
+  data-nivel="<?= htmlspecialchars($dato['nivel'], ENT_QUOTES )?>"
 >
   <i class="bi bi-pen-fill"></i>
 </button>

@@ -8,7 +8,13 @@ if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
 }
 
 $programa_id = intval($_GET["programa"]); // seguridad básica
-$sql = "SELECT c.id, c.nombre_competencia, COUNT(r.id) AS 'cant_rae', c.total_horas FROM competencias c JOIN resultados_aprendizaje r ON r.id_competencia = c.id WHERE id_programa_formacion = " . $_GET["programa"] . " GROUP BY c.id";
+$sql = "
+    SELECT c.id, c.nombre_competencia, COUNT(r.id) AS cant_rae, c.total_horas
+    FROM competencias c 
+    LEFT JOIN resultados_aprendizaje r ON r.id_competencia = c.id
+    WHERE c.id_programa_formacion = $programa_id
+    GROUP BY c.id;
+";
 
 $resultado = $conn->query($sql);
 
