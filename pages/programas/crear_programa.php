@@ -30,7 +30,7 @@
     
 
     <div class="buttons-container">
-      <a href="/SSA/pages/">
+      <a href="">
         Cancelar
       </a>
 
