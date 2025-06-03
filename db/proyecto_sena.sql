@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 31-05-2025 a las 07:06:42
+-- Tiempo de generación: 03-06-2025 a las 04:31:07
 -- Versión del servidor: 9.1.0
 -- Versión de PHP: 8.3.14
 
@@ -56,14 +56,15 @@ CREATE TABLE IF NOT EXISTS `competencias` (
   `id_programa_formacion` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_competencias_id_programa_formacion` (`id_programa_formacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `competencias`
 --
 
 INSERT INTO `competencias` (`id`, `nombre_competencia`, `total_horas`, `id_programa_formacion`) VALUES
-(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 30, 2);
+(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 303, 2),
+(2, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 23, 2);
 
 -- --------------------------------------------------------
 
@@ -154,14 +155,15 @@ CREATE TABLE IF NOT EXISTS `resultados_aprendizaje` (
   `id_competencia` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_rae_id_competencia` (`id_competencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `resultados_aprendizaje`
 --
 
 INSERT INTO `resultados_aprendizaje` (`id`, `nombre_rae`, `total_horas`, `id_competencia`) VALUES
-(1, 'Rae 1', 20.00, 1);
+(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 20.00, 1),
+(2, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 3.00, 1);
 
 -- --------------------------------------------------------
 
@@ -182,9 +184,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `fecha_inicio_contrato` date DEFAULT NULL,
   `fecha_fin_contrato` date DEFAULT NULL,
-  `correo_institucional` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `correo_institucional` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `estado` enum('habilitado','deshabilitado') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`nro_documento`)
+  PRIMARY KEY (`nro_documento`),
+  UNIQUE KEY `correo_institucional` (`correo_institucional`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -192,8 +195,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nro_documento`, `tipo_documento`, `nombre`, `segundo_nombre`, `apellido`, `segundo_apellido`, `rol`, `tipo`, `contrasena`, `fecha_inicio_contrato`, `fecha_fin_contrato`, `correo_institucional`, `estado`) VALUES
-(123456789, 'CC', 'Andrés', NULL, 'Restrepo', NULL, 'user', 'tecnico', '123456789', NULL, NULL, 'juanito@example.com', 'habilitado'),
-(1017148792, 'CC', 'Andrea', NULL, 'Marin', NULL, 'admin', NULL, 'contraseñaAdmin', NULL, NULL, 'admin@admin.com', 'habilitado');
+(123456789, 'CC', 'Andrés', NULL, 'Restrepo', NULL, 'user', 'tecnico', '25f9e794323b453885f5181f1b624d0b', NULL, NULL, 'juanito@example.com', 'habilitado'),
+(1017148792, 'CC', 'Andrea', NULL, 'Marin', NULL, 'admin', NULL, 'cff6bb6dd557900e9b4bb4d95ce9f233', NULL, NULL, 'admin@admin.com', 'habilitado');
 
 --
 -- Restricciones para tablas volcadas

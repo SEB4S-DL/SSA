@@ -1,3 +1,34 @@
+<?php
+    require_once "../functions/login.php";
+    session_start();
+
+    $errores = [
+        "1" => "Credenciales no válidas"
+    ];
+
+    if (isset($_SESSION["user"])){
+        header("Location: ../index.php");
+    }
+
+    if (validarDatos()){
+        $user = consultarUsuario();
+
+
+        $_SESSION["user"] = $user["nombre"];
+        $_SESSION["user_id"] = $user["nro_documento"];
+        $_SESSION["user_rol"] = $user["rol"];
+        $_SESSION["user_email"] = $user["correo_institucional"];
+
+        header("Location: ../index.php");
+    }
+
+    else{
+        if ($_SERVER["REQUEST_METHOD"] === "POST"){
+            header("Location: ./login.php?status=1");
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +63,11 @@
 
         <p>Sistema de seguimiento de aprendices</p>
 
-        <form action="" class="login-form">
+        <form action="./login.php" class="login-form" method="POST">
+            <?php if (isset($_GET["status"]) && $_GET["status"] == 1): ?>
+            <div class="error-container"><?= $errores[$_GET["status"]]; ?></div>
+            <?php endif; ?>
+
             <label for="emailInput">Correo</label>
             <input type="text" name="email" id="emailInput" placeholder="Ingrese su correo">
 
