@@ -1,3 +1,9 @@
+<?php
+  if (!isset($_SESSION["user"])){
+      header("Location: ../../auth/login.php");
+  }
+?>
+
 <link rel="stylesheet" href="./assets/css/crear-competencia.css">
 <?php 
 $sql = "SELECT nombre_programa FROM programa_formacion";

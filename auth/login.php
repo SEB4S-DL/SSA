@@ -21,7 +21,6 @@
 
         header("Location: ../index.php");
     }
-
     else{
         if ($_SERVER["REQUEST_METHOD"] === "POST"){
             header("Location: ./login.php?status=1");
@@ -69,14 +68,14 @@
             <?php endif; ?>
 
             <label for="emailInput">Correo</label>
-            <input type="text" name="email" id="emailInput" placeholder="Ingrese su correo">
+            <input type="text" name="email" id="emailInput" placeholder="Ingrese su correo" required>
 
             <label for="passwordInput">Contraseña</label>
              <div class="password-input-container">
                 <div class="view-password-container">
                     <i class="bi bi-eye" id="toggleIcon" onclick="togglePassword()"></i>
                 </div>
-                 <input type="password" name="password" id="passwordInput" placeholder="Ingrese su contraseña">
+                 <input type="password" name="password" id="passwordInput" placeholder="Ingrese su contraseña" required>
              </div>
 
             <input type="submit" value="Iniciar sesión">

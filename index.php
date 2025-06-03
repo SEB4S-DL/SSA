@@ -1,4 +1,13 @@
-<?php require_once './db/conection.php'?>
+<?php
+    session_start();
+
+    if (!isset($_SESSION["user"])){
+        header("Location: ./auth/login.php");
+        exit();
+    }
+
+    require_once './db/conection.php';
+?>
 
 <!DOCTYPE html>
 <html lang="es">

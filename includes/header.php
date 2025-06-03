@@ -1,3 +1,9 @@
+<?php
+  if (!isset($_SESSION["user"])){
+      header("Location: ../auth/login.php");
+  }
+?>
+
 <link rel="stylesheet" href="./assets/css/styleHeader.css">
 
 <div class="header">
@@ -8,7 +14,7 @@
     <a href=".">
         <img src="./assets/img/sena-logo.png" alt="Logo SENA">
     </a>
-    <h1>Bienvenido/a, {{Nombre Usuario}}</h1>
+    <h1>Bienvenido/a, <?= $_SESSION["user"]; ?></h1>
 
     <div>
         <h1>Cambiar Tema: </h1>

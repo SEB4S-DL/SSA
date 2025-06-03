@@ -1,4 +1,8 @@
 <?php
+  if (!isset($_SESSION["user"])){
+    header("Location: ../auth/login.php");
+  }
+
   $page = $_GET["page"] ?? "fichas/listar_fichas";
 
   $file = "pages/$page.php";

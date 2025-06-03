@@ -1,3 +1,9 @@
+<?php
+  if (!isset($_SESSION["user"])){
+      header("Location: ../../auth/login.php");
+  }
+?>
+
 <link rel="stylesheet" href="./assets/css/visualizar-aprendiz.css">
 <title>Visualizar aprendiz</title>
 

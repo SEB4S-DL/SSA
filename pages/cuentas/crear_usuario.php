@@ -1,3 +1,9 @@
+<?php
+    if (!isset($_SESSION["user"])){
+        header("Location: ../../auth/login.php");
+    }
+?>
+
 <link rel="stylesheet" href="./assets/css/crear-usuario.css">
 <title>Crear usuario</title>
  
@@ -5,7 +11,7 @@
 <div class="container">
         <h1>Crear usuario</h1>
 
-       <form action="procesar-usuario.php" method="POST">
+       <form action="" method="POST">
             <div class="form-group">
                 <label>Nombres usuario</label>
                 <div class="form-column">
@@ -76,8 +82,8 @@
             <div class="form-group">
                 <label>Contrato <span class="optional">(opcional)</span></label>
                 <div class="contract-row">
-                    <input type="ref" name="fecha_inicio_contrato" placeholder="Fecha inicio contrato">
-                    <input type="ref" name="fecha_fin_contrato" placeholder="Fecha fin contrato">
+                    <input type="date" name="fecha_inicio_contrato" placeholder="Fecha inicio contrato" required>
+                    <input type="date" name="fecha_fin_contrato" placeholder="Fecha fin contrato" required>
                 </div>
             </div>
 

@@ -1,3 +1,9 @@
+<?php
+    if (!isset($_SESSION["user"])){
+        header("Location: ../../auth/login.php");
+    }
+?>
+
 <link rel="stylesheet" href="./assets/css/editar-info.css">
 <title>Editar usuario</title>
 
@@ -25,39 +31,52 @@
     
     
             <form action="" class="user-info" id="editarInfoForm">
-                <div class="label">Nombre completo</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['nombre']; ?>" value="<?php echo $usuario['nombre']; ?>">
+                <div class="label">Primer nombre</div>
+                <input class="value" type="text" name="primer_nombre" placeholder="Nombre" value="<?php echo $usuario['nombre']; ?>">
+
+                <div class="label">Segundo nombre</div>
+                <input class="value" type="text" name="segundo_nombre" placeholder="Segundo nombre" value="<?php echo $usuario['nombre']; ?>">
+
+                <div class="label">Primer apellido</div>
+                <input class="value" type="text" name="primer_apellido" placeholder="Apellido" value="<?php echo $usuario['nombre']; ?>">
+
+                <div class="label">Segundo apellido</div>
+                <input class="value" type="text" name="segundo_apellido" placeholder="Segundo apellido" value="<?php echo $usuario['nombre']; ?>">
                 
                 <div class="label">Correo institucional</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['nombre']; ?>" value="<?php echo $usuario['nombre']; ?>">
+                <input class="value" type="text" placeholder="correo@example.com" value="<?php echo $usuario['nombre']; ?>">
                 
                 <div class="label">Tipo de identificación</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['nombre']; ?>" value="<?php echo $usuario['nombre']; ?>">
+                <select name="tipo_identificacion" class="value">
+                    <option value="">Cédula de ciudadanía</option>
+                    <option value="">Cédula de extranjería</option>
+                </select>
                 
                 <div class="label">Nro de identificación</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['nombre']; ?>" value="<?php echo $usuario['nombre']; ?>">
+                <input class="value" type="text" placeholder="Número identificacion" value="<?php echo $usuario['nombre']; ?>">
     
                 <div class="label">Rol (usuario/administrador)</div>
     
-                <select class="value">
+                <select name="rol" class="value">
                     <option <?php echo $usuario['rol'] === 'Usuario' ? 'selected' : ''; ?>>Usuario</option>
                     <option <?php echo $usuario['rol'] === 'Administrador' ? 'selected' : ''; ?>>Administrador</option>
                 </select>
-    
-                <div class="label">Rol (usuario/administrador)</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['tipo_instructor']; ?>" value="<?php echo $usuario['tipo_instructor']; ?>">
                 
                 <div class="label">Tipo instructor</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['tipo_instructor']; ?>" value="<?php echo $usuario['tipo_instructor']; ?>">
+                <select name="tipo_instructor" class="value">
+                    <option value="">No aplica</option>
+                    <option value="">Técnico</option>
+                    <option value="">Transversal</option>
+                </select>
                 
                 <div class="label">Contraseña</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['tipo_instructor']; ?>" value="<?php echo $usuario['tipo_instructor']; ?>">
+                <input class="value" type="password" placeholder="Contraseña" value="<?php echo $usuario['tipo_instructor']; ?>">
                 
                 <div class="label">Fecha de inicio de contrato</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['tipo_instructor']; ?>" value="<?php echo $usuario['tipo_instructor']; ?>">
+                <input class="value" type="date" value="">
                 
                 <div class="label two-line">Fecha de finalización de contrato</div>
-                <input class="value" type="text" placeholder="<?php echo $usuario['tipo_instructor']; ?>" value="<?php echo $usuario['tipo_instructor']; ?>">
+                <input class="value" type="date" value="">
             </form>
         </div>
     

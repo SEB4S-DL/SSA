@@ -1,4 +1,8 @@
 <?php
+    if (!isset($_SESSION["user"])){
+        header("Location: ../auth/login.php");
+    }
+
     $actualPage = $_GET["page"] ?? "fichas";
 ?>
 
