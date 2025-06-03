@@ -30,7 +30,7 @@
     
 
     <div class="buttons-container">
-      <a href="">
+      <a href=".?page=programas/listar_programas">
         Cancelar
       </a>
 
