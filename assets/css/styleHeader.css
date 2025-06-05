@@ -39,6 +39,7 @@
 .header > div > i{
   font-size: 25px;
   cursor: pointer;
+  margin-right: 1em;
 }
 
 .theme-selector{
