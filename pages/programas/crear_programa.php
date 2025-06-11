@@ -21,18 +21,19 @@
 
   <br>  
 
-  <form action="" method="POST" class="crear-ficha-form">
+  <form id="crearPrograma" class="crear-ficha-form">
     <label for="fichaNumber">Nombre del programa</label>
-    <input type="text" name="numero_ficha" id="fichaNumber" placeholder="Ingrese el nombre del programa" required>
+    <input type="text" name="nombrePrograma" id="fichaNumber" placeholder="Ingrese el nombre del programa" required>
 
     <label for="groupManager">Nivel del programa</label>
-    <select name="jefe_grupo" id="groupManager" required>
-        <option value="">Técnico</option>
-        <option value="">Tecnólogo</option>
+    <select name="nivel" id="groupManager" required>
+      <option disabled selected>Seleccione un nivel</option>
+        <option value="tecnico">Técnico</option>
+        <option value="tecnologo">Tecnólogo</option>
     </select>
 
     <label for="day">Total horas del programa</label>
-      <input type="text" placeholder="Ingrese las horas" required>
+      <input type="text" name="horas" placeholder="Ingrese las horas" required>
     
 
     <div class="buttons-container">
@@ -44,3 +45,4 @@
     </div>
   </form>
 </div>
+<script src="/SSA/assets/js/crearProgramaForm.js"></script>
