@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-06-2025 a las 15:03:32
+-- Tiempo de generación: 12-06-2025 a las 14:39:09
 -- Versión del servidor: 9.1.0
 -- Versión de PHP: 8.3.14
 
@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS `aprendices` (
   `segundo_nombre` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `segundo_apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `estado` enum('en formacion','desercion','traslado','cancelado') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `horas_aprobadas` float(7,2) NOT NULL,
+  `estado` enum('en formacion','traslado','cancelado','aplazado') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nro_ficha` int NOT NULL,
+  `cant_rae_aprobados` int NOT NULL,
   PRIMARY KEY (`nro_documento`),
   KEY `fk_aprendices_nro_ficha` (`nro_ficha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -46,18 +46,24 @@ CREATE TABLE IF NOT EXISTS `aprendices` (
 -- Volcado de datos para la tabla `aprendices`
 --
 
-INSERT INTO `aprendices` (`nro_documento`, `tipo_documento`, `nombre`, `segundo_nombre`, `apellido`, `segundo_apellido`, `estado`, `horas_aprobadas`, `nro_ficha`) VALUES
-(123456789, 'TI', 'Alejandro', NULL, 'Zuluaga', NULL, 'en formacion', 999.99, 2895664),
-(1001234567, 'CC', 'Juan', NULL, 'Pérez', NULL, 'en formacion', 450.00, 2895664),
-(1002345678, 'TI', 'Laura', NULL, 'Gómez', NULL, 'desercion', 120.00, 2895664),
-(1003456789, 'CC', 'Carlos', NULL, 'Rodríguez', NULL, 'en formacion', 600.00, 2895664),
-(1004567890, 'CE', 'Ana', NULL, 'Martínez', NULL, '', 300.00, 2895664),
-(1005678901, 'CC', 'Luis', NULL, 'Sánchez', NULL, 'cancelado', 100.00, 2895664),
-(1006789012, 'TI', 'María', NULL, 'López', NULL, 'en formacion', 500.00, 2895664),
-(1007890123, 'CC', 'Andrés', NULL, 'Ramírez', NULL, 'en formacion', 480.00, 2895664),
-(1008901234, 'CE', 'Diana', NULL, 'Morales', NULL, 'desercion', 200.00, 2895664),
-(1012345678, 'CC', 'Sofía', NULL, 'García', NULL, 'en formacion', 550.00, 2895664),
-(1013456789, 'TI', 'Jorge', NULL, 'Ruiz', NULL, '', 150.00, 2895664);
+INSERT INTO `aprendices` (`nro_documento`, `tipo_documento`, `nombre`, `segundo_nombre`, `apellido`, `segundo_apellido`, `estado`, `nro_ficha`, `cant_rae_aprobados`) VALUES
+(123, 'TI', 'dsa', NULL, 'dsa', '', 'en formacion', 123, 0),
+(112890, 'CC', 'Andrea', NULL, 'Marín', '', 'en formacion', 123, 0),
+(123123123, 'TI', 'dasdds', NULL, 'dasdsadas', NULL, 'en formacion', 123, 0),
+(123123332, 'TI', 'dsdsadas', NULL, 'dsaddsad', NULL, 'en formacion', 123, 0),
+(123456789, 'TI', 'Alejandro', NULL, 'Zuluaga', NULL, 'en formacion', 2895664, 2),
+(1001234567, 'CC', 'Juan', NULL, 'Pérez', NULL, 'en formacion', 2895664, 0),
+(1002345678, 'TI', 'Laura', NULL, 'Gómez', NULL, '', 2895664, 0),
+(1003456789, 'CC', 'Carlos', NULL, 'Rodríguez', NULL, 'en formacion', 2895664, 3),
+(1004567890, 'CE', 'Ana', NULL, 'Martínez', NULL, '', 2895664, 0),
+(1005678901, 'CC', 'Luis', NULL, 'Sánchez', NULL, 'cancelado', 2895664, 0),
+(1006789012, 'TI', 'María', NULL, 'López', NULL, 'en formacion', 2895664, 1),
+(1007890123, 'CC', 'Andrés', NULL, 'Ramírez', NULL, 'en formacion', 2895664, 0),
+(1008901234, 'CE', 'Diana', '', 'Morales', NULL, '', 2895664, 0),
+(1012345678, 'CC', 'Sofía', NULL, 'García', NULL, 'en formacion', 2895664, 0),
+(1013456789, 'TI', 'Jorge', NULL, 'Ruiz', NULL, '', 2895664, 0),
+(1128904407, 'TI', 'dsdsadsa', NULL, 'dsadsadads', NULL, 'en formacion', 2895664, 0),
+(1128905255, 'TI', 'dasdsadsa', NULL, 'dsadsadas', NULL, 'en formacion', 123, 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +75,6 @@ DROP TABLE IF EXISTS `competencias`;
 CREATE TABLE IF NOT EXISTS `competencias` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre_competencia` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `total_horas` int NOT NULL,
   `id_programa_formacion` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_competencias_id_programa_formacion` (`id_programa_formacion`)
@@ -79,9 +84,9 @@ CREATE TABLE IF NOT EXISTS `competencias` (
 -- Volcado de datos para la tabla `competencias`
 --
 
-INSERT INTO `competencias` (`id`, `nombre_competencia`, `total_horas`, `id_programa_formacion`) VALUES
-(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 303, 2),
-(2, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 23, 2);
+INSERT INTO `competencias` (`id`, `nombre_competencia`, `id_programa_formacion`) VALUES
+(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 2),
+(2, 'Implementar 2', 2);
 
 -- --------------------------------------------------------
 
@@ -147,7 +152,6 @@ DROP TABLE IF EXISTS `programa_formacion`;
 CREATE TABLE IF NOT EXISTS `programa_formacion` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre_programa` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `total_horas` int NOT NULL,
   `nivel` enum('tecnico','tecnologo') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -156,9 +160,9 @@ CREATE TABLE IF NOT EXISTS `programa_formacion` (
 -- Volcado de datos para la tabla `programa_formacion`
 --
 
-INSERT INTO `programa_formacion` (`id`, `nombre_programa`, `total_horas`, `nivel`) VALUES
-(1, 'Técnico en programación', 2000, 'tecnico'),
-(2, 'Análisis y desarrollo de software', 3950, 'tecnologo');
+INSERT INTO `programa_formacion` (`id`, `nombre_programa`, `nivel`) VALUES
+(1, 'Técnico en programación', 'tecnico'),
+(2, 'Análisis y desarrollo de software', 'tecnologo');
 
 -- --------------------------------------------------------
 
@@ -170,19 +174,19 @@ DROP TABLE IF EXISTS `resultados_aprendizaje`;
 CREATE TABLE IF NOT EXISTS `resultados_aprendizaje` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre_rae` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `total_horas` float(4,2) NOT NULL,
   `id_competencia` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_rae_id_competencia` (`id_competencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `resultados_aprendizaje`
 --
 
-INSERT INTO `resultados_aprendizaje` (`id`, `nombre_rae`, `total_horas`, `id_competencia`) VALUES
-(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 20.00, 1),
-(2, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 3.00, 1);
+INSERT INTO `resultados_aprendizaje` (`id`, `nombre_rae`, `id_competencia`) VALUES
+(1, 'Implementar la propuesta de solicitud que se solicitó en la solicitación de la solicitud', 1),
+(2, 'RAE 2', 1),
+(3, 'RAE de la competencia con id 2', 2);
 
 -- --------------------------------------------------------
 
@@ -199,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `segundo_apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rol` enum('admin','user') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `tipo` enum('tecnico','transversal') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tipo` enum('tecnico','transversal') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `fecha_inicio_contrato` date DEFAULT NULL,
   `fecha_fin_contrato` date DEFAULT NULL,
@@ -216,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`nro_documento`, `tipo_documento`, `nombre`, `segundo_nombre`, `apellido`, `segundo_apellido`, `rol`, `tipo`, `contrasena`, `fecha_inicio_contrato`, `fecha_fin_contrato`, `correo_institucional`, `estado`) VALUES
 (123, 'CC', 'Mario', NULL, 'López', NULL, 'user', 'tecnico', '', NULL, NULL, '', 'habilitado'),
 (123456789, 'CC', 'Andrés', NULL, 'Restrepo', NULL, 'user', 'tecnico', '25f9e794323b453885f5181f1b624d0b', NULL, NULL, 'juanito@example.com', 'habilitado'),
-(1017148792, 'CC', 'Andrea', NULL, 'Marin', NULL, 'admin', NULL, 'cff6bb6dd557900e9b4bb4d95ce9f233', NULL, NULL, 'admin@admin.com', 'habilitado');
+(1017148792, 'CC', 'Andrea', NULL, 'Marin', NULL, 'admin', '', 'cff6bb6dd557900e9b4bb4d95ce9f233', NULL, NULL, 'admin@admin.com', 'habilitado');
 
 --
 -- Restricciones para tablas volcadas

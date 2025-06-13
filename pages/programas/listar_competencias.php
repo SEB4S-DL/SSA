@@ -16,11 +16,10 @@ if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
 $idPrograma = $_GET['id']; // <- guardamos el ID
 
 $programa_id = intval($_GET["programa"]); // seguridad básica
-$sql = $sql = "SELECT 
+$sql = "SELECT 
             c.id, 
             c.nombre_competencia, 
-            COUNT(r.id) AS cant_rae, 
-            c.total_horas 
+            COUNT(r.id) AS cant_rae  
         FROM competencias c 
         LEFT JOIN resultados_aprendizaje r 
             ON r.id_competencia = c.id 
@@ -58,15 +57,11 @@ if (!$resultado) {
             data-tipo="competencia"
             data-id="<?= $dato['id'] ?>"
             data-nombre="<?= htmlspecialchars($dato['nombre_competencia'], ENT_QUOTES) ?>"
-            data-horas="<?= htmlspecialchars($dato['total_horas'], ENT_QUOTES) ?>"
           >
             <i class="bi bi-pencil-fill"></i>
           </button>
 
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_competencia"]) ?></p>
-
-          <p><strong>Horas:</strong> <?= htmlspecialchars($dato["total_horas"]) ?></p>
-
           <p>
             <strong>
               RAE:
