@@ -43,9 +43,6 @@ if (!$resultado) {
       <i class="bi bi-arrow-left"></i>
       Volver
     </button>
-    <button class="crear-button" onclick="window.location.href = '.?page=programas/crear_competencia&id=<?= $programa_id ?>'">
-  Crear competencia <i class="bi bi-plus-lg"></i>
-</button>
 
   </div>
       

@@ -62,9 +62,7 @@ if (!$resultado) {
     </button>
 
     <!-- Botón para ir a la creación de un nuevo RAE -->
-    <button class="action-button" onclick="window.location.href = '.?page=programas/crear_rae&competencia=<?= $competencia ?>'">
-      Crear RAE <i class="bi bi-plus-lg"></i>
-    </button>
+    
   </div>
 
   <!-- Contenedor para los datos -->

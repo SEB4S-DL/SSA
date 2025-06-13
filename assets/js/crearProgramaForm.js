@@ -1,3 +1,4 @@
+const res = document.getElementById("respuesta");
 document.getElementById("crearPrograma").addEventListener("submit", function(e) {
   e.preventDefault(); // Evita que se recargue la página
 
@@ -13,8 +14,14 @@ document.getElementById("crearPrograma").addEventListener("submit", function(e) 
   .then(data => {
     console.log("Respuesta del servidor:", data);
     // Aquí podés mostrar un mensaje, redirigir, etc.
+    res.textContent = "Programa creado exitosamente";
+    setTimeout(() => {
+  window.location.href = BASE_URL + "index.php?page=programas/listar_programas";
+
+}, 2000); 
   })
   .catch(error => {
     console.error("Error en el envío:", error);
+    res.textContent = "Error al enviar el formulario"
   });
 });

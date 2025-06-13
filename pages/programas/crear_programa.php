@@ -13,10 +13,6 @@
   <div class="top-container">
     <h1>Crear programa</h1>
 
-    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">
-      <i class="bi bi-arrow-left"></i>
-      Volver
-    </button>
   </div>
 
   <br>  
@@ -44,5 +40,7 @@
       <input type="submit" value="Crear programa">
     </div>
   </form>
+
+  <div class="respuesta" id="respuesta"></div>
 </div>
 <script src="/SSA/assets/js/crearProgramaForm.js"></script>
