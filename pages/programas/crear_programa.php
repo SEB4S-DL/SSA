@@ -12,7 +12,11 @@
   <br>
   <div class="top-container">
     <h1>Crear programa</h1>
+     
 
+  </div>
+  <div class="importarAprendices-top-container">
+    <button onclick="window.location.href = '.?page=programas/importar_competencias'">Importar Competencias <i class="bi bi-plus-lg"></i></button>
   </div>
 
   <br>  

@@ -5,11 +5,11 @@
 ?>
 
 <link rel="stylesheet" href="./assets/css/importar-aprendices.css">
-<title>Importar aprendices</title>
+<title>Importar competencias</title>
 
 <div class="importar-aprendices-container">
   <h1 class="importar-title">
-    Importar aprendices
+    Importar competencias
   </h1>
 
   <div class="warning-container">
@@ -27,11 +27,11 @@
     </div>
   </div>
 
-  <form action="" enctype="multipart/form-data" class="importar-form">
+  <form action="" method="POST" enctype="multipart/form-data" class="importar-form">
     <label for="fileInput">Seleccionar archivo</label>
     <input type="file" name="excel" id="fileInput" accept=".xls, .xlsx" required>
 
-    <input type="submit" value="Importar aprendices">
+    <input type="submit" value="Importar competencias">
   </form>
 </div>
 

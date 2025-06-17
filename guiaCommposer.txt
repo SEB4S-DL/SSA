@@ -1,1 +1,0 @@
-para instalar composer se descargan el .exe desde la pagina oficial de composer y luego en la carpeta raiz del proyecto, abren la consola y ejecutan composer install y listo les generá la carpeta /vendor/
