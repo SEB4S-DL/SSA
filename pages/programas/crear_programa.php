@@ -15,9 +15,7 @@
      
 
   </div>
-  <div class="importarAprendices-top-container">
-    <button onclick="window.location.href = '.?page=programas/importar_competencias'">Importar Competencias <i class="bi bi-plus-lg"></i></button>
-  </div>
+
 
   <br>  
 
@@ -30,11 +28,7 @@
       <option disabled selected>Seleccione un nivel</option>
         <option value="tecnico">Técnico</option>
         <option value="tecnologo">Tecnólogo</option>
-    </select>
-
-    <label for="day">Total horas del programa</label>
-      <input type="text" name="horas" placeholder="Ingrese las horas" required>
-    
+</select>
 
     <div class="buttons-container">
       <a href=".?page=programas/listar_programas">

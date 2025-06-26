@@ -3,16 +3,15 @@ require '../db/conection.php'; // <-- corregida
 
 $programa = $_POST['nombrePrograma'] ?? '';
 $options = $_POST['nivel'] ?? '';
-$horas = (int) ($_POST['horas'] ?? 0); // <-- casteado
 
-if ($programa === '' || $options === '' || $horas === 0) {
+if ($programa === '' || $options === '') {
     http_response_code(400);
     echo "Faltan datos obligatorios.";
     exit;
 }
 
-$stmt = $conn->prepare("INSERT INTO programa_formacion (nombre_programa, total_horas, nivel) VALUES (?, ?, ?)");
-$stmt->bind_param("sis", $programa, $horas, $options);
+$stmt = $conn->prepare("INSERT INTO programa_formacion (nombre_programa,nivel) VALUES (?, ?)");
+$stmt->bind_param("ss", $programa, $options);
 
 if ($stmt->execute()) {
     echo "Programa registrado con éxito.";

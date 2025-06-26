@@ -1,21 +1,24 @@
 <?php
-  if (!isset($_SESSION["user"])){
-      header("Location: ../../auth/login.php");
-  }
-?>
 
-<link rel="stylesheet" href="./assets/css/listar-competencias.css">
-<title>Listar competencias</title>
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-<?php
+include_once dirname(__DIR__, 2) . '/config.php';
+
+if (!isset($_SESSION["user"])) {
+    header("Location: ../../auth/login.php");
+    exit;
+}
+
 if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
     echo "<p style='color:red;'>ID de competencia no válido o no enviado.</p>";
     exit;
 }
 
-$idPrograma = $_GET['id']; // <- guardamos el ID
+$programa_id = intval($_GET["programa"]);
+$idPrograma = $programa_id;
 
-$programa_id = intval($_GET["programa"]); // seguridad básica
 $sql = "SELECT 
             c.id, 
             c.nombre_competencia, 
@@ -23,9 +26,8 @@ $sql = "SELECT
         FROM competencias c 
         LEFT JOIN resultados_aprendizaje r 
             ON r.id_competencia = c.id 
-        WHERE c.id_programa_formacion = " . intval($_GET["programa"]) . " 
+        WHERE c.id_programa_formacion = $programa_id 
         GROUP BY c.id";
-
 
 $resultado = $conn->query($sql);
 
@@ -35,74 +37,71 @@ if (!$resultado) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar competencias</title>
+    <link rel="stylesheet" href="./assets/css/listar-competencias.css">
+</head>
+<body>
+
 <div class="listar-fichas-container">
-  <div class="listar-fichas-top-container">
-    <h1>Listado de competencias</h1>
-    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">
-      <i class="bi bi-arrow-left"></i>
-      Volver
-    </button>
+    <div class="listar-fichas-top-container">
+        <h1>Listado de competencias</h1>
+        <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">
+            <i class="bi bi-arrow-left"></i> Volver
+        </button>
+        <button class="crear-button" onclick="window.location.href = '.?page=programas/importar_competencias&programa=<?= $idPrograma ?>'">
+            Importar RAES
+        </button>
+    </div>
 
-  </div>
-      
-  <div class="contenedor">
-  
-  <?php if ($resultado->num_rows > 0): ?>
-      <?php while($dato = $resultado->fetch_assoc()): ?>
-        <div class="card" onclick="window.location.href = '.?page=programas/listar_rae&competencia=<?= $dato['id']; ?>'">
-          <button
-            onclick="event.stopPropagation()"
-            title="Editar competencia"
-            class="editarTrigger"
-            data-tipo="competencia"
-            data-id="<?= $dato['id'] ?>"
-            data-nombre="<?= htmlspecialchars($dato['nombre_competencia'], ENT_QUOTES) ?>"
-          >
-            <i class="bi bi-pencil-fill"></i>
-          </button>
+    <div class="contenedor">
+        <?php if ($resultado->num_rows > 0): ?>
+            <?php while($dato = $resultado->fetch_assoc()): ?>
+                <div class="card" onclick="window.location.href = '.?page=programas/listar_rae&competencia=<?= $dato['id']; ?>'">
+                    <button
+                        onclick="event.stopPropagation()"
+                        title="Editar competencia"
+                        class="editarTrigger"
+                        data-tipo="competencia"
+                        data-id="<?= $dato['id'] ?>"
+                        data-nombre="<?= htmlspecialchars($dato['nombre_competencia'], ENT_QUOTES) ?>"
+                    >
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
 
-          <p class="card-first-p"><?= htmlspecialchars($dato["nombre_competencia"]) ?></p>
-          <p>
-            <strong>
-              RAE:
-            </strong>
-            <?= $dato["cant_rae"] ?>
-          </p>
-        </div>
-    <?php endwhile; ?>
-    
-    <?php else: ?>
-      <p>No hay competencias disponibles.</p>
-  <?php endif; ?>
-  
-  </div>
+                    <p class="card-first-p"><?= htmlspecialchars($dato["nombre_competencia"]) ?></p>
+                    <p><strong>RAE:</strong> <?= $dato["cant_rae"] ?></p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No hay competencias disponibles.</p>
+        <?php endif; ?>
+    </div>
 </div>
 
-
 <div class="modal-bg">
-  <div class="editar-fichas-modal">
-    <span class="exitModal"><i class="bi bi-x-lg"></i></span>
+    <div class="editar-fichas-modal">
+        <span class="exitModal"><i class="bi bi-x-lg"></i></span>
+        <h1>Editar competencia</h1>
 
-    <h1>Editar competencia</h1>
+        <form action="/SSA/functions/editarCompetencia.php" method="POST">
+            <input type="hidden" name="id_competencia" id="idCompetencia" required>
+            <input type="hidden" name="id_programa" id="idPrograma" value="<?= $programa_id ?>">
 
-    <form action="/SSA/functions/editarCompetencia.php" method="POST">
-  <input type="hidden" name="id_competencia" id="idCompetencia" required>
-  <input type="hidden" name="id_programa" id="idPrograma" value="<?= $programa_id ?>">
+            <label for="nombreCompetencia">
+                <h3>Nombre de la competencia</h3>
+            </label>
+            <input type="text" class="input_edit_program" id="nombreCompetencia" name="nombre" placeholder="Ingrese el nombre" required>
 
-  <label for="nombreCompetencia">
-    <h3>Nombre de la competencia</h3>
-  </label>
-  <input type="text" class="input_edit_program" id="nombreCompetencia" name="nombre" placeholder="Ingrese el nombre" required>
-
-  <label for="cantidadHoras">
-    <h3>Cantidad de horas</h3>
-  </label>
-  <input type="text" class="input_edit_program" id="cantidadHoras" name="horas" placeholder="Ingrese la cantidad de horas" required>
-
-  <input type="submit" id="submitInput">
-</form>
-
-  </div>
+            <input type="submit" id="submitInput">
+        </form>
+    </div>
 </div>
 
 <script src="./assets/js/modalEditarFicha.js"></script>
+
+</body>
+</html>

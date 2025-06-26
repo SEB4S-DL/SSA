@@ -1,7 +1,16 @@
+<?php include_once __DIR__ . '/../../config.php'; ?>
+
 <?php
   if (!isset($_SESSION["user"])){
       header("Location: ../../auth/login.php");
   }
+?>
+
+<?php
+if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
+    die("ID de programa no válido.");
+}
+$idPrograma = intval($_GET["programa"]);
 ?>
 
 <link rel="stylesheet" href="./assets/css/importar-aprendices.css">
@@ -27,13 +36,18 @@
     </div>
   </div>
 
-  <form action="" method="POST" enctype="multipart/form-data" class="importar-form">
-    <label for="fileInput">Seleccionar archivo</label>
-    <input type="file" name="excel" id="fileInput" accept=".xls, .xlsx" required>
+  <form id="importarCompetencias" enctype="multipart/form-data" class="importar-form">
+  <input type="hidden" name="programa" value="<?= $idPrograma ?>">
 
-    <input type="submit" value="Importar competencias">
-  </form>
+  <label for="fileInput">Seleccionar archivo</label>
+  <input type="file" name="excel" id="fileInput" accept=".csv" required>
+
+  <input type="submit" value="Importar competencias">
+  <a href="<?php echo BASE_URL ?>index.php?page=programas/listar_programas" class="btn-cancelar">Cancelar</a>
+</form>
+
 </div>
+<div id="respuesta"></div>
 
 <div class="img-modal--bg" id="imgModalBg">
   <span id="closeModal">
@@ -43,3 +57,4 @@
 </div>
 
 <script src="./assets/js/modalImage.js"></script>
+<script src="./assets/js/importarCompetenciasForm.js"></script>

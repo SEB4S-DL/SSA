@@ -62,10 +62,7 @@
 
       <input type="hidden" id="idPrograma" name="id_programa">
 
-      <label for="cantidadHoras">
-        <h3>Cantidad de horas</h3>
-      </label>
-      <input type="text" class="input_edit_program" id="cantidadHoras" name="horas" placeholder="Ingrese la cantidad de horas" required>
+     
 
       <label for="nivel">
         <h3>Nivel</h3>

@@ -77,6 +77,23 @@
   gap: 2em;
 }
 
+.btn-cancelar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  font-size: 14px;
+  border-radius: 5%;
+  padding: 5px 20px;
+  color: white;
+  text-decoration: none;
+  height: 40px; /* opcional, para ayudar a centrar */
+  width: 120px; /* opcional, si querés tamaño fijo */
+}
+.btn-cancelar:hover{
+  background-color: rgb(132, 2, 2);
+}
+
 .importar-form label, .importar-form input[type="submit"]{
   padding: 10px;
   border-radius: 5px;

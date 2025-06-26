@@ -74,14 +74,12 @@ if (!$resultado) {
         <!-- Encabezados de la tabla -->
         <div class="table-row">
           <div>Resultado de aprendizaje</div>
-          <div>Horas</div>
         </div>
 
         <!-- Iterar sobre los resultados obtenidos -->
         <?php while($dato = $resultado->fetch_assoc()): ?>
           <div class="table-row">
             <div><?= htmlspecialchars($dato["nombre_rae"]) ?></div>
-            <div>Horas: <?= htmlspecialchars($dato["total_horas"]) ?></div>
           </div>
         <?php endwhile; ?>
 
@@ -112,10 +110,7 @@ if (!$resultado) {
       <input type="text" class="input_edit_program" id="nombreCompetencia" placeholder="">
 
       <!-- Campo para editar horas del RAE -->
-      <label for="cantidadHoras">
-        <h3>Cantidad de horas</h3>
-      </label>
-      <input type="text" class="input_edit_program" id="cantidadHoras" placeholder="Ingrese la cantidad de horas">
+      
 
       <!-- Botón para enviar el formulario -->
       <input type="submit" value="Editar RAE">
