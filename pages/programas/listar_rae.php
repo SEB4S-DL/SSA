@@ -91,32 +91,4 @@ if (!$resultado) {
   </div>
 </div>
 
-<!-- Modal para editar RAE (todavía sin funcionalidad de backend) -->
-<div class="modal-bg">
-  <div class="editar-fichas-modal">
-
-    <!-- Botón para cerrar el modal -->
-    <span class="exitModal"><i class="bi bi-x-lg"></i></span>
-
-    <!-- Título del modal -->
-    <h1>Editar RAE</h1>
-
-    <!-- Formulario de edición -->
-    <form action="/functions/editarRae.php" method="POST">
-      <!-- Campo para editar nombre del RAE -->
-      <label for="nombreCompetencia">
-        <h3>Nombre del RAE</h3>
-      </label>
-      <input type="text" class="input_edit_program" id="nombreCompetencia" placeholder="">
-
-      <!-- Campo para editar horas del RAE -->
-      
-
-      <!-- Botón para enviar el formulario -->
-      <input type="submit" value="Editar RAE">
-    </form>
-  </div>
-</div>
-
 <!-- Script para el comportamiento del modal (abrir/cerrar) -->
-<script src="./assets/js/modalEditarFicha.js"></script>
