@@ -61,16 +61,7 @@ if (!$resultado) {
         <?php if ($resultado->num_rows > 0): ?>
             <?php while($dato = $resultado->fetch_assoc()): ?>
                 <div class="card" onclick="window.location.href = '.?page=programas/listar_rae&competencia=<?= $dato['id']; ?>'">
-                    <button
-                        onclick="event.stopPropagation()"
-                        title="Editar competencia"
-                        class="editarTrigger"
-                        data-tipo="competencia"
-                        data-id="<?= $dato['id'] ?>"
-                        data-nombre="<?= htmlspecialchars($dato['nombre_competencia'], ENT_QUOTES) ?>"
-                    >
-                        <i class="bi bi-pencil-fill"></i>
-                    </button>
+                   
 
                     <p class="card-first-p"><?= htmlspecialchars($dato["nombre_competencia"]) ?></p>
                     <p><strong>RAE:</strong> <?= $dato["cant_rae"] ?></p>
@@ -82,26 +73,6 @@ if (!$resultado) {
     </div>
 </div>
 
-<div class="modal-bg">
-    <div class="editar-fichas-modal">
-        <span class="exitModal"><i class="bi bi-x-lg"></i></span>
-        <h1>Editar competencia</h1>
-
-        <form action="/SSA/functions/editarCompetencia.php" method="POST">
-            <input type="hidden" name="id_competencia" id="idCompetencia" required>
-            <input type="hidden" name="id_programa" id="idPrograma" value="<?= $programa_id ?>">
-
-            <label for="nombreCompetencia">
-                <h3>Nombre de la competencia</h3>
-            </label>
-            <input type="text" class="input_edit_program" id="nombreCompetencia" name="nombre" placeholder="Ingrese el nombre" required>
-
-            <input type="submit" id="submitInput">
-        </form>
-    </div>
-</div>
-
-<script src="./assets/js/modalEditarFicha.js"></script>
 
 </body>
 </html>

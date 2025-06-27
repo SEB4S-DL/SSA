@@ -23,9 +23,25 @@ $idPrograma = intval($_GET["programa"]);
 
   <div class="warning-container">
     <div class="warning">
-      <p>Para cargar los aprendices con un excel, este debe seguir un formato. El formato debe ser una tabla que contenga las siguientes columnas: {{Campos}}</p>
+      <p>Para cargar los aprendices con un excel, este debe seguir un formato. El formato debe ser una tabla que contenga las siguientes columnas:</p>
 
-      <p>A continuación se muestra una imágen con un formato adecuado para subir los aprendices con un excel.</p>
+
+    <ul>
+      <li>Tipo de documento</li>
+      <li>Número de documento</li>
+      <li>Nombre</li>
+      <li>Apellidos</li>
+      <li>Estado</li>
+      <li>Competencia</li>
+      <li>Resultado de aprendizaje</li>
+      <li>Juicio de evaluación</li>
+      <li>Fecha y Hora del Juicio Evaluativo</li>
+      <li>Funcionario que registro el juicio evaluativo</li>
+    </ul>
+    <br>
+    <p>Cuando el excel cumpla con el formato especificado, debe convertirlo a CSV delimitado por punto y coma ( ; ) y luego subir acá el archivo csv.</p>
+  <br>
+    <p>A continuación se muestra una imágen con un formato adecuado para subir los aprendices con un excel.</p>
     </div>
 
     <div class="img-container">
