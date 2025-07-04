@@ -62,9 +62,7 @@ if (!$resultado) {
     </button>
 
     <!-- Botón para ir a la creación de un nuevo RAE -->
-    <button class="action-button" onclick="window.location.href = '.?page=programas/crear_rae'">
-      Crear RAE <i class="bi bi-plus-lg"></i>
-    </button>
+    
   </div>
 
   <!-- Contenedor para los datos -->
@@ -76,14 +74,12 @@ if (!$resultado) {
         <!-- Encabezados de la tabla -->
         <div class="table-row">
           <div>Resultado de aprendizaje</div>
-          <div>Horas</div>
         </div>
 
         <!-- Iterar sobre los resultados obtenidos -->
         <?php while($dato = $resultado->fetch_assoc()): ?>
           <div class="table-row">
             <div><?= htmlspecialchars($dato["nombre_rae"]) ?></div>
-            <div>Horas: <?= htmlspecialchars($dato["total_horas"]) ?></div>
           </div>
         <?php endwhile; ?>
 
@@ -95,35 +91,4 @@ if (!$resultado) {
   </div>
 </div>
 
-<!-- Modal para editar RAE (todavía sin funcionalidad de backend) -->
-<div class="modal-bg">
-  <div class="editar-fichas-modal">
-
-    <!-- Botón para cerrar el modal -->
-    <span class="exitModal"><i class="bi bi-x-lg"></i></span>
-
-    <!-- Título del modal -->
-    <h1>Editar RAE</h1>
-
-    <!-- Formulario de edición -->
-    <form action="/functions/editarRae.php" method="POST">
-      <!-- Campo para editar nombre del RAE -->
-      <label for="nombreCompetencia">
-        <h3>Nombre del RAE</h3>
-      </label>
-      <input type="text" class="input_edit_program" id="nombreCompetencia" placeholder="">
-
-      <!-- Campo para editar horas del RAE -->
-      <label for="cantidadHoras">
-        <h3>Cantidad de horas</h3>
-      </label>
-      <input type="text" class="input_edit_program" id="cantidadHoras" placeholder="Ingrese la cantidad de horas">
-
-      <!-- Botón para enviar el formulario -->
-      <input type="submit" value="Editar RAE">
-    </form>
-  </div>
-</div>
-
 <!-- Script para el comportamiento del modal (abrir/cerrar) -->
-<script src="./assets/js/modalEditarFicha.js"></script>

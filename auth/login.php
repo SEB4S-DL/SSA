@@ -20,6 +20,7 @@
         $_SESSION["user_email"] = $user["correo_institucional"];
 
         header("Location: ../index.php");
+        unset($errores["1"]);
     }
     else{
         if ($_SERVER["REQUEST_METHOD"] === "POST"){

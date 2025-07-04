@@ -8,7 +8,7 @@
 <title>Listar programas</title>
 
 <?php   
-    $sql = "SELECT id,nombre_programa, total_horas, nivel from programa_formacion";
+    $sql = "SELECT id,nombre_programa,nivel from programa_formacion";
 
     $resultado = $conn->query($sql);
 
@@ -31,14 +31,12 @@
   data-tipo="programa"
   data-id="<?= $dato['id'] ?>"
   data-nombre="<?= htmlspecialchars($dato['nombre_programa'], ENT_QUOTES )?>"
-  data-horas="<?= htmlspecialchars($dato['total_horas'], ENT_QUOTES )?>"
   data-nivel="<?= htmlspecialchars($dato['nivel'], ENT_QUOTES )?>"
 >
   <i class="bi bi-pencil-fill"></i>
 </button>
 
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
-          <p><strong>Horas:</strong> <?= htmlspecialchars($dato["total_horas"]) ?></p>
           <p> <?= htmlspecialchars($dato["nivel"]) ?></p>
         </div>
     <?php endwhile; ?>
@@ -64,10 +62,7 @@
 
       <input type="hidden" id="idPrograma" name="id_programa">
 
-      <label for="cantidadHoras">
-        <h3>Cantidad de horas</h3>
-      </label>
-      <input type="text" class="input_edit_program" id="cantidadHoras" name="horas" placeholder="Ingrese la cantidad de horas" required>
+     
 
       <label for="nivel">
         <h3>Nivel</h3>

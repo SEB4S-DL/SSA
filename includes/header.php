@@ -11,7 +11,7 @@
         <i class="bi bi-justify" id="toggle-menu-trigger"></i>
     </span>
 
-    <a href=".">
+    <a href="/SSA/index.php">
         <img src="./assets/img/sena-logo.png" alt="Logo SENA">
     </a>
     <h1>Bienvenido/a, <?= $_SESSION["user"]; ?></h1>
