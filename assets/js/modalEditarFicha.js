@@ -35,6 +35,7 @@ triggerButtons.forEach((btn) => {
     if (tipo === "ficha") {
       editModal.querySelector("#jefeGrupoSelect").value = btn.dataset.jefeid;
       editModal.querySelector("#jornadaSelect").value = btn.dataset.jornada;
+      editModal.querySelector("#fichaNumero").value = btn.dataset.id;
       editModal.querySelector("#submitInput").value = "Editar";
       // Agregá más si necesitás...
     }

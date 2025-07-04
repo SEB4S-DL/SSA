@@ -3,7 +3,7 @@
     session_start();
 
     $errores = [
-        "1" => "Credenciales no válidas"
+        "1" => "Credenciales incorrectas"
     ];
 
     if (isset($_SESSION["user"])){

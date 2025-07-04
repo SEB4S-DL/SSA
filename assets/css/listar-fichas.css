@@ -3,6 +3,20 @@
     padding: 0 0 2em 0;
 }
 
+.status-container{
+  text-align: center;
+  padding: 0.5em;
+  color: #fff;
+}
+
+.status-succes{
+  background-color: green;
+}
+
+.status-error{
+  background-color: red;
+}
+
 .listar-fichas-top-container{
     display: flex;
     margin: 2em auto;

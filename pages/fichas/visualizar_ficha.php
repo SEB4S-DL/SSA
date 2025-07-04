@@ -2,6 +2,14 @@
   if (!isset($_SESSION["user"])){
       header("Location: ../../auth/login.php");
   }
+
+  require "./functions/visualizar_ficha.php";
+
+  $states = [
+    "1" => "No se proporcionó la ficha"
+  ];
+
+  $aprendices = obtener_aprendices();
 ?>
 
 <link rel="stylesheet" href="./assets/css/visualizar-ficha.css">
@@ -9,56 +17,64 @@
 
 <div class="visualizar-ficha-container">
   <div class="top-container__text">
-    <h1 class="top-container-title">Ficha: 0123456789</h1>
+    <h1 class="top-container-title">Ficha: 
+      <?php if(isset($_GET["ficha"])){
+        echo $_GET["ficha"];
+      }
+      ?>
+    </h1>
     
-    <a href=".?page=fichas/crear_aprendiz" class="top-container-button">
+    <?php 
+      if (isset($_GET["ficha"])):
+    ?>
+    <a href=".?page=fichas/crear_aprendiz&ficha=<?= $_GET["ficha"]; ?>" class="top-container-button">
       Crear aprendiz
       <i class="bi bi-plus-lg"></i>
+    </a>
+
+    <a href=".?page=fichas/importar_aprendices&ficha=<?= $_GET["ficha"]; ?>" class="importar-button">
+      Importar aprendices
+      <i class="bi bi-file-earmark-spreadsheet"></i>
+    </a>
+
+    <?php endif; ?>
+
+    <a href=".?page=fichas/listar_fichas" class="top-container-volver">
+      Volver
     </a>
   </div>
 
   <div class="main-content">
-    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=2'">
-      <div class="percentage-container red-percentage" data-percentage="30"></div>
-      <p>Andrés Felipe Pineda Santos</p>
-      <p>TI: 123456789</p>
-      <p>30% aprobado</p>
-    </div>
 
-    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=2'">
-      <div class="percentage-container red-percentage" data-percentage="50"></div>
-      <p>Andrés Felipe Pineda Santos</p>
-      <p>TI: 123456789</p>
-      <p>30% aprobado</p>
-    </div>
+  <?php if (isset($_GET["ficha"])): ?>
+    <?php if($aprendices->num_rows > 0): ?>
 
-    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=2'">
-      <div class="percentage-container green-percentage" data-percentage="60"></div>
-      <p>Andrés Felipe Pineda Santos</p>
-      <p>TI: 123456789</p>
-      <p>30% aprobado</p>
+    <?php while ($aprendiz = $aprendices->fetch_assoc()): ?>
+    <?php $porcentaje_aprobado = calcular_aprobado($aprendiz);?>
+    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=<?= $aprendiz['nro_documento']; ?>&ficha=<?= $_GET['ficha']; ?>'">
+      <div class="percentage-container 
+      <?php if($porcentaje_aprobado >= 75){
+        echo "green";
+      }
+      else{
+        echo "red";
+      } ?>-percentage" data-percentage="<?= $porcentaje_aprobado; ?>"></div>
+      <p><?= $aprendiz["nombre"]; ?></p>
+      <p><?= $aprendiz["tipo_documento"]; ?>: <?= $aprendiz["nro_documento"]; ?></p>
+      <p><?= $porcentaje_aprobado; ?>% aprobado</p>
+      <p>Estado: <?= $aprendiz["estado"]; ?></p>
     </div>
+    <?php endwhile; ?>
 
-    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=2'">
-      <div class="percentage-container red-percentage" data-percentage="36"></div>
-      <p>Andrés Felipe Pineda Santos</p>
-      <p>TI: 123456789</p>
-      <p>30% aprobado</p>
-    </div>
+    <?php else: ?>
 
-    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=2'">
-      <div class="percentage-container red-percentage" data-percentage="21"></div>
-      <p>Andrés Felipe Pineda Santos</p>
-      <p>TI: 123456789</p>
-      <p>30% aprobado</p>
-    </div>
+    <p style="color: red;">No se encontraron aprendices para la ficha solicitada</p>
 
-    <div class="apprentice-card" onclick="window.location.href = '.?page=fichas/visualizar_aprendiz&aprendiz=2'">
-      <div class="percentage-container red-percentage" data-percentage="12"></div>
-      <p>Andrés Felipe Pineda Santos</p>
-      <p>TI: 123456789</p>
-      <p>30% aprobado</p>
-    </div>
+    <?php endif; ?>
+
+  <?php else: ?>
+    <p style="color: red;">No se proporcionó una ficha</p>
+  <?php endif; ?>
   </div>
 </div>
 
