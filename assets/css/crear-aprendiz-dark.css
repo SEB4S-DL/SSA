@@ -3,6 +3,20 @@
   padding-bottom: 2em;
 }
 
+.state-container{
+  padding: 1em;
+  text-align: center;
+  color: #fff;
+}
+
+.state-error{
+  background-color: red;
+}
+
+.state-succes{
+  background-color: green;
+}
+
 .crear-aprendiz-container *{
   color: #fff;
 }
@@ -93,6 +107,16 @@
 
 .form-buttons-container input[type="submit"]{
   background-color: #39a900;
+}
+
+.volver-button{
+  display: block;
+  background-color: #39A900;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  margin: 1em auto;
 }
 
 /* Portatiles */

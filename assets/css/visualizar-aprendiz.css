@@ -3,6 +3,20 @@
   background-color: #f0f0f0;
 }
 
+.state-container{
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.state-succes{
+  color: green;
+}
+
+.state-error{
+  color: red;
+}
+
 .top-container{
   display: flex;
   justify-content: center;
@@ -30,6 +44,22 @@
   background-color: #ffbb00;
 }
 
+
+.top-left-button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5em 1em;
+  background-color: #39A900;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.top-left-button:hover{
+  background-color: #319300;
+}
+
 .no-listable-info{
   margin-bottom: 2em;
 }
@@ -45,7 +75,7 @@
 
 .row{
   display: grid;
-  grid-template-columns: 20% 60% 20% 40% 60%;
+  grid-template-columns: 20% 60% 20% 40% 60% 60%;
   gap: 0.5em;
   margin-bottom: 0.5em;
 }
@@ -67,6 +97,7 @@
   justify-content: center;
   align-items: center;
   min-width: 0;
+  word-break: break-word;
 }
 
 /* Media queries */
@@ -82,8 +113,13 @@
     flex-direction: column;
   }
 
+  .top-left-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
   .row{
-    grid-template-columns: repeat(5, 65%);
+    grid-template-columns: repeat(6, 65%);
   }
 }
 
@@ -99,11 +135,16 @@
     margin-top: 1em;
   }
 
+  .top-left-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
   .top-container{
     flex-direction: column;
   }
 
   .row{
-    grid-template-columns: repeat(5, 60%);
+    grid-template-columns: repeat(6, 60%);
   }
 }

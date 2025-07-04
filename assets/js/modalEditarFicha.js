@@ -15,18 +15,10 @@ triggerButtons.forEach((btn) => {
     //editModal.querySelectorAll("input").forEach(input => input.value = "");
 
     // Rellenar según tipo
-    if (tipo === "competencia") {
-        editModal.querySelector("#idCompetencia").value = btn.dataset.id;
-      editModal.querySelector("#nombreCompetencia").value = btn.dataset.nombre;
-      editModal.querySelector("#cantidadHoras").value = btn.dataset.horas;
-      editModal.querySelector("#idPrograma").value = btn.dataset.id;
-      editModal.querySelector("#submitInput").value = "Editar";
-    }
 
     if (tipo === "programa") {
       editModal.querySelector("#idPrograma").value = btn.dataset.id;
       editModal.querySelector("#nombrePrograma").value = btn.dataset.nombre;
-      editModal.querySelector("#cantidadHoras").value = btn.dataset.horas;
       editModal.querySelector("#nivel").value = btn.dataset.nivel;
       editModal.querySelector("#submitInput").value = "Editar";
       // Agregá más si necesitás...
@@ -35,6 +27,7 @@ triggerButtons.forEach((btn) => {
     if (tipo === "ficha") {
       editModal.querySelector("#jefeGrupoSelect").value = btn.dataset.jefeid;
       editModal.querySelector("#jornadaSelect").value = btn.dataset.jornada;
+      editModal.querySelector("#fichaNumero").value = btn.dataset.id;
       editModal.querySelector("#submitInput").value = "Editar";
       // Agregá más si necesitás...
     }

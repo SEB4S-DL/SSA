@@ -12,28 +12,23 @@
   <br>
   <div class="top-container">
     <h1>Crear programa</h1>
+     
 
-    <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_programas'">
-      <i class="bi bi-arrow-left"></i>
-      Volver
-    </button>
   </div>
+
 
   <br>  
 
-  <form action="" method="POST" class="crear-ficha-form">
+  <form id="crearPrograma" class="crear-ficha-form">
     <label for="fichaNumber">Nombre del programa</label>
-    <input type="text" name="numero_ficha" id="fichaNumber" placeholder="Ingrese el nombre del programa" required>
+    <input type="text" name="nombrePrograma" id="fichaNumber" placeholder="Ingrese el nombre del programa" required>
 
     <label for="groupManager">Nivel del programa</label>
-    <select name="jefe_grupo" id="groupManager" required>
-        <option value="">Técnico</option>
-        <option value="">Tecnólogo</option>
-    </select>
-
-    <label for="day">Total horas del programa</label>
-      <input type="text" placeholder="Ingrese las horas" required>
-    
+    <select name="nivel" id="groupManager" required>
+      <option disabled selected>Seleccione un nivel</option>
+        <option value="tecnico">Técnico</option>
+        <option value="tecnologo">Tecnólogo</option>
+</select>
 
     <div class="buttons-container">
       <a href=".?page=programas/listar_programas">
@@ -43,4 +38,7 @@
       <input type="submit" value="Crear programa">
     </div>
   </form>
+
+  <div class="respuesta" id="respuesta"></div>
 </div>
+<script src="/SSA/assets/js/crearProgramaForm.js"></script>

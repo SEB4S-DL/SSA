@@ -20,6 +20,15 @@
   font-weight: 400;
 }
 
+.top-container-volver{
+  position: absolute;
+  left: 0;
+  background-color: #39A900;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
 .top-container-button{
   position: absolute;
   right: 0;
@@ -36,6 +45,30 @@
 
 .top-container-button:active{
   background-color: #1e5a00;
+}
+.importar-button{
+  right: 0;
+  bottom: 0;
+  background-color: #39A900;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.importar-button:hover{
+  background-color: #2a7f00;
+}
+
+.importar-button:active{
+  background-color: #1e5a00;
+}
+
+@media(min-width: 1024px){
+  .importar-button{
+    position: absolute;
+  }
 }
 
 .main-content{
@@ -77,17 +110,15 @@
 }
 
 .percentage-container{
-  height: 100%;
-  border-radius: 10px 0 0 10px;
+  height: 10px;
+  border-radius: 0 0 0 10px;
   position: absolute;
   left: 0;
+  bottom: 0;
 }
 
-.percentage-container{
-  height: 100%;
-  border-radius: 10px 0 0 10px;
-  position: absolute;
-  left: 0;
+.full-percentage{
+  border-radius: 0 10px 0 10px;
 }
 
 .red-percentage{
@@ -123,6 +154,11 @@
     flex-direction: column;
   }
 
+  .top-container-volver{
+    position: initial;
+    margin-top: 0.5em;
+  }
+
   .top-container-button{
     position: initial;
     margin-top: 0.5em;
@@ -138,6 +174,11 @@
   
   .top-container__text{
     flex-direction: column;
+  }
+
+  .top-container-volver{
+    position: initial;
+    margin-top: 0.5em;
   }
 
   .top-container-title{

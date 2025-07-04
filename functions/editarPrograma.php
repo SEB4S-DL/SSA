@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 if (
     !isset($_POST['id_programa']) || !is_numeric($_POST['id_programa']) ||
     !isset($_POST['nombre_programa']) || empty(trim($_POST['nombre_programa'])) ||
-    !isset($_POST['horas']) || !is_numeric($_POST['horas']) ||
     !isset($_POST['nivel']) || empty(trim($_POST['nivel']))
 ) {
     echo "Datos inválidos o incompletos.";
@@ -19,13 +18,12 @@ if (
 
 $id_programa = intval($_POST['id_programa']);
 $nombre = $conn->real_escape_string(trim($_POST['nombre_programa']));
-$horas = intval($_POST['horas']);
 $nivel = $conn->real_escape_string(trim($_POST['nivel']));
 
 
 // Preparar la consulta UPDATE
 $sql = "UPDATE programa_formacion 
-        SET nombre_programa = '$nombre', total_horas = $horas, nivel = '$nivel'  
+        SET nombre_programa = '$nombre', nivel = '$nivel'  
         WHERE id = $id_programa";
 
 // Ejecutar la consulta y verificar resultado

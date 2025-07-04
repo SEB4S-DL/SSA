@@ -11,6 +11,20 @@
   position: relative;
 }
 
+.state-container{
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.state-succes{
+  background-color: green;
+}
+
+.state-error{
+  background-color: red;
+}
+
 .top-container-title{
   font-weight: 400;
 }
@@ -102,6 +116,7 @@
   border-radius: 5px;
   padding: 10px;
   min-height: 50px;
+  max-height: 150px;
 }
 
 .form-buttons-container{

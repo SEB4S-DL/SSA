@@ -3,7 +3,7 @@
     session_start();
 
     $errores = [
-        "1" => "Credenciales no válidas"
+        "1" => "Credenciales incorrectas"
     ];
 
     if (isset($_SESSION["user"])){
@@ -20,6 +20,7 @@
         $_SESSION["user_email"] = $user["correo_institucional"];
 
         header("Location: ../index.php");
+        unset($errores["1"]);
     }
     else{
         if ($_SERVER["REQUEST_METHOD"] === "POST"){
