@@ -11,7 +11,7 @@
 <div class="container">
         <h1>Crear usuario</h1>
 
-       <form action="" method="POST">
+       <form action="./functions/crearUsuario.php" method="POST">
             <div class="form-group">
                 <label>Nombres usuario</label>
                 <div class="form-column">
@@ -40,9 +40,8 @@
                 </div>
                 <div class="document-row">
                     <select name="tipo_documento" class="document-type" required>
-                        <option value="cedula_ciudadania">Cédula de ciudadanía</option>
-                        <option value="cedula_extranjeria">Cédula de extranjería</option>
-                        <option value="pasaporte">Pasaporte</option>
+                        <option value="CC">Cédula de ciudadanía</option>
+                        <option value="CE">Cédula de extranjería</option>
                     </select>
                    
                 </div>
@@ -55,7 +54,7 @@
                 <label>Rol</label>
                 <div class="role-row">
                     <select name="rol" class="role-select" required>
-                        <option value="usuario">Usuario</option>
+                        <option value="user">Usuario</option>
                         <option value="admin">Admin</option>
                     </select>
                     
@@ -63,10 +62,9 @@
             </div>
 
             <div class="form-group">
-                <label>Tipo instructor <span class="optional">(opcional)</span></label>
+                <label>Tipo instructor</label>
                 <div class="instructor-row">
-                    <select name="tipo_instructor" class="instructor-select">
-                        <option value="">Seleccionar</option>
+                    <select name="tipo_instructor" class="instructor-select" required>
                         <option value="tecnico">Técnico</option>
                         <option value="transversal">Transversal</option>
                     </select>
@@ -88,7 +86,7 @@
             </div>
 
             <div class="button-group">
-                <button type="button" class="btn btn-cancel" onclick="window.history.back()">Cancelar</button>
+                <button type="button" class="btn btn-cancel" onclick="window.location.href = '.?page=cuentas/listar_cuentas'">Cancelar</button>
                 <button type="submit" class="btn btn-create">Crear</button>
             </div>
         </form>

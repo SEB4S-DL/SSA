@@ -12,8 +12,23 @@
     position: relative;
 }
 
+.volver-button{
+    background-color: #39A900;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    left: 1em;
+    top: 0;
+}
+
+.volver-button:hover{
+    background-color: #2e8b00;
+}
+
 .visualizar-usuario-top> h1{
     font-weight: 400;
+    width: 60%;
+    text-align: center;
 }
 
 .visualizar-usuario-top> button{
