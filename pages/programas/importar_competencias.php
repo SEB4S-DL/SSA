@@ -48,12 +48,12 @@ $idPrograma = intval($_GET["programa"]);
       <div class="img-clickable" onclick="toggleModal('imgModalBg', 'closeModal')">
         <span>Ver imágen</span>
       </div>
-      <img src="./assets/img/hola.png" alt="Imágen con formato de excel" class="warning-image" onclick="toggleModal('imgModalBg', 'closeModal')">
+      <img src="./assets/img/formato-excel.png" alt="Imágen con formato de excel" class="warning-image" onclick="toggleModal('imgModalBg', 'closeModal')">
     </div>
   </div>
 
   <form id="importarCompetencias" enctype="multipart/form-data" class="importar-form">
-  <input type="hidden" name="programa" value="<?= $idPrograma ?>">
+  <input type="hidden" name="idprograma" value="<?= $idPrograma ?>">
 
   <label for="fileInput">Seleccionar archivo</label>
   <input type="file" name="excel" id="fileInput" accept=".csv" required>
@@ -69,8 +69,8 @@ $idPrograma = intval($_GET["programa"]);
   <span id="closeModal">
     <i class="bi bi-x-lg"></i>
   </span>
-  <img src="./assets/img/hola.png" alt="Imágen con formato de excel">
+  <img src="./assets/img/formato-excel.png" alt="Imágen con formato de excel">
 </div>
 
 <script src="./assets/js/modalImage.js"></script>
-<script src="./assets/js/importarCompetenciasForm.js"></script>
+<script src="<?php echo BASE_URL?>assets/js/importarCompetenciasForm.js"></script>
