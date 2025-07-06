@@ -81,6 +81,7 @@ ul{
   display: flex;
   justify-content: center;
   gap: 2em;
+  
 }
 
 .btn-cancelar {
@@ -202,6 +203,12 @@ ul{
     padding: 1em;
   }
 
+  .btn-cancelar{
+    width: 100%;
+    gap: 1em;
+    padding: 1em;
+  }
+
   .img-modal--bg img{
     width: 90%;
     height: 80%;
@@ -229,12 +236,19 @@ ul{
 
   .importar-form{
     flex-direction: column;
-    gap: 1em;
+    gap: 2em;
   }
 
   .importar-form label, .importar-form input[type="submit"]{
     padding: 1em;
   }
+
+ .btn-cancelar{
+    width: 100%;
+    gap: 1em;
+    padding: 1em;
+  }
+
 
   .img-modal--bg img{
     width: 100%;
