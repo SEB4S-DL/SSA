@@ -138,6 +138,23 @@ ul{
   background-color: #2e8a00;
 }
 
+.cancelar-button{
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancelar-button:hover{
+  background-color: rgb(177, 0, 0);
+  cursor: pointer;
+}
+
+.cancelar-button:active{
+  background-color: rgb(177, 0, 0);
+}
+
 .img-modal--bg{
   display: none;
   position: absolute;
@@ -165,6 +182,12 @@ ul{
   transform: translate(-50%, -50%);
   width: 80%;
   height: 95%;
+}
+
+.selected-file{
+  width: fit-content;
+  height: fit-content;
+  margin: 1em auto 0 auto;
 }
 
 

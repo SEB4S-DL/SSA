@@ -23,6 +23,8 @@
 
   $temp_file = $file["tmp_name"];
 
+  $fecha = date("Y-m-d H:i:s");
+
   // Verificar que el archivo si sea CSV
   $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
@@ -57,8 +59,9 @@
   stream_filter_append($archivo, "convert.iconv.Windows-1252/UTF-8");
 
   if (!$archivo){
-    header("Refresh: 1, ../index.php?page=fichas/importar_aprendices&ficha=$ficha");
+    header("Refresh: 0, ../index.php?page=fichas/importar_aprendices&ficha=$ficha");
     echo("<script>alert('Error al leer el archivo')</script>");
+    exit;
   }
 
   $encabezado = fgetcsv($archivo, 0, ";");
@@ -76,13 +79,26 @@
 
   // Eliminar juicios anteriores (en caso de que los haya) y resetear la cantidad de rae aprobados de cada aprendiz en 0
   eliminar_juicios_ficha($ficha);
-  reset_juicios_aprendiz($ficha);
+  reset_juicios_ficha($ficha);
 
   while ($fila = fgetcsv($archivo, 0, ";")){
 
     $tipo_documento = strtoupper(trim($fila[0]));  
 
     $documento = intval($fila[1]);
+
+    // Si el aprendiz pertenecía a una ficha anteriormente, arroja un array, sino arroja null
+    $ficha_aprendiz = obtener_ficha($documento);
+    
+    if ($ficha_aprendiz){
+      $ficha_anterior = $ficha_aprendiz["nro_ficha"];
+
+      if ($ficha_anterior != $ficha){
+        eliminar_juicios_aprendiz($documento);
+        reset_juicios_aprendiz($documento);
+        actualizar_ficha($documento, $ficha);
+      }
+    }
 
     $nombre = trim($fila[2]);
     [$primer_nombre, $segundo_nombre] = obtener_nombres($nombre);
@@ -107,14 +123,16 @@
       crear_aprendiz($tipo_documento, $documento, $primer_nombre, $segundo_nombre, $primer_apellido, $segundo_apellido, $estado, $ficha, 0);
     }
 
-    $evaluador = $fila[8];
+    $observacion = $fila[8];
 
-    $documento_evaluador = obtener_evaluador($evaluador);
+    $evaluador = $fila[9];
+
+    [$documento_evaluador, $nombre_evaluador] = obtener_evaluador($evaluador);
 
 
 
     // Insertar los juicios evaluativos del aprendiz
-    insertar_juicio($documento, $rae_final, $juicio, $documento_evaluador);
+    insertar_juicio($documento, $rae_final, $juicio, $documento_evaluador, $nombre_evaluador, $fecha, $observacion);
 
     // Actualizar la cantidad de juicios aprobados del aprendiz actual
     $cant_juicios = obtener_juicios_aprobados($documento);
@@ -232,13 +250,23 @@
     return $result["id"];
   }
 
-  function reset_juicios_aprendiz($ficha){
+  function reset_juicios_ficha($ficha){
     global $conn;
 
     $sql = "UPDATE aprendices SET cant_rae_aprobados = 0 WHERE nro_ficha = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $ficha);
+    $stmt->execute();
+  }
+
+  function reset_juicios_aprendiz($aprendiz){
+    global $conn;
+
+    $sql = "UPDATE aprendices SET cant_rae_aprobados = 0 WHERE nro_documento = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $aprendiz);
     $stmt->execute();
   }
 
@@ -249,6 +277,16 @@
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $ficha);
+    $stmt->execute();
+  }
+
+  function eliminar_juicios_aprendiz($aprendiz){
+    global $conn;
+
+    $sql = "DELETE FROM juicios_evaluativos WHERE id_aprendiz = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $aprendiz);
     $stmt->execute();
   }
 
@@ -277,22 +315,51 @@
     $stmt->execute();
   }
 
-  function insertar_juicio($aprendiz, $rae, $juicio, $evaluador){
+  function insertar_juicio($aprendiz, $rae, $juicio, $evaluador, $nombre_evaluador, $fecha, $observacion){
     global $conn;
 
-    $sql = "INSERT INTO juicios_evaluativos (id_aprendiz, id_rae, estado, id_evaluador) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO juicios_evaluativos (id_aprendiz, id_rae, estado, id_evaluador, nombre_evaluador, fecha_y_hora, observacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iisi", $aprendiz, $rae, $juicio, $evaluador);
+    $stmt->bind_param("iisisss", $aprendiz, $rae, $juicio, $evaluador, $nombre_evaluador, $fecha, $observacion);
     $stmt->execute();
   }
 
   function obtener_evaluador($columna_evaluador){
+    if ($columna_evaluador == ""){
+      return [null, null];
+    }
+
     // Separar nombre, tipo de documento y documento
-    $evaluador = explode("-", $columna_evaluador);
+    $evaluador = explode(" - ", $columna_evaluador);
 
     $info_documento = explode(" ", $evaluador[0]);
 
-    return $info_documento[1];
+    return [$info_documento[1], $evaluador[1]];
+  }
+
+  function obtener_ficha($aprendiz){
+    global $conn;
+
+    $sql = "SELECT nro_ficha FROM aprendices WHERE nro_documento = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $aprendiz);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $result = $result->fetch_assoc();
+
+    return $result;
+  }
+
+  function actualizar_ficha($aprendiz, $nueva_ficha){
+    global $conn;
+
+    $sql = "UPDATE aprendices SET nro_ficha = ? WHERE nro_documento = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $nueva_ficha, $aprendiz);
+    $stmt->execute();
   }
 ?>
