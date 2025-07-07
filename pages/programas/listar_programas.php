@@ -76,8 +76,4 @@
     </form>
   </div>
 </div>
-
-
-
-
 <script src="./assets/js/modalEditarFicha.js"></script>

@@ -72,5 +72,5 @@ $idPrograma = intval($_GET["programa"]);
   <img src="./assets/img/formato-excel.png" alt="Imágen con formato de excel">
 </div>
 
-<script src="./assets/js/modalImage.js"></script>
-<script src="<?php echo BASE_URL?>assets/js/importarCompetenciasForm.js"></script>
+	<script src="<?php echo BASE_URL?>assets/js/modalImage.js"></script>
+	<script src="<?php echo BASE_URL?>assets/js/importarCompetenciasForm.js"></script>

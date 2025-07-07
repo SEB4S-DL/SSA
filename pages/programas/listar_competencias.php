@@ -53,7 +53,7 @@ if (!$resultado) {
             <i class="bi bi-arrow-left"></i> Volver
         </button>
         <button class="crear-button" onclick="window.location.href = '.?page=programas/importar_competencias&programa=<?= $idPrograma ?>'">
-            Importar RAES
+            Importar competecias
         </button>
     </div>
 

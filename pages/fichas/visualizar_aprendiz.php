@@ -35,7 +35,6 @@
   <div class="top-container">
     <h1 class="top-title">Visualizar aprendiz</h1>
     <a href=".?page=fichas/visualizar_ficha&ficha=<?= $_GET['ficha']; ?>" class="top-left-button">Volver</a>
-    <a href=".?page=fichas/editar_aprendiz&aprendiz=<?= $_GET['aprendiz']; ?>&ficha=<?= $_GET["ficha"]; ?>" class="top-button">Editar</a>
   </div>
 
   <div class="no-listable-info">
@@ -64,7 +63,7 @@
       <div><?= $juicio["nombre_competencia"]; ?></div>
       <div><?= $juicio["nombre_rae"]; ?></div>
       <div><?= $juicio["estado"]; ?></div>
-      <div><?= $juicio["nombre_evaluador"]; ?></div>
+      <div><?= $juicio["id_evaluador"]; ?> - <?= $juicio["nombre_evaluador"]; ?></div>
       <div><?= $juicio["observacion"]; ?></div>
       <div><?= $juicio["fecha_y_hora"]; ?></div>
     </div>

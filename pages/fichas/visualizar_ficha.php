@@ -27,10 +27,6 @@
     <?php 
       if (isset($_GET["ficha"])):
     ?>
-    <a href=".?page=fichas/crear_aprendiz&ficha=<?= $_GET["ficha"]; ?>" class="top-container-button">
-      Crear aprendiz
-      <i class="bi bi-plus-lg"></i>
-    </a>
 
     <a href=".?page=fichas/importar_aprendices&ficha=<?= $_GET["ficha"]; ?>" class="importar-button">
       Importar aprendices

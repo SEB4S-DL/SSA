@@ -196,7 +196,11 @@ ul{
     flex-direction: column;
     gap: 1em;
   }
-
+  .btn-cancelar{
+    width: 100%;
+    gap: 1em;
+    padding: 1em;
+  }
   .importar-form label, .importar-form input[type="submit"]{
     padding: 1em;
   }
@@ -230,7 +234,11 @@ ul{
     flex-direction: column;
     gap: 1em;
   }
-
+  .btn-cancelar{
+    width: 100%;
+    gap: 1em;
+    padding: 1em;
+  }
   .importar-form label, .importar-form input[type="submit"]{
     padding: 1em;
   }
