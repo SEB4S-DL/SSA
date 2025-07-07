@@ -124,7 +124,23 @@
     width: 80%;
   }
 }
+.estadoBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
 
+.estadoBtn[data-estado="1"] {
+    background-color: green;
+}
+
+.estadoBtn[data-estado="0"] {
+    background-color: orange;
+}
 
 /* Móviles */
 @media (max-width: 480px){

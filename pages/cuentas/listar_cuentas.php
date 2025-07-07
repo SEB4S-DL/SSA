@@ -24,12 +24,11 @@
             <p><strong>Nombre: </strong><?= $dato["nombre"]; ?></p>
             <p><strong>Tipo: </strong><?= $dato["tipo"]; ?></p>
             <p><strong>Correo institucional: </strong><?= $dato["correo_institucional"]; ?></p>
-
-        
-
+            <button class="estadoBtn" id="estadoBtn" ></button>
+    
         </div>
     <?php endwhile; ?>
     </div>
     <?php endif; ?>
 </div>
-
+<script src="/SSA/assets/js/estadoCuentas.js"></script>
