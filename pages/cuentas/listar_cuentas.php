@@ -31,7 +31,7 @@
                 <input type="submit" class="btn-estado" value="<?= $dato["estado"] === 'habilitado' ? 'Deshabilitar' : 'Habilitar' ?>">
             </form>
             <?php else: ?>
-            <p style="color: green;"><strong>Administrador protegido</strong></p>
+            <p style="color: green;"><strong>Administrador</strong></p>
             <?php endif; ?>
             
         </div>  
