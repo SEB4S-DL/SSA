@@ -55,7 +55,6 @@
                 <div class="role-row">
                     <select name="rol" class="role-select" required>
                         <option value="user">Usuario</option>
-                        <option value="admin">Admin</option>
                     </select>
                     
                 </div>
@@ -80,8 +79,9 @@
             <div class="form-group">
                 <label>Contrato <span class="optional">(opcional)</span></label>
                 <div class="contract-row">
-                    <input type="date" name="fecha_inicio_contrato" placeholder="Fecha inicio contrato" required>
-                    <input type="date" name="fecha_fin_contrato" placeholder="Fecha fin contrato" required>
+                    <input type="date" name="fecha_inicio_contrato" placeholder="Fecha inicio contrato">
+                    <input type="date" name="fecha_fin_contrato" placeholder="Fecha fin contrato">
+
                 </div>
             </div>
 

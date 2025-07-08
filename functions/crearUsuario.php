@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $rol = $_POST["rol"];
     $tipo_instructor = $_POST["tipo_instructor"];
     $contrasena_plana = $_POST["contrasena"];
-    $fecha_inicio_contrato = $_POST["fecha_inicio_contrato"];
-    $fecha_fin_contrato = $_POST["fecha_fin_contrato"];
+    $fecha_inicio_contrato = !empty($_POST["fecha_inicio_contrato"]) ? $_POST["fecha_inicio_contrato"] : null;
+    $fecha_fin_contrato = !empty($_POST["fecha_fin_contrato"]) ? $_POST["fecha_fin_contrato"] : null;
 
     function existe_usuario($usuario){
         global $conn;
@@ -79,39 +79,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo"<script>alert('El correo no es válido (debe ser institucional)')</script>";
         exit;
     }
+    $estado = 1; // esto es correcto si 1 significa “activo”
+
 
     $sql = "INSERT INTO usuarios (
-       nombre,
-        segundo_nombre,
-        apellido,
-        segundo_apellido,
-        correo_institucional,
-        tipo_documento,
-        nro_documento,
-        rol,
-        tipo,
-        contrasena,
-        fecha_inicio_contrato,
-        fecha_fin_contrato
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    nombre,
+    segundo_nombre,
+    apellido,
+    segundo_apellido,
+    correo_institucional,
+    tipo_documento,
+    nro_documento,
+    rol,
+    tipo,
+    contrasena,
+    fecha_inicio_contrato,
+    fecha_fin_contrato,
+    estado
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
     $stmt = $conn->prepare($sql);
     if ($stmt) {
-        $stmt->bind_param(
-            "ssssssisssss",
-            $primer_nombre,
-            $segundo_nombre,
-            $primer_apellido,
-            $segundo_apellido,
-            $correo,
-            $tipo_documento,
-            $numero_documento,
-            $rol,
-            $tipo_instructor,
-            $contrasena,
-            $fecha_inicio_contrato,
-            $fecha_fin_contrato
-        );
+        // Si los campos están vacíos, pasarlos como NULL para evitar error de fecha vacía
+        $fecha_inicio_contrato = $fecha_inicio_contrato ?: null;
+        $fecha_fin_contrato = $fecha_fin_contrato ?: null;
+
+    $stmt->bind_param(
+    "ssssssisssssi", 
+    $primer_nombre,
+    $segundo_nombre,
+    $primer_apellido,
+    $segundo_apellido,
+    $correo,
+    $tipo_documento,
+    $numero_documento,
+    $rol,
+    $tipo_instructor,
+    $contrasena,
+    $fecha_inicio_contrato,
+    $fecha_fin_contrato,
+    $estado
+);
+
+
 
         if ($stmt->execute()) {
             header("refresh:3, ../index.php?page=cuentas/listar_cuentas");
