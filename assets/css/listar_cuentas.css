@@ -60,7 +60,22 @@
     margin: 20px;
     text-align: center;
 }
+.btn-estado{
+  position: relative;
+  background-color: #2A7E00;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
 
+.btn-estado:hover{
+  cursor: pointer;
+  background-color: #4CAF50;
+}
+.btn-estado:active{
+  background-color: #2A7E00;
+}
 .card:hover{
   background-color: #f6f6f6;
   cursor: pointer;

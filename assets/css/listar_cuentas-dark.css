@@ -50,7 +50,22 @@
     border-radius: 5px;
     font-weight: bold;
 }
+.btn-estado{
+  position: relative;
+  background-color: #2A7E00;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
 
+.btn-estado:hover{
+  cursor: pointer;
+  background-color: #4CAF50;
+}
+.btn-estado:active{
+  background-color: #2A7E00;
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

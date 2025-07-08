@@ -6,7 +6,7 @@ if (!isset($_SESSION["user"])) {
 
 require './db/conection.php';
 
-$sql = "SELECT nro_documento, nombre, tipo, correo_institucional FROM usuarios";
+$sql = "SELECT nro_documento, nombre,rol, tipo, correo_institucional, estado FROM usuarios";
 
 $result = $conn->query($sql);
 
