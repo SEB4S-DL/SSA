@@ -12,6 +12,22 @@ if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
 }
 $idPrograma = intval($_GET["programa"]);
 ?>
+<?php
+// Verificar si ya se importaron competencias
+require_once __DIR__ . '/../../db/conection.php';
+
+function ya_tiene_competencias($idPrograma) {
+    global $conn;
+    $sql = "SELECT 1 FROM competencias WHERE id_programa_formacion = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $idPrograma);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->num_rows > 0;
+}
+
+$yaImportado = ya_tiene_competencias($idPrograma);
+?>
 
 <link rel="stylesheet" href="./assets/css/importar-aprendices.css">
 <title>Importar competencias</title>
@@ -20,6 +36,11 @@ $idPrograma = intval($_GET["programa"]);
   <h1 class="importar-title">
     Importar competencias
   </h1>
+  <button class="button-volver" onclick="window.location.href = '?page=programas/listar_competencias&programa=<?= $idPrograma ?>'">
+      <i class="bi bi-arrow-left"></i> Volver
+  </button>
+<br>
+<br>
 
   <div class="warning-container">
     <div class="warning">
@@ -44,23 +65,30 @@ $idPrograma = intval($_GET["programa"]);
     <p>A continuación se muestra una imágen con un formato adecuado para subir los aprendices con un excel.</p>
     </div>
 
-    <div class="img-container">
-      <div class="img-clickable" onclick="toggleModal('imgModalBg', 'closeModal')">
+    <div class="img-container" onclick="window.open('./assets/img/juicios-excel.png')">
+      <div class="img-clickable">
         <span>Ver imágen</span>
       </div>
-      <img src="./assets/img/formato-excel.png" alt="Imágen con formato de excel" class="warning-image" onclick="toggleModal('imgModalBg', 'closeModal')">
+      <img src="./assets/img/juicios-excel.png" alt="Imágen con formato de excel" class="warning-image">
     </div>
   </div>
-
+<br>
+ <?php if ($yaImportado): ?>
+  <div class="warning" style="color: red; font-weight: bold;">
+    ⚠️ Ya se importaron competencias para este programa. No puedes volver a subir el archivo.
+  </div>
+<?php else: ?>
   <form id="importarCompetencias" enctype="multipart/form-data" class="importar-form">
-  <input type="hidden" name="idprograma" value="<?= $idPrograma ?>">
+    <input type="hidden" name="idprograma" value="<?= $idPrograma ?>">
 
-  <label for="fileInput">Seleccionar archivo</label>
-  <input type="file" name="excel" id="fileInput" accept=".csv" required>
+    <label for="fileInput">Seleccionar archivo</label>
+    <input type="file" name="excel" id="fileInput" accept=".csv" required>
 
-  <input type="submit" value="Importar competencias">
-  <a href="<?php echo BASE_URL ?>index.php?page=programas/listar_programas" class="btn-cancelar">Cancelar</a>
-</form>
+    <input type="submit" value="Importar competencias">
+    <a href="<?php echo BASE_URL ?>index.php?page=programas/listar_programas" class="btn-cancelar">Cancelar</a>
+  </form>
+  <?php endif; ?>
+
 
 </div>
 <div id="respuesta"></div>

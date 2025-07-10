@@ -36,12 +36,12 @@ try {
   while ($linea = fgetcsv($archivo, 0, ";")) {
     if (count($linea) < 2) continue;
 
-    $raes[] = [$linea[0], $linea[1]];
+    $raes[] = [trim($linea[0]), trim($linea[1])];
   }
 
   foreach ($raes as $rae) {
-    $nombre_competencia = trim($rae[0]);
-    $nombre_rae = trim($rae[1]);
+    $nombre_competencia = $rae[0];
+    $nombre_rae = $rae[1];
 
     if (!$nombre_competencia || !$nombre_rae) continue;
 
@@ -77,10 +77,20 @@ function agregar_competencia($competencia, $id_programa) {
 
 function agregar_rae($rae, $id_competencia) {
   global $conn;
-  $sql = "INSERT INTO resultados_aprendizaje (nombre_rae, id_competencia) VALUES (?, ?)";
+
+  // Evitar duplicados de RAEs
+  $sql = "SELECT 1 FROM resultados_aprendizaje WHERE nombre_rae = ? AND id_competencia = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("si", $rae, $id_competencia);
   $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows === 0) {
+    $sql = "INSERT INTO resultados_aprendizaje (nombre_rae, id_competencia) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $rae, $id_competencia);
+    $stmt->execute();
+  }
 }
 
 function existe_competencia($competencia, $id_programa) {
