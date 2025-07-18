@@ -27,6 +27,18 @@
             header("Location: ./login.php?status=1");
         }
     }
+
+    $idiomasPermitidos = ['es', 'en'];
+    $idioma = 'es';
+
+    if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+        $idioma = $_GET['lang'];
+        setcookie('lang', $idioma, time() + (86400 * 30), "/");
+    } elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+        $idioma = $_COOKIE['lang'];
+    }
+
+    $traducciones = require __DIR__ . "/../lang/$idioma.php";
 ?>
 
 <!DOCTYPE html>
@@ -45,12 +57,12 @@
     <div class="diagonal-div-2"></div>
 
     <div class="toggle-theme-login">
-        <p class="theme-trigger" onclick="showThemeSelector()">Cambiar tema:</p>
+        <p class="theme-trigger" onclick="showThemeSelector()"><?= $traducciones['cambiar_tema']?></p>
         <i class="bi bi-moon-fill theme-trigger" onclick="showThemeSelector()"></i>
 
         <div class="theme-selector-container">
-            <div class="selector" onclick="setTheme('light')">Claro <i class="bi bi-brightness-high-fill"></i></div>
-            <div class="selector" onclick="setTheme('dark')">Oscuro <i class="bi bi-moon-fill"></i></div>
+            <div class="selector" onclick="setTheme('light')"><?= $traducciones['claro']?><i class="bi bi-brightness-high-fill"></i></div>
+            <div class="selector" onclick="setTheme('dark')"><?= $traducciones['oscuro']?><i class="bi bi-moon-fill"></i></div>
         </div>
     </div>
 
@@ -58,28 +70,28 @@
         <div class="form-logo-container">
             <img src="../assets/img/sena-logo.png" alt="">
             <span></span>
-            <h2>SSA</h2>
+            <h2><?= $traducciones['SSA']?></h2>
         </div>
 
-        <p>Sistema de seguimiento de aprendices</p>
+        <p><?= $traducciones['titulo_login']?></p>
 
         <form action="./login.php" class="login-form" method="POST">
             <?php if (isset($_GET["status"]) && $_GET["status"] == 1): ?>
             <div class="error-container"><?= $errores[$_GET["status"]]; ?></div>
             <?php endif; ?>
 
-            <label for="emailInput">Correo</label>
-            <input type="text" name="email" id="emailInput" placeholder="Ingrese su correo" required>
+            <label for="emailInput"><?= $traducciones['correo']?></label>
+            <input type="text" name="email" id="emailInput" placeholder="<?= $traducciones['input_correo']?>" required>
 
-            <label for="passwordInput">Contraseña</label>
+            <label for="passwordInput"><?= $traducciones['contraseña']?></label>
              <div class="password-input-container">
                 <div class="view-password-container">
                     <i class="bi bi-eye" id="toggleIcon" onclick="togglePassword()"></i>
                 </div>
-                 <input type="password" name="password" id="passwordInput" placeholder="Ingrese su contraseña" required>
+                 <input type="password" name="password" id="passwordInput" placeholder="<?= $traducciones['input_contraseña']?>" required>
              </div>
 
-            <input type="submit" value="Iniciar sesión">
+            <input type="submit" value="<?= $traducciones['iniciar_sesion']?>">
         </form>
     </div>
 

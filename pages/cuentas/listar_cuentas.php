@@ -4,16 +4,28 @@
     }
 
     require "./functions/listarCuentas.php";
+
+    $idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/listar_cuentas.css">
-<title>Listar cuentas</title>
+<title><?= $traducciones['titulo_cuentas']?></title>
 
 
 <div class="listar-cuentas-container">
     <div class="listar-cuentas-top-container">
-        <h1>Listado de Cuentas</h1>
-        <button onclick="window.location.href = '.?page=cuentas/crear_usuario'">Crear Cuenta <i class="bi bi-plus-lg"></i></button>
+        <h1><?= $traducciones['titulo_cuentas']?></h1>
+        <button onclick="window.location.href = '.?page=cuentas/crear_usuario'"><?= $traducciones['crear_cuenta']?><i class="bi bi-plus-lg"></i></button>
   </div>
     <div id="respuesta"></div>
 
@@ -21,10 +33,10 @@
     <div class="grid">
     <?php while ($dato = $result->fetch_assoc()): ?>
         <div class="card" onclick="window.location.href ='.?page=cuentas/info_user&usuario=<?= $dato['nro_documento']; ?>'">
-            <p><strong>Nombre: </strong><?= $dato["nombre"]; ?></p>
-            <p><strong>Tipo: </strong><?= $dato["tipo"]; ?></p>
-            <p><strong>Correo institucional: </strong><?= $dato["correo_institucional"]; ?></p>
-            <p><strong>Estado: </strong><?= $dato["estado"]; ?></p>
+            <p><strong><?= $traducciones['nombre']?>: </strong><?= $dato["nombre"]; ?></p>
+            <p><strong><?= $traducciones['tipo']?>: </strong><?= $dato["tipo"]; ?></p>
+            <p><strong><?= $traducciones['correo_institucional']?>: </strong><?= $dato["correo_institucional"]; ?></p>
+            <p><strong><?= $traducciones['estado']?>: </strong><?= $dato["estado"]; ?></p>
             <?php if ($dato["rol"] !== 'admin'): ?>
             <form class="estadosForm" data-estado="<?= $dato["estado"] ?>">
                 <input type="hidden" name="nro_documento" value="<?= $dato["nro_documento"] ?>">

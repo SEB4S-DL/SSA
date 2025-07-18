@@ -2,6 +2,18 @@
   if (!isset($_SESSION["user"])){
       header("Location: ../../auth/login.php");
   }
+
+   $idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/listar_programas.css">
@@ -15,8 +27,8 @@
 ?>
 <div class="listar-fichas-container">
   <div class="listar-fichas-top-container">
-    <h1>Listado de programas</h1>
-    <button onclick="window.location.href = '.?page=programas/crear_programa'">Crear programa <i class="bi bi-plus-lg"></i></button>
+    <h1><?= $traducciones['titulo_programas']?></h1>
+    <button onclick="window.location.href = '.?page=programas/crear_programa'"><?= $traducciones['btn_crear_programa']?> <i class="bi bi-plus-lg"></i></button>
   </div>
       
   <div class="contenedor">

@@ -14,10 +14,22 @@
       "1" => "Ocurrió un error, por favor intente nuevamente",
       "2" => "Ya existe una ficha con este número"
     ];
+
+    $idiomasPermitidos = ['es', 'en'];
+    $idioma = 'es';
+
+    if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+        $idioma = $_GET['lang'];
+        setcookie('lang', $idioma, time() + (86400 * 30), "/");
+    } elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+        $idioma = $_COOKIE['lang'];
+    }
+
+    $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/crear-ficha.css">
-<title>Crear ficha</title>
+<title><?= $traducciones['titulo_crear_ficha']?></title>
 
 <div class="container">
 
@@ -27,13 +39,13 @@
     </div>
   <?php endif; ?>
 
-  <h1>Crear ficha</h1>
+  <h1><?= $traducciones['titulo_crear_ficha']?></h1>
 
   <form action="./functions/crear_ficha.php" method="POST" class="crear-ficha-form">
-    <label for="fichaNumber">Número de  ficha</label>
-    <input type="text" name="numero_ficha" id="fichaNumber" placeholder="Ingrese el número de ficha" required>
+    <label for="fichaNumber"><?= $traducciones['numero_de_ficha']?></label>
+    <input type="text" name="numero_ficha" id="fichaNumber" placeholder="<?= $traducciones['input1']?>" required>
 
-    <label for="groupManager">Jefe de grupo</label>
+    <label for="groupManager"><?= $traducciones['jefe_de_grupo']?></label>
     <select name="jefe_grupo" id="groupManager" required>
       <?php
         while ($usuario = $usuarios->fetch_assoc()):
@@ -44,14 +56,14 @@
       <?php endwhile; ?>
     </select>
 
-    <label for="day">Jornada</label>
+    <label for="day"><?= $traducciones['jornada']?></label>
     <select name="jornada" id="day" required>
-      <option value="diurna">Diurna</option>
-      <option value="mixta">Mixta</option>
-      <option value="nocturna">Nocturna</option>
+      <option value="diurna"><?= $traducciones['diurna']?></option>
+      <option value="mixta"><?= $traducciones['mixta']?></option>
+      <option value="nocturna"><?= $traducciones['nocturna']?></option>
     </select>
 
-    <label for="trainingProgram">Programa de formación</label>
+    <label for="trainingProgram"><?= $traducciones['programa_de_formacion']?></label>
     <select name="programa_formacion" id="trainingProgram" required>
       <?php
         while ($programa = $programas->fetch_assoc()):
@@ -62,18 +74,18 @@
       <?php endwhile; ?>
     </select>
 
-    <label for="day">Oferta</label>
+    <label for="day"><?= $traducciones['oferta']?></label>
     <select name="oferta" id="day" required>
-      <option value="abierta">Abierta</option>
-      <option value="cerrada">Cerrada</option>
+      <option value="abierta"><?= $traducciones['abierta']?></option>
+      <option value="cerrada"><?= $traducciones['cerrada']?></option>
     </select>
 
     <div class="buttons-container">
       <a href=".">
-        Cancelar
+        <?= $traducciones['cancelar']?>
       </a>
 
-      <input type="submit" value="Crear ficha">
+      <input type="submit" value="<?= $traducciones['btn_crear_ficha']?>">
     </div>
   </form>
 </div>

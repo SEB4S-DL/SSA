@@ -15,10 +15,22 @@
     "2" => "No se afectó ninguna fila",
     "3" => "Ficha creada exitosamente"
   ];
+
+  $idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/listar-fichas.css">
-<title>Listar fichas</title>
+<title><?= $traducciones['titulo_listado_fichas']?></title>
 <div class="listar-fichas-container">
   <?php if(isset($_GET["status"])): ?>
   <div class="status-container <?php
@@ -34,8 +46,8 @@
   <?php endif; ?>
 
   <div class="listar-fichas-top-container">
-    <h1>Listado de fichas</h1>
-    <button onclick="window.location.href = '.?page=fichas/crear_ficha'">Crear ficha <i class="bi bi-plus-lg"></i></button>
+    <h1><?= $traducciones['titulo_listado_fichas']?></h1>
+    <button onclick="window.location.href = '.?page=fichas/crear_ficha'"><?= $traducciones['btn_crear_ficha']?><i class="bi bi-plus-lg"></i></button>
   </div>
       
   <div class="contenedor">
@@ -57,9 +69,9 @@
           </button>
 
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
-          <p><strong>Ficha:</strong> <?= htmlspecialchars($dato["nro_ficha"]) ?></p>
-          <p><strong>Jefe:</strong> <?= htmlspecialchars($dato["nombre_jefe"]) ?></p>
-          <p><strong>Oferta:</strong> <?= htmlspecialchars($dato["tipo_oferta"]) ?> </p>
+          <p><strong><?= $traducciones['ficha']?>:</strong> <?= htmlspecialchars($dato["nro_ficha"]) ?></p>
+          <p><strong><?= $traducciones['jefe']?>:</strong> <?= htmlspecialchars($dato["nombre_jefe"]) ?></p>
+          <p><strong><?= $traducciones['oferta']?>:</strong> <?= htmlspecialchars($dato["tipo_oferta"]) ?> </p>
         </div>
     <?php endwhile; ?>
     
@@ -81,11 +93,11 @@
   <div class="editar-fichas-modal">
     <span class="exitModal"><i class="bi bi-x-lg"></i></span>
 
-    <h1>Editar ficha</h1>
+    <h1><?= $traducciones['editar_ficha']?></h1>
 
     <form action="./functions/listar_fichas.php" method="POST">
       <label for="jefeGrupoSelect">
-        <h3>Jefe de grupo</h3>
+        <h3><?= $traducciones['jefe_de_grupo']?></h3>
       </label>
       <select name="jefe_grupo" id="jefeGrupoSelect" required>
         <?php while($fila = $instructores->fetch_assoc()): ?>
@@ -96,20 +108,20 @@
       <input type="hidden" id="fichaNumero" name="ficha_nro">
 
       <label for="jornadaSelect">
-        <h3>Jornada</h3>
+        <h3><?= $traducciones['jornada']?></h3>
       </label>
       <select name="ficha_jornada" id="jornadaSelect" required>
-        <option value="diurna">Diurna</option>
-        <option value="mixta">Mixta</option>
-        <option value="nocturna">Nocturna</option>
+        <option value="diurna"><?= $traducciones['diurna']?></option>
+        <option value="mixta"><?= $traducciones['mixta']?></option>
+        <option value="nocturna"><?= $traducciones['nocturna']?></option>
       </select>
 
       <label for="jornadaSelect">
-        <h3>Etapa</h3>
+        <h3><?= $traducciones['etapa']?></h3>
       </label>
       <select name="ficha_etapa" required>
-        <option value="lectiva">Lectiva</option>
-        <option value="productiva">Productiva</option>
+        <option value="lectiva"><?= $traducciones['lectiva']?></option>
+        <option value="productiva"><?= $traducciones['productiva']?></option>
       </select>
 
       <input type="submit" id="submitInput">

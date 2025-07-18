@@ -10,6 +10,18 @@
   ];
 
   $aprendices = obtener_aprendices();
+
+  $idiomasPermitidos = ['es', 'en'];
+    $idioma = 'es';
+
+    if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+        $idioma = $_GET['lang'];
+        setcookie('lang', $idioma, time() + (86400 * 30), "/");
+    } elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+        $idioma = $_COOKIE['lang'];
+    }
+
+    $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/visualizar-ficha.css">
@@ -17,7 +29,7 @@
 
 <div class="visualizar-ficha-container">
   <div class="top-container__text">
-    <h1 class="top-container-title">Ficha: 
+    <h1 class="top-container-title"><?= $traducciones['ficha']?>: 
       <?php if(isset($_GET["ficha"])){
         echo $_GET["ficha"];
       }
@@ -29,14 +41,14 @@
     ?>
 
     <a href=".?page=fichas/importar_aprendices&ficha=<?= $_GET["ficha"]; ?>" class="importar-button">
-      Importar aprendices
+      <?= $traducciones['importar_aprendices']?>
       <i class="bi bi-file-earmark-spreadsheet"></i>
     </a>
 
     <?php endif; ?>
 
     <a href=".?page=fichas/listar_fichas" class="top-container-volver">
-      Volver
+      <?= $traducciones['volver']?>
     </a>
   </div>
 
@@ -58,18 +70,18 @@
       <p><?= $aprendiz["nombre"]; ?></p>
       <p><?= $aprendiz["tipo_documento"]; ?>: <?= $aprendiz["nro_documento"]; ?></p>
       <p><?= $porcentaje_aprobado; ?>% aprobado</p>
-      <p>Estado: <?= $aprendiz["estado"]; ?></p>
+      <p><?= $traducciones['estado']?>: <?= $aprendiz["estado"]; ?></p>
     </div>
     <?php endwhile; ?>
 
     <?php else: ?>
 
-    <p style="color: red;">No se encontraron aprendices para la ficha solicitada</p>
+    <p style="color: red;"><?= $traducciones['advertencia1']?></p>
 
     <?php endif; ?>
 
   <?php else: ?>
-    <p style="color: red;">No se proporcionó una ficha</p>
+    <p style="color: red;"><?= $traducciones['advertencia2']?></p>
   <?php endif; ?>
   </div>
 </div>

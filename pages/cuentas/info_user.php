@@ -6,6 +6,18 @@
     require "./functions/infoUser.php";
 
     if (!isset($_GET["usuario"])):
+
+            $idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <div>
@@ -13,7 +25,7 @@
     <a href="?page=cuentas/listar_cuentas" style="color:blue"> Volver </a>
 </div>
 
-<a href="">Volver</a>
+
 
 <?php 
     exit();
@@ -28,40 +40,40 @@
 ?>
 <div class="visualizar-usuario">
   <div class="visualizar-usuario-top">
-    <h1>Visualizar usuario</h1>
-    <a href=".?page=cuentas/listar_cuentas" class="volver-button"><i class="bi bi-arrow-left"></i></a>
+    <h1><?= $traducciones['visualizar_usuario']?></h1>
+    <a href=".?page=cuentas/listar_cuentas" class="volver-button"><i class="bi bi-arrow-left"><?= $traducciones['volver']?></i></a>
    
-    <button onclick="window.location.href = '.?page=cuentas/editar_info&usuario=<?= $usuario['nro_documento']; ?>'"> Editar </button>
+    <button onclick="window.location.href = '.?page=cuentas/editar_info&usuario=<?= $usuario['nro_documento']; ?>'"> <?= $traducciones['editar']?> </button>
     
 
   </div>
 
     <div class="user-info">
-        <div class="label">Nombre completo</div>
+        <div class="label"><?= $traducciones['nombre_completo']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['nombre'] ?? ""); ?></div>
         
-        <div class="label">Correo institucional</div>
+        <div class="label"><?= $traducciones['correo_institucional']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['correo_institucional'] ?? ""); ?></div>
         
-        <div class="label">Tipo de identificación</div>
+        <div class="label"><?= $traducciones['tipo_identificacion']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['tipo_documento'] ?? ""); ?></div>
         
-        <div class="label">Nro de identificación</div>
+        <div class="label"><?= $traducciones['nro_identificacion']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['nro_documento'] ?? ""); ?></div>
         
-        <div class="label">Rol (usuario/administrador)</div>
+        <div class="label"><?= $traducciones['rol']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['rol'] ?? ""); ?></div>
         
-        <div class="label">Tipo instructor</div>
+        <div class="label"><?= $traducciones['tipo_instructor']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['tipo'] ?? ""); ?></div>
         
-        <div class="label">Contraseña</div>
+        <div class="label"><?= $traducciones['contraseña']?></div>
         <div class="value">********</div>
         
-        <div class="label">Fecha de inicio de contrato</div>
+        <div class="label"><?= $traducciones['inicio_contrato']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['fecha_inicio_contrato'] ?? "Indefinido"); ?></div>
         
-        <div class="label two-line">Fecha de finalización de contrato</div>
+        <div class="label two-line"><?= $traducciones['fin_contrato']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['fecha_fin_contrato'] ?? "Indefinido"); ?></div>
     </div>
 </div>
