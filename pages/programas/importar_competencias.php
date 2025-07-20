@@ -27,28 +27,40 @@ function ya_tiene_competencias($idPrograma) {
 }
 
 $yaImportado = ya_tiene_competencias($idPrograma);
+
+$idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/importar-aprendices.css">
-<title>Importar competencias</title>
+<title><?= $traducciones['titulo_importar_competencias']?></title>
 
 <div class="importar-aprendices-container">
   <h1 class="importar-title">
-    Importar competencias
+    <?= $traducciones['titulo_importar_competencias']?>
   </h1>
   <button class="button-volver" onclick="window.location.href = '?page=programas/listar_competencias&programa=<?= $idPrograma ?>'">
-      <i class="bi bi-arrow-left"></i> Volver
+      <i class="bi bi-arrow-left"></i> <?= $traducciones['volver']?>
   </button>
 <br>
 <br>
 
   <div class="warning-container">
     <div class="warning">
-      <p>Para cargar los aprendices con un excel, este debe seguir un formato. El formato debe ser una tabla que contenga las siguientes columnas:</p>
+      <p><?= $traducciones['p1']?></p>
 
 
     <ul>
-      <li>Tipo de documento</li>
+      <li><?= $traducciones['tipo_documento']?></li>
       <li>Número de documento</li>
       <li>Nombre</li>
       <li>Apellidos</li>

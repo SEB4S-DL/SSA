@@ -54,7 +54,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
     <?php endwhile; ?>
     
     <?php else: ?>
-      <p>No hay programas disponibles.</p>
+      <p><?= $traducciones['advertencia_programas']?></p>
   <?php endif; ?>
   
   </div>
@@ -64,11 +64,11 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
   <div class="editar-fichas-modal">
     <span class="exitModal"><i class="bi bi-x-lg"></i></span>
 
-    <h1>Editar programa</h1>
+    <h1><?= $traducciones['titulo_editar_programa']?></h1>
 
     <form action="/SSA/functions/editarPrograma.php" method="POST">
       <label for="nombrePrograma">
-        <h3>Nombre del programa</h3>
+        <h3><?= $traducciones['nombre_programa']?></h3>
       </label>
       <input type="text" class="input_edit_program" id="nombrePrograma" name="nombre_programa" required>
 
@@ -77,11 +77,11 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
      
 
       <label for="nivel">
-        <h3>Nivel</h3>
+        <h3><?= $traducciones['nivel']?></h3>
       </label>
       <select class="input_edit_program" id="nivel" name="nivel" required>
-        <option value="tecnico">Técnico</option>
-        <option value="tecnologo">Tecnólogo</option>
+        <option value="tecnico"><?= $traducciones['tecnico']?></option>
+        <option value="tecnologo"><?= $traducciones['tecnologo']?></option>
       </select>
 
       <input type="submit" id="submitInput">

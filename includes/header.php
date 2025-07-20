@@ -3,7 +3,6 @@
       header("Location: ../auth/login.php");
   }
 
-  // idioma por defecto
 
 // Idiomas permitidos
 $idiomasPermitidos = ['es', 'en'];

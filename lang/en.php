@@ -107,6 +107,35 @@ return [
     //Pantalla de programas
     "titulo_programas"=>"List of programs",
     "btn_crear_programa"=>"Create program",
+
+    //Pantalla de crear programa
+    "nombre_programa"=>"Name of program",
+    "nivel_programa"=>"Level of program",
+    "input_select"=>"Select a level",
+    "titulo_crear_programa"=>"Create program",
+    "tecnico"=>"Technical",
+    "tecnologo"=>"Technologist",
+    "crear_programa"=>"Create program",
+    "input_nombre_programa"=>"Enter the name of the program",
+    "advertencia_programas"=>"There are no programs available.",
+
+    //Modal editar programa
+    "titulo_editar_programa"=>"Edit program",
+    "nombre_programa"=>"Name of program",
+    "nivel"=>"Level",
+
+    //Pantalla listar competencias
+    "titulo_listar_competencias"=>"List of competencies",
+    "importar_competencias"=>"Import competencies",
+    "advertencia_competencias"=>"The are no competencies avaliable.",
+
+    //Pantalla importar competencias
+    "titulo_importar_competencias"=>"Import competencies",
+
+    //Div amarillo 
+    "p1"=>"To upload apprentices using an Excel spreadsheet, it must follow a specific format. The format must be a table containing the following columns:",
+    //Ul
+    "tipo_documento"=>"Type of document",
 ];
 
 ?>

@@ -26,8 +26,8 @@ let themeSelector = document.querySelector(".theme-selector");
 let sidebarThemeSelector = document.querySelector(".toggle-theme-select__sidebar");
 
 const selectorElements = {
-  "light": `<div class="light-theme-selector theme-selector-element" onclick="setTheme('light')" >Claro <i class="bi bi-brightness-high-fill"></i></div>`,
-  "dark": `<div class="dark-theme-selector theme-selector-element" onclick="setTheme('dark')" >Oscuro <i class="bi bi-moon-fill"></i></div>`
+  "light": `<div class="light-theme-selector theme-selector-element" onclick="setTheme('light')" ><i class="bi bi-brightness-high-fill"></i></div>`,
+  "dark": `<div class="dark-theme-selector theme-selector-element" onclick="setTheme('dark')" ><i class="bi bi-moon-fill"></i></div>`
 };
 
 const actualTheme = getTheme();
