@@ -136,6 +136,40 @@ return [
     "p1"=>"To upload apprentices using an Excel spreadsheet, it must follow a specific format. The format must be a table containing the following columns:",
     //Ul
     "tipo_documento"=>"Type of document",
+    "numero_de_documento"=>"Number of document",
+    "nombre"=>"Name",
+    "apellido"=>"Surnames",
+    "competencia"=>"Competencie",
+    "rae"=>"Learning outcome",
+    "juicio_evaluacion"=>"Evaluation judgment",
+    "fecha_hora"=>"Date and Time of the Evaluative Judgment",
+    "funcionario"=>"Official who recorded the evaluative judgmen",
+    "p2"=>"When the excel meets the specified format, you need to convert it to CSV delimited by semicolon ( ; ) and then upload the csv file here.",
+    "p3"=>"Below is an image with a suitable format for uploading apprentices using Excel.",
+    "advertencia_importados"=>"⚠️ Skills have already been imported for this program. You cannot upload the file again.",
+    "seleccionar_archivo"=>"Select file",
+    "importar_competencias"=>"Import competencies",
+
+    //Pantalla editar usuario
+    "titulo_editar_usuario"=>"Edit user",
+    "primer_nombre"=>"Firts name",
+    "segundo_nombre"=>"Second name",
+    "primer_apellido"=>"First surname",
+    "segundo_apellido"=>"Second surname",
+    "nro_identificacion"=>"Identification number",
+    "tipo_rol"=>"Select role type",
+    "tipo_instructor"=>"Instructor type",
+    "input_tipo_usuario"=>"Select user type",
+    "transversal"=>"Cross",
+    "habilitado"=>"Enabled",
+    "deshabilitado"=>"Disabled",
+    "input_select_estado"=>"Select the type of status",
+    "correo_ejemplo"=>"email@example.com",
+    "actualizar"=>"Update",
+
+    //Roles
+    "administrador"=>"Admin",
+
 ];
 
 ?>

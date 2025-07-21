@@ -26,78 +26,88 @@ if (isset($_GET['status'])) {
         echo "<script>alert('Hubo un error al actualizar la información');</script>";
     }
 }
+
+$idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 
 <div class="editar-container">
     <div class="visualizar-usuario">
       <div class="visualizar-usuario-top">
-        <h1>Editar usuario</h1>
+        <h1><?= $traducciones['titulo_editar_usuario']?></h1>
       </div>
-    
-    
-    
+
             <form action="./functions/editarInfo.php" class="user-info" id="editarInfoForm" method="POST">
-                <div class="label">Primer nombre</div>
-                <input class="value" type="text" name="primer_nombre" placeholder="Nombre" value="<?php echo $usuario['nombre']; ?>">
+                <div class="label"><?= $traducciones['primer_nombre']?></div>
+                <input class="value" type="text" name="primer_nombre" placeholder="<?= $traducciones['primer_nombre']?>" value="<?php echo $usuario['nombre']; ?>">
 
-                <div class="label">Segundo nombre</div>
-                <input class="value" type="text" name="segundo_nombre" placeholder="Segundo nombre" value="<?php echo $usuario['segundo_nombre']; ?>">
+                <div class="label"><?= $traducciones['segundo_nombre']?></div>
+                <input class="value" type="text" name="segundo_nombre" placeholder="<?= $traducciones['segundo_nombre']?>" value="<?php echo $usuario['segundo_nombre']; ?>">
 
-                <div class="label">Primer apellido</div>
-                <input class="value" type="text" name="primer_apellido" placeholder="Apellido" value="<?php echo $usuario['apellido']; ?>">
+                <div class="label"><?= $traducciones['primer_apellido']?></div>
+                <input class="value" type="text" name="primer_apellido" placeholder="<?= $traducciones['primer_apellido']?>" value="<?php echo $usuario['apellido']; ?>">
 
-                <div class="label">Segundo apellido</div>
-                <input class="value" type="text" name="segundo_apellido" placeholder="Segundo apellido" value="<?php echo $usuario['segundo_apellido']; ?>">
+                <div class="label"><?= $traducciones['segundo_apellido']?></div>
+                <input class="value" type="text" name="segundo_apellido" placeholder="<?= $traducciones['segundo_apellido']?>" value="<?php echo $usuario['segundo_apellido']; ?>">
                 
-                <div class="label">Correo institucional</div>
-                <input class="value" type="text" name="correo" placeholder="correo@example.com" value="<?php echo $usuario['correo_institucional']; ?>">
+                <div class="label"><?= $traducciones['correo_institucional']?></div>
+                <input class="value" type="text" name="correo" placeholder="<?= $traducciones['correo_ejemplo']?>" value="<?php echo $usuario['correo_institucional']; ?>">
                 
-                <div class="label">Tipo de identificación</div>
+                <div class="label"><?= $traducciones['tipo_identificacion']?></div>
                 <select name="tipo_identificacion" class="value" value="<?= $usuario["tipo_documento"] ?>">
-                    <option value="CC">Cédula de ciudadanía</option>
-                    <option value="CE">Cédula de extranjería</option>
+                    <option value="CC"><?= $traducciones['cc']?></option>
+                    <option value="CE"><?= $traducciones['ce']?></option>
                 </select>
                 
-                <div class="label">Nro de identificación</div>
+                <div class="label"><?= $traducciones['nro_identificacion']?></div>
                 <input class="value" type="text" name="nro_documento" placeholder="Número identificacion" value="<?php echo $usuario['nro_documento']; ?>">
     
-                <div class="label">Rol (usuario/administrador)</div>
+                <div class="label"><?= $traducciones['rol']?></div>
     
                 <select name="rol" class="value" value="">
-                    <option value="<?= $usuario["rol"] ?>">Seleccione el tipo de Rol </option>
-                    <option value="user">Usuario</option>
-                    <option value="admin">Administrador</option>
+                    <option value="<?= $usuario["rol"] ?>"><?= $traducciones['tipo_rol']?></option>
+                    <option value="user"><?= $traducciones['usuario']?></option>
+                    <option value="admin"><?= $traducciones['administrador']?></option>
                 </select>
                 
-                <div class="label">Tipo instructor</div>
+                <div class="label"><?= $traducciones['tipo_instructor']?></div>
                 <select name="tipo_instructor" class="value">
-                    <option value="<?= $usuario["tipo"] ?>">Seleccione el tipo de usuario</option>
-                    <option value="tecnico">Técnico</option>
-                    <option value="transversal">Transversal</option>
+                    <option value="<?= $usuario["tipo"] ?>"><?= $traducciones['input_tipo_usuario']?></option>
+                    <option value="tecnico"><?= $traducciones['tecnico']?></option>
+                    <option value="transversal"><?= $traducciones['transversal']?></option>
                 </select>
                 
-                <div class="label">Contraseña</div>
-                <input class="value" name="contrasena" type="password" placeholder="Contraseña" value="">
+                <div class="label"><?= $traducciones['contraseña']?></div>
+                <input class="value" name="contrasena" type="password" placeholder="<?= $traducciones['contraseña']?>" value="">
                 
-                <div class="label">Fecha de inicio de contrato</div>
+                <div class="label"><?= $traducciones['inicio_contrato']?></div>
                 <input class="value" name="fecha_inicio" type="date" value="<?= $usuario["fecha_inicio_contrato"]; ?>">
                 
-                <div class="label two-line">Fecha de finalización de contrato</div>
+                <div class="label two-line"><?= $traducciones['fin_contrato']?></div>
                 <input class="value" name="fecha_fin" type="date" value="<?= $usuario["fecha_fin_contrato"]; ?>">
 
-                <div class="label two-line">Estado</div>
+                <div class="label two-line"><?= $traducciones['estado']?></div>
                 <select name="estado" id="" class="value" >
-                    <option value="<?= $usuario["estado"]; ?>">Seleccione el tipo de estado </option>
-                    <option value="habilitado">Habilitado</option>
-                    <option value="deshabilitado">Deshabilitado</option>
+                    <option value="<?= $usuario["estado"]; ?>"><?= $traducciones['input_select_estado']?></option>
+                    <option value="habilitado"><?= $traducciones['habilitado']?></option>
+                    <option value="deshabilitado"><?= $traducciones['deshabilitado']?></option>
                 </select>
             </form>
         </div>
     
         <div class="acciones">
-        <button class="cancelar" onclick="window.location.href = '.?page=cuentas/listar_cuentas'">Cancelar</button>
-        <button class="actualizar" onclick="submitForm('editarInfoForm')">Actualizar</button>
+        <button class="cancelar" onclick="window.location.href = '.?page=cuentas/listar_cuentas'"><?= $traducciones['cancelar']?></button>
+        <button class="actualizar" onclick="submitForm('editarInfoForm')"><?= $traducciones['actualizar']?></button>
     </div>
 </div>
  

@@ -61,25 +61,24 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 
     <ul>
       <li><?= $traducciones['tipo_documento']?></li>
-      <li>Número de documento</li>
-      <li>Nombre</li>
-      <li>Apellidos</li>
-      <li>Estado</li>
-      <li>Competencia</li>
-      <li>Resultado de aprendizaje</li>
-      <li>Juicio de evaluación</li>
-      <li>Fecha y Hora del Juicio Evaluativo</li>
-      <li>Funcionario que registro el juicio evaluativo</li>
+      <li><?= $traducciones['numero_de_documento']?></li>
+      <li><?= $traducciones['nombre']?></li>
+      <li><?= $traducciones['apellido']?></li>
+      <li><?= $traducciones['estado']?></li>
+      <li><?= $traducciones['competencia']?></li>
+      <li><?= $traducciones['rae']?></li>
+      <li><?= $traducciones['juicio_evaluacion']?></li>
+      <li><?= $traducciones['fecha_hora']?></li>
+      <li><?= $traducciones['funcionario']?></li>
     </ul>
     <br>
-    <p>Cuando el excel cumpla con el formato especificado, debe convertirlo a CSV delimitado por punto y coma ( ; ) y luego subir acá el archivo csv.</p>
+    <p><?= $traducciones['p2']?></p>
   <br>
-    <p>A continuación se muestra una imágen con un formato adecuado para subir los aprendices con un excel.</p>
+    <p><?= $traducciones['p3']?></p>
     </div>
 
     <div class="img-container" onclick="window.open('./assets/img/juicios-excel.png')">
       <div class="img-clickable">
-        <span>Ver imágen</span>
       </div>
       <img src="./assets/img/juicios-excel.png" alt="Imágen con formato de excel" class="warning-image">
     </div>
@@ -87,17 +86,17 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 <br>
  <?php if ($yaImportado): ?>
   <div class="warning" style="color: red; font-weight: bold;">
-    ⚠️ Ya se importaron competencias para este programa. No puedes volver a subir el archivo.
+    <?= $traducciones['advertencia_importados']?>
   </div>
 <?php else: ?>
   <form id="importarCompetencias" enctype="multipart/form-data" class="importar-form">
     <input type="hidden" name="idprograma" value="<?= $idPrograma ?>">
 
-    <label for="fileInput">Seleccionar archivo</label>
+    <label for="fileInput"><?= $traducciones['seleccionar_archivo']?></label>
     <input type="file" name="excel" id="fileInput" accept=".csv" required>
 
-    <input type="submit" value="Importar competencias">
-    <a href="<?php echo BASE_URL ?>index.php?page=programas/listar_programas" class="btn-cancelar">Cancelar</a>
+    <input type="submit" value="<?= $traducciones['importar_competencias']?>">
+    <a href="<?php echo BASE_URL ?>index.php?page=programas/listar_programas" class="btn-cancelar"><?= $traducciones['cancelar']?></a>
   </form>
   <?php endif; ?>
 
