@@ -2,7 +2,7 @@
 
 return [
     //Encabezado o header
-    'bienvenida' => 'Bienvenido',
+    'bienvenida' => 'Bienvenido/a',
     'cambiar_tema' => 'Cambiar tema:',
     'auto' => 'Automático',
     'salir' => 'Cerrar sesión',
