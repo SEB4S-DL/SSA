@@ -169,6 +169,7 @@ return [
 
     //Roles
     "administrador"=>"Admin",
+    "no_fichas"=>"There are no groups available.",
 
 ];
 

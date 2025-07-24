@@ -76,7 +76,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
     <?php endwhile; ?>
     
     <?php else: ?>
-      <p>No hay fichas disponibles.</p>
+      <p><?= $traducciones['no_fichas']?></p>
   <?php endif; ?>
   
   </div>

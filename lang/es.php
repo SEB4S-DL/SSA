@@ -154,6 +154,8 @@ return [
 
     //Roles
     'administrador' => 'Administrador',
+    "no_fichas"=>"No hay fichas disponibles",
+
 ];
 
 ?>

@@ -37,7 +37,7 @@
 
     <label for="groupManager"><?= $traducciones['nivel_programa']?></label>
     <select name="nivel" id="groupManager" required>
-      <option disabled selected><?= $traducciones['input_select']?></option>
+      <option ><?= $traducciones['input_select']?></option>
         <option value="tecnico"><?= $traducciones['tecnico']?></option>
         <option value="tecnologo"><?= $traducciones['tecnologo']?></option>
 </select>
