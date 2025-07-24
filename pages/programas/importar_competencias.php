@@ -85,7 +85,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
   </div>
 <br>
  <?php if ($yaImportado): ?>
-  <div class="warning" style="color: red; font-weight: bold;">
+  <div class="warning" style="color: white; font-weight: bold;">
     <?= $traducciones['advertencia_importados']?>
   </div>
 <?php else: ?>

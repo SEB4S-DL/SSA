@@ -3,6 +3,7 @@ ul{
 }
 .button-volver{
   background-color:#39A900;
+  color: white;
   border: none;
   border-radius: 5px;
   margin-left: 2%;
@@ -34,7 +35,8 @@ ul{
 }
 
 .warning{
-  background-color: #F1C907;
+  background-color: gray;
+  color: #fff;
   padding: 1em;
   border-radius: 10px;
   margin-bottom: 2em;
