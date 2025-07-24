@@ -17,7 +17,7 @@
 ?>
 
 <link rel="stylesheet" href="./assets/css/crear-usuario.css">
-<title>Crear usuario</title>
+<title><?= $traducciones['titulo_crear_usuario']?></title>
  
         
 <div class="container">

@@ -11,7 +11,7 @@
 ?>
 
 <link rel="stylesheet" href="./assets/css/editar-info.css">
-<title>Editar usuario</title>
+<title><?= $traducciones['titulo_editar_usuario']?></title>
 
 <?php
     // Datos del usuario

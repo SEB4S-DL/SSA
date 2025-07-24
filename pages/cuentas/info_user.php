@@ -22,7 +22,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 
 <div>
     <p> No se proporciono un usuario valido.</p>
-    <a href="?page=cuentas/listar_cuentas" style="color:blue"> Volver </a>
+    <a href="?page=cuentas/listar_cuentas" style="color:blue"> <?= $traducciones['volver']?> </a>
 </div>
 
 
@@ -33,7 +33,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/info-user.css">
-<title>Visualizar usuario</title>
+<title><?= $traducciones['visualizar_usuario']?></title>
 
 <?php
     $usuario = obtener_usuario($_GET["usuario"]);
