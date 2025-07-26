@@ -160,13 +160,14 @@
     width: 70%;
     margin: 1em auto 0 auto;
     border: none;
-    background-color: #FBC210;
+    background-color: #808080;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .editar-fichas-modal input[type="submit"]:hover{
-    background-color: #ca9800;
+    background-color: #5f5f5f;
 }
 
 .editar-fichas-modal input[type="submit"]:active{

@@ -1,6 +1,5 @@
 const languageTrigger = document.querySelector(".switch-language-container");
 const languageSelect = document.querySelector(".switch-language-bg");
-const languageOptions = document.querySelector(".language-select");
 
 // Mostrar y ocultar el menú
 languageTrigger.addEventListener("click", (e) => {
@@ -8,10 +7,10 @@ languageTrigger.addEventListener("click", (e) => {
   languageSelect.classList.toggle("visible-language-select");
 
   document.addEventListener("click", (event) => {
-    if (!languageSelect.contains(event.target)) {
+    if (event.target === languageSelect) {
       languageSelect.classList.remove("visible-language-select");
     }
-  }, { once: true });
+  });
 });
 
 // Cambiar idioma al hacer clic
