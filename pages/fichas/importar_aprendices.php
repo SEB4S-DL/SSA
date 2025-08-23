@@ -21,28 +21,29 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/importar-aprendices.css">
-<title>Importar aprendices</title>
+<title><?= $traducciones['titulo_importar_aprendices']?></title>
 
 <div class="importar-aprendices-container">
   <h1 class="importar-title">
-    Importar aprendices
+    <?= $traducciones['titulo_importar_aprendices']?>
   </h1>
 
   <div class="warning-container">
     <div class="warning">
-      <p>Para cargar los aprendices con un excel, este debe seguir un formato. El formato debe ser una tabla que contenga las siguientes columnas: </p>
+      <p><?= $traducciones['p1_importar_aprendices']?></p>
 
       <ul>
-        <li>Tipo de documento</li>
-        <li>Número de documento</li>
-        <li>Nombre</li>
-        <li>Apellidos</li>
-        <li>Estado</li>
-        <li>Competencia</li>
-        <li>Resultado de aprendizaje</li>
-        <li>Juicio de evaluación</li>
-        <li>Fecha y Hora del Juicio Evaluativo</li>
+        <li><?= $traducciones['tdoc']?></li>
+        <li><?= $traducciones['ndoc']?></li>
+        <li><?= $traducciones['nombre']?></li>
+        <li><?= $traducciones['apellidos']?></li>
+        <li><?= $traducciones['estado']?></li>
+        <li><?= $traducciones['competencia']?></li>
+        <li><?= $traducciones['rae']?></li>
+        <li><?= $traducciones['juicio_evaluacion']?></li>
+        <li><?= $traducciones['fecha_hora']?></li>
         <li>Funcionario que registro el juicio evaluativo</li>
+        
       </ul>
 
       <br>

@@ -170,7 +170,27 @@ return [
     //Roles
     "administrador"=>"Admin",
     "no_fichas"=>"There are no groups available.",
+    
+    //Pantalla de visualizar aprendiz
+    "titulo_visualizar_aprendiz"=>"visualize apprentice",
+    "nombre_aprendiz"=>"Full name",
+    "documento_aprendiz"=>"Type of document",
+    "numero_documento_aprendiz"=>"Document number",
+    "cantidad_rae"=>"number of RAES approved",
+    "competencia"=>"Competence",
+    "evaluador"=>"Evaluator",
+    "observaciones"=>"Observations",
+    "fecha_y_hora"=>"Date and time",
 
+    //Pantalla importar aprendices
+    "titulo_importar_aprendices"=>"Import apprentices",
+    //Div warning
+    "p1_importar_aprendices"=>"To upload apprentices using an Excel spreadsheet, it must follow a specific format. The format must be a table containing the following columns:",
+    "tdoc"=>"Type of document",
+    "ndoc"=>"Number of document",
+    "nombre"=>"Name",
+    "apellidos"=>"Surnames",
+    
 ];
 
 ?>

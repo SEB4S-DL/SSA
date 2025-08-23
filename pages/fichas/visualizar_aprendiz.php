@@ -8,12 +8,24 @@
   $states = [
     "0" => "Aprendiz modificado exitosamente."
   ];
+
+  $idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <?php if ($entrada_valida): ?>
 
 <link rel="stylesheet" href="./assets/css/visualizar-aprendiz.css">
-<title>Visualizar aprendiz</title>
+<title><?= $traducciones['titulo_visualizar_aprendiz']?></title>
 
 <?php
   $aprendiz = obtener_info();
@@ -33,28 +45,28 @@
   <?php endif; ?>
 
   <div class="top-container">
-    <h1 class="top-title">Visualizar aprendiz</h1>
-    <a href=".?page=fichas/visualizar_ficha&ficha=<?= $_GET['ficha']; ?>" class="top-left-button">Volver</a>
+    <h1 class="top-title"><?= $traducciones['titulo_visualizar_aprendiz']?></h1>
+    <a href=".?page=fichas/visualizar_ficha&ficha=<?= $_GET['ficha']; ?>" class="top-left-button"><?= $traducciones['volver']?></a>
   </div>
 
   <div class="no-listable-info">
-    <p>Nombre completo: <?= $aprendiz["nombre"]; ?></p>
-    <p>Tipo de documento: <?= $aprendiz["tipo_documento"]; ?></p>
-    <p>Numero de documento: <?= $aprendiz["nro_documento"]; ?></p>
-    <p>Estado: <?= $aprendiz["estado"]; ?></p>
-    <p>Cantidad de RAE aprobados: <?= $aprendiz["cant_rae_aprobados"]; ?>/<?= $aprendiz["total_rae"]; ?></p>
+    <p><?= $traducciones['nombre_aprendiz']?>: <?= $aprendiz["nombre"]; ?></p>
+    <p><?= $traducciones['documento_aprendiz']?>: <?= $aprendiz["tipo_documento"]; ?></p>
+    <p><?= $traducciones['numero_documento_aprendiz']?>: <?= $aprendiz["nro_documento"]; ?></p>
+    <p><?= $traducciones['estado']?>: <?= $aprendiz["estado"]; ?></p>
+    <p><?= $traducciones['cantidad_rae']?>: <?= $aprendiz["cant_rae_aprobados"]; ?>/<?= $aprendiz["total_rae"]; ?></p>
   </div>
 
   <?php $juicios = obtener_juicios(); ?>
 
   <div class="custom-table-container">
     <div class="row">
-      <div>Competencia</div>
+      <div><?= $traducciones['competencia']?></div>
       <div>RAE</div>
-      <div>Estado</div>
-      <div>Evaluador</div>
-      <div>Observaciones</div>
-      <div>Fecha y hora</div>
+      <div><?= $traducciones['estado']?></div>
+      <div><?= $traducciones['evaluador']?></div>
+      <div><?= $traducciones['observaciones']?></div>
+      <div><?= $traducciones['fecha_y_hora']?></div>
     </div>
 
     <?php while($juicio = $juicios->fetch_assoc()): ?>

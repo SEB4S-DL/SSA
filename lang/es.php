@@ -156,6 +156,19 @@ return [
     'administrador' => 'Administrador',
     "no_fichas"=>"No hay fichas disponibles",
 
+    //Pantalla visualizar aprendiz
+    "titulo_visualizar_aprendiz" => "Visualizar aprendiz",
+    "nombre_aprendiz" => "Nombre completo",
+    "documento_aprendiz" => "Tipo de documento",
+    "numero_documento_aprendiz" => "Número de documento",
+    "cantidad_rae" => "Cantidad de RAES aprobados",
+    "competencia" => "Competencia",
+    "evaluador" => "Evaluador",
+    "observaciones" => "Observaciones",
+    "fecha_y_hora" => "Fecha y hora",
+
+    //Pantalla importar aprendices
+    
 ];
 
 ?>
