@@ -41,7 +41,7 @@
     return $result;
   }
 
-  function obtener_juicios(){
+  function obtener_juicios($id_competencia){
     global $conn;
     $sql = "SELECT c.nombre_competencia, r.nombre_rae, j.*
     FROM juicios_evaluativos j
@@ -50,7 +50,24 @@
     JOIN competencias c
     ON c.id = r.id_competencia
     WHERE j.id_aprendiz = ?
+    AND c.id = ?
     ORDER BY j.estado ASC";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $_GET["aprendiz"], $id_competencia);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result;
+  }
+
+  function obtener_competencias(){
+    global $conn;
+
+    $sql = "SELECT id, nombre_competencia FROM competencias 
+    WHERE id_programa_formacion = (SELECT id_programa_formacion FROM fichas 
+    WHERE nro_ficha = (SELECT nro_ficha FROM aprendices WHERE nro_documento = ?))";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $_GET["aprendiz"]);

@@ -25,6 +25,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 <?php if ($entrada_valida): ?>
 
 <link rel="stylesheet" href="./assets/css/visualizar-aprendiz.css">
+<link rel="stylesheet" href="./assets/css/acordeon.css">
 <title><?= $traducciones['titulo_visualizar_aprendiz']?></title>
 
 <?php
@@ -57,31 +58,72 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
     <p><?= $traducciones['cantidad_rae']?>: <?= $aprendiz["cant_rae_aprobados"]; ?>/<?= $aprendiz["total_rae"]; ?></p>
   </div>
 
-  <?php $juicios = obtener_juicios(); ?>
+  <?php 
+    $competencias = obtener_competencias();
+  ?>
 
-  <div class="custom-table-container">
-    <div class="row">
-      <div><?= $traducciones['competencia']?></div>
-      <div>RAE</div>
-      <div><?= $traducciones['estado']?></div>
-      <div><?= $traducciones['evaluador']?></div>
-      <div><?= $traducciones['observaciones']?></div>
-      <div><?= $traducciones['fecha_y_hora']?></div>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+
+    <?php
+      $cont = 0;
+      $raeCont = 0;
+
+      while ($competencia = $competencias->fetch_assoc()):
+
+      $cont += 1;
+    ?>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#competencia<?=$cont;?>">
+          <?=$competencia["nombre_competencia"];?>
+        </button>
+      </h2>
+      <div id="competencia<?=$cont;?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+
+          <div class="accordion accordion-flush" id="juiciosAccordion">
+
+            <?php
+              $juicios = obtener_juicios($competencia["id"]);
+
+              while ($juicio = $juicios->fetch_assoc()):
+
+              $raeCont += 1;
+            ?>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rae<?=$raeCont;?>">
+                  <?=$juicio["nombre_rae"];?>
+                </button>
+              </h2>
+              <div id="rae<?=$raeCont;?>" class="accordion-collapse collapse" data-bs-parent="#juiciosAccordion">
+                <div class="accordion-body">
+                  Estado: <?=$juicio["estado"];?>
+                  <br>
+                  Evaluador: <?=$juicio["nombre_evaluador"];?>
+                  <br>
+                  Documento del evaluador: <?=$juicio["id_evaluador"];?>
+                  <br>
+                  Observacion: <?=$juicio["observacion"] == "" ? "Ninguna" : $juicio["observacion"];?>
+                  <br>
+                  Fecha y hora de emisión del juicio: <?=$juicio["fecha_y_hora"];?>
+                </div>
+              </div>
+            </div>
+
+            <?php endwhile; ?>
+
+          </div>
+
+        </div>
+      </div>
     </div>
-
-    <?php while($juicio = $juicios->fetch_assoc()): ?>
-
-    <div class="row">
-      <div><?= $juicio["nombre_competencia"]; ?></div>
-      <div><?= $juicio["nombre_rae"]; ?></div>
-      <div><?= $juicio["estado"]; ?></div>
-      <div><?= $juicio["id_evaluador"]; ?> - <?= $juicio["nombre_evaluador"]; ?></div>
-      <div><?= $juicio["observacion"]; ?></div>
-      <div><?= $juicio["fecha_y_hora"]; ?></div>
-    </div>
-
+      
     <?php endwhile; ?>
+    
   </div>
+
 </div>
 
 <?php else: ?>
