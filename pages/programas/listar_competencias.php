@@ -53,7 +53,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Listar competencias</title>
+    <title><?= $traducciones['titulo_listar_competencias']?></title>
     <link rel="stylesheet" href="./assets/css/listar-competencias.css">
 </head>
 <body>

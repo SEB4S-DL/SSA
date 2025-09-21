@@ -25,7 +25,7 @@
 ?>
 
 <link rel="stylesheet" href="./assets/css/visualizar-ficha.css">
-<title>Visualizar ficha</title>
+<title><?= $traducciones['titulo_visualizar_ficha']?></title>
 
 <div class="visualizar-ficha-container">
   <div class="top-container__text">

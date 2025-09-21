@@ -21,7 +21,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/importar-aprendices.css">
-<title><?= $traducciones['titulo_importar_aprendices']?></title>
+<title><?= $traducciones['importar_aprendices']?></title>
 
 <div class="importar-aprendices-container">
   <h1 class="importar-title">
@@ -42,17 +42,17 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
         <li><?= $traducciones['rae']?></li>
         <li><?= $traducciones['juicio_evaluacion']?></li>
         <li><?= $traducciones['fecha_hora']?></li>
-        <li>Funcionario que registro el juicio evaluativo</li>
+        <li><?= $traducciones['funcionario']?></li>
         
       </ul>
 
       <br>
 
-      <p>Cuando el excel cumpla con el formato especificado, debe convertirlo a CSV delimitado por punto y coma ( ; ) y luego subir acá el archivo csv.</p>
+      <p><?= $traducciones['formato']?></p>
 
       <br>
 
-      <p>A continuación se muestra una imágen con un formato adecuado para subir los aprendices con un excel.</p>
+      <p><?= $traducciones['explicacion']?></p>
     </div>
 
     <div class="img-container" onclick="window.open('./assets/img/juicios-excel.png')">
@@ -64,11 +64,11 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
   </div>
 
   <form action="./functions/importar_aprendices.php" enctype="multipart/form-data" class="importar-form" method="POST">
-    <label for="fileInput">Seleccionar archivo</label>
+    <label for="fileInput"><?= $traducciones['seleccionar_archivo']?></label>
     <input type="file" name="excel" id="fileInput" accept=".csv" required>
     <input type="hidden" name="ficha" value="<?= $_GET["ficha"]; ?>">
 
-    <input type="submit" value="Importar aprendices">
+    <input type="submit" value="<?= $traducciones['importar_aprendices']?>">
 
     <button type="button" class="cancelar-button" onclick="window.location.href = '?page=fichas/visualizar_ficha&ficha=<?= $_GET['ficha']; ?>'"><?= $traducciones['cancelar']?></button>
   </form>

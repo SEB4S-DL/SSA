@@ -17,7 +17,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/listar_programas.css">
-<title>Listar programas</title>
+<title><?= $traducciones['titulo_programas']?></title>
 
 <?php   
     $sql = "SELECT id,nombre_programa,nivel from programa_formacion";

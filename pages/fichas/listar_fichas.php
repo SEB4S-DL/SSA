@@ -101,7 +101,7 @@ $traducciones = require __DIR__ . "/../../lang/$idioma.php";
       </label>
       <select name="jefe_grupo" id="jefeGrupoSelect" required>
         <?php while($fila = $instructores->fetch_assoc()): ?>
-          <option value="<?= $fila["nro_documento"]; ?>"><?= $fila["nombre"]; ?></option>
+          <option value="<?= $fila["nro_documento"];?>"><?= $fila["nombre"];?></option>
         <?php endwhile; ?>
       </select>
 

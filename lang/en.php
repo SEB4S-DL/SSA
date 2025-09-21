@@ -16,7 +16,7 @@ return [
     'cerrar_sesion' => 'Log out',
     'auto' => 'Auto',
     //Pantalla de listar fichas
-    'titulo_listado_fichas' => 'list of groups',
+    'titulo_listado_fichas' => 'List of groups',
     'btn_crear_ficha' => 'Create group',
     'ficha' => 'Group',
     'jefe'=>'Boss',
@@ -150,6 +150,10 @@ return [
     "seleccionar_archivo"=>"Select file",
     "importar_competencias"=>"Import competencies",
 
+    //Pantalla listar resultados de aprendizaje
+    "titulo_listar_rae"=>"List of learning outcomes",
+    
+
     //Pantalla editar usuario
     "titulo_editar_usuario"=>"Edit user",
     "primer_nombre"=>"Firts name",
@@ -190,6 +194,12 @@ return [
     "ndoc"=>"Number of document",
     "nombre"=>"Name",
     "apellidos"=>"Surnames",
+    "funcionario"=>"Official who recorded the evaluative judgment",
+    "formato"=>"When the excel meets the specified format, you need to convert it to CSV delimited by semicolon ( ; ) and then upload the csv file here.",
+    "explicacion"=>"Below is an image with a suitable format for uploading apprentices using Excel.",
+    "titulo_visualizar_ficha"=>"View group",
+
+    
     
 ];
 

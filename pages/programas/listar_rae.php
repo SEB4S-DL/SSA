@@ -2,13 +2,25 @@
   if (!isset($_SESSION["user"])){
       header("Location: ../../auth/login.php");
   }
+
+   $idiomasPermitidos = ['es', 'en'];
+$idioma = 'es';
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
+    $idioma = $_GET['lang'];
+    setcookie('lang', $idioma, time() + (86400 * 30), "/");
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
+    $idioma = $_COOKIE['lang'];
+}
+
+$traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <!-- Enlace a los estilos de esta página -->
 <link rel="stylesheet" href="./assets/css/listar-rae.css">
 
 <!-- Título del documento -->
-<title>Listar RAE'S</title>
+<title><?= $traducciones['titulo_listar_rae']?></title>
 
 <?php
 // Validar si se envió el parámetro 'competencia' por GET y asegurarse que sea numérico
@@ -53,12 +65,12 @@ if (!$resultado) {
 
   <!-- Parte superior con título y botones -->
   <div class="listar-fichas-top-container">
-    <h1>Listado de resultados de aprendizaje</h1>
+    <h1><?= $traducciones['titulo_listar_rae']?></h1>
 
     <!-- Botón para volver a la lista de competencias del programa correspondiente -->
     <button class="button-volver" onclick="window.location.href = '.?page=programas/listar_competencias&programa=<?= $id_programa ?>'">
       <i class="bi bi-arrow-left"></i>
-      Volver
+      <?= $traducciones['volver']?>
     </button>
 
     <!-- Botón para ir a la creación de un nuevo RAE -->
@@ -73,7 +85,7 @@ if (!$resultado) {
 
         <!-- Encabezados de la tabla -->
         <div class="table-row">
-          <div>Resultado de aprendizaje</div>
+          <div><?= $traducciones['rae']?></div>
         </div>
 
         <!-- Iterar sobre los resultados obtenidos -->

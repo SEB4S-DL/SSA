@@ -167,7 +167,22 @@ return [
     "observaciones" => "Observaciones",
     "fecha_y_hora" => "Fecha y hora",
 
+    //Pantalla listar resultados de aprendizaje
+    "titulo_listar_rae" => "Listado de resultados de aprendizaje",
     //Pantalla importar aprendices
+    "titulo_importar_aprendices" => "Importar aprendices",
+
+//Div advertencia
+    "p1_importar_aprendices" => "Para subir aprendices usando una hoja de cálculo de Excel, esta debe seguir un formato específico. El formato debe ser una tabla que contenga las siguientes columnas:",
+
+    "tdoc" => "Tipo de documento",
+    "ndoc" => "Número de documento",
+    "nombre" => "Nombre",
+    "apellidos" => "Apellidos",
+    "funcionario" => "Funcionario que registró el juicio evaluativo",
+    "formato" => "Cuando el Excel cumpla con el formato especificado, debe convertirse a CSV delimitado por punto y coma ( ; ) y luego subir el archivo csv aquí.",
+    "explicacion" => "A continuación se muestra una imagen con un formato adecuado para la carga de aprendices usando Excel."
+
     
 ];
 

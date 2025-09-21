@@ -172,7 +172,9 @@
 .editar-fichas-modal select:focus{
     outline: 2px solid #0000FFAA;
 }
-
+.editar-fichas-modal option{
+    background-color: #808080;
+}
 .editar-fichas-modal input[type="submit"]{
     padding: 1em;
     width: 50%;
