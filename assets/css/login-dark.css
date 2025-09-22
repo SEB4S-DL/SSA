@@ -96,6 +96,13 @@ body{
   flex-direction: column;
   background-color: #323232A6;
 }
+.login-form-container a{
+  margin-top: 5px;
+  text-align: center;
+  color: #39A900;
+  font-weight: 600;
+  text-decoration: none;
+}
 
 .form-logo-container{
   height: 10%;
