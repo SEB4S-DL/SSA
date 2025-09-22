@@ -92,6 +92,7 @@
              </div>
 
             <input type="submit" value="<?= $traducciones['iniciar_sesion']?>">
+            <a href="">Olvidaste tu contraseña?</a>
         </form>
     </div>
 
