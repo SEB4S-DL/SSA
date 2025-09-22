@@ -96,11 +96,14 @@ body{
   background-color: #8097A6A6;
 }
 .login-form-container a{
-  margin-top: 5px;
+  margin-top: 10px;
   text-align: center;
   color: #002F4D;
   font-weight: 600;
   text-decoration: none;
+}
+.login-form-container a:hover{
+  text-decoration: underline;
 }
 .form-logo-container{
   height: 10%;

@@ -97,11 +97,14 @@ body{
   background-color: #323232A6;
 }
 .login-form-container a{
-  margin-top: 5px;
+  margin-top: 10px;
   text-align: center;
   color: #39A900;
   font-weight: 600;
   text-decoration: none;
+}
+.login-form-container a:hover{
+  text-decoration: underline;
 }
 
 .form-logo-container{
@@ -198,8 +201,8 @@ body{
 }
 
 .login-form input[type="submit"]:active{
-  background-color: #fff;
-  color: #002F4D;
+  background-color: #002F4D;
+  color: #fff;
 }
 
 #passwordInput{

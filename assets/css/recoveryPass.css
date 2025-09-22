@@ -11,7 +11,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #002f4d, #39a900);
+      background: #002f4d;
     }
 
     .container {
@@ -55,7 +55,7 @@
     }
 
     input[type="email"]:focus {
-      border-color: #39a900;
+      border-color: #002f4d;
       outline: none;
       box-shadow: 0 0 5px #39a900aa;
     }
@@ -68,13 +68,16 @@
       font-size: 1rem;
       font-weight: bold;
       color: #fff;
-      background: #39a900;
+      background: #002f4d;
       cursor: pointer;
       transition: 0.3s;
     }
 
     button:hover {
-      background: #2d8500;
+      background: #005488;
+    }
+    button:active {
+      background: #001f2d;
     }
 
     /* Animación */
