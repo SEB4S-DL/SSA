@@ -57,7 +57,7 @@
     input[type="email"]:focus {
       border-color: #002f4d;
       outline: none;
-      box-shadow: 0 0 5px #39a900aa;
+      box-shadow: 0 0 5px #002f4d;
     }
 
     button {
