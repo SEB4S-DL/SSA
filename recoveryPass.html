@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recuperación de contraseña</title>
+  <!-- Diseño minimalista y compatible con clientes de correo: usamos estilos en línea y estructuras en tabla -->
+  <style>
+    /* Estilos básicos que algunos clientes respetan; la mayoría del estilo importante está inline en las etiquetas */
+    body { margin:0; padding:0; background-color:#f6f7f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) {
+      body { background-color:#0b0c0d; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:24px; background-color:#f6f7f9;">
+  <!-- Contenedor centrado -->
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td align="center">
+        <!-- Card -->
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; background:#ffffff; border-radius:12px; box-shadow:0 6px 18px rgba(15,15,15,0.06); overflow:hidden;">
+          <tr>
+            <td style="padding:32px 28px 24px; text-align:center;">
+              <h1 style="margin:0 0 6px; font-size:20px; font-weight:600; color:#111827;">Recuperación de contraseña</h1>
+              <p style="margin:0 0 22px; font-size:14px; color:#6b7280; line-height:1.4;">Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. Haz clic en el botón para continuar.</p>
+
+              <!-- Botón centrado: usa un enlace con estilos inline para máxima compatibilidad -->
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:18px auto 0;">
+                <tr>
+                  <td align="center">
+                    <a href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:12px 22px; font-size:15px; font-weight:600; text-decoration:none; border-radius:8px; background:#39a900; color:#ffffff;">Restablecer contraseña</a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Enlace alternativo (texto) por si el botón no funciona -->
+              <p style="margin:18px 0 0; font-size:12px; color:#9ca3af;">Si el botón no funciona, copia y pega este enlace en tu navegador:</p>
+              <p style="word-break:break-all; font-size:12px; color:#111827; margin:6px 0 0;">
+                <a href="{{recovery_link}}" target="_blank" rel="noopener noreferrer" style="color:#2563eb; text-decoration:underline;">{{recovery_link}}</a>
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Pie con pequeña nota -->
+          <tr>
+            <td style="background:#f9fafb; padding:14px 22px; text-align:center; font-size:12px; color:#9ca3af;">
+              Si no solicitaste este cambio, ignora este mensaje. Este enlace expirará en 1 hora.
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+  <!-- Comentarios para quien integre la plantilla:
+       - Reemplaza {{recovery_link}} por el enlace real de restablecimiento (URL completa, con token seguro).
+       - Opcionalmente reemplaza {{support_link}} por la URL de soporte.
+       - Para máxima compatibilidad con clientes de correo, es común enviar además una versión de texto plano con el mismo enlace.
+  -->
+</body>
+</html>
