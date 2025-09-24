@@ -58,6 +58,16 @@ $traducciones = require __DIR__ . "/../lang/$idioma.php";
                     <span><i class="bi bi-grid-fill"></i><?= $traducciones['programas']?></span>
                 </a>
             </div>
+
+            <div>
+                <?php if (str_contains($actualPage, "manuales") ): ?>
+                    <span class="sidebar-indicator"></span>
+                <?php endif; ?>
+
+                <a href="./index.php?page=manuales/manuales">
+                    <span></i>Manuales</span>
+                </a>
+            </div>
         </div>
 
         <div class="sidebar-bottom-container">
