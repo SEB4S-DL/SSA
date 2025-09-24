@@ -3,7 +3,7 @@
   header("Content-Type: application/json; charset=utf-8");
 
   if ($_SERVER["REQUEST_METHOD"] != "POST"){
-    echo json_encode(["msg" => "Método http no válido."]);
+    echo json_encode(["msg" => "Método http no válido.", "state" => 1]);
     exit();
   }
 
@@ -35,6 +35,25 @@
     exit();
   }
 
+  $res = $result->fetch_assoc();
+
+  $user_id = $res["nro_documento"];
+
+  // Generar token aleatorio (64 caracteres hex = 32 bytes)
+  $token = bin2hex(random_bytes(32));
+
+  // Guardar solo el hash del token
+  $token_hash = hash("sha256", $token);
+
+  // Expira en 10 minutos
+  $expires_at = date("Y-m-d H:i:s", time() + 600);
+
+  // Insertar en DB
+  $stmt = $conn->prepare("INSERT INTO password_reset_tokens (user_id, token_hash, expires_at) VALUES (?, ?, ?)");
+  $stmt->bind_param("iss", $user_id, $token_hash, $expires_at);
+  $stmt->execute();
+  $stmt->close();
+
   require '../vendor/autoload.php';
 
   use Brevo\Client\Api\TransactionalEmailsApi;
@@ -65,6 +84,10 @@
 
   $html = file_get_contents("../recoveryPass.html");
 
+  $link = "http://localhost/SSA/auth/recoveryPassForm.php?token=" . urlencode($token);
+
+  $html_final = str_replace("{{recovery_link}}", $link, $html);
+
   // 3. Definir el correo
   $sendSmtpEmail = new SendSmtpEmail([
       'subject' => 'Enlace de recuperación de contraseña',
@@ -72,7 +95,7 @@
       'to' => [
           ['email' => $email, 'name' => 'Usuario']
       ],
-      'htmlContent' => $html
+      'htmlContent' => $html_final
   ]);
 
   try {
