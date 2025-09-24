@@ -181,7 +181,8 @@ return [
     "apellidos" => "Apellidos",
     "funcionario" => "Funcionario que registró el juicio evaluativo",
     "formato" => "Cuando el Excel cumpla con el formato especificado, debe convertirse a CSV delimitado por punto y coma ( ; ) y luego subir el archivo csv aquí.",
-    "explicacion" => "A continuación se muestra una imagen con un formato adecuado para la carga de aprendices usando Excel."
+    "explicacion" => "A continuación se muestra una imagen con un formato adecuado para la carga de aprendices usando Excel.",
+    "titulo_visualizar_ficha"=>"Visualizar ficha"
 
     
 ];

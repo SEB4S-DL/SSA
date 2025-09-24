@@ -60,12 +60,8 @@
   use Brevo\Client\Configuration;
   use Brevo\Client\Model\SendSmtpEmail;
   use GuzzleHttp\Client;
-//Cambiar segun el sistema operativo
-//  $cafile = /home/public_html/SSA/cert/cacert.pem
-//  $cafile = "/opt/lampp/htdocs/SSA/cert/cacert.pem";
-//  $cafile = "/var/www/SSA/cert/cacert.pem";
-//  $cafile = "/var/www/html/SSA/cert/cacert.pem";
-$cafile = "/srv/http/SSA/cert/cacert.pem";
+  //Cambiar segun el sistema operativo
+  $cafile = "C:\\wamp64\\www\\SSA\\cert\\cacert.pem";
 
 
   if (!file_exists($cafile) || !is_readable($cafile)) {

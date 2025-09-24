@@ -14,18 +14,6 @@
       "1" => "Ocurrió un error, por favor intente nuevamente",
       "2" => "Ya existe una ficha con este número"
     ];
-
-    $idiomasPermitidos = ['es', 'en'];
-    $idioma = 'es';
-
-    if (isset($_GET['lang']) && in_array($_GET['lang'], $idiomasPermitidos)) {
-        $idioma = $_GET['lang'];
-        setcookie('lang', $idioma, time() + (86400 * 30), "/");
-    } elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $idiomasPermitidos)) {
-        $idioma = $_COOKIE['lang'];
-    }
-
-    $traducciones = require __DIR__ . "/../../lang/$idioma.php";
 ?>
 
 <link rel="stylesheet" href="./assets/css/crear-ficha.css">
