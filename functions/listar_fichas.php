@@ -4,7 +4,8 @@
   }
 
   if (!isset($_SESSION["user"]) || isset($_SESSION["user"]) && $_SESSION["user_rol"] != "admin"){
-    header("../auth/login.php");
+    
+    
   }
 
   // Verificar que el archivo no esté siendo un include y qué el método por el que se hay enviado sea "POST". Esto para que no se pueda acceder por url a este sitio y si se envío un formulario a este sitio (editar ficha), si pueda corresponder de forma adecuada
