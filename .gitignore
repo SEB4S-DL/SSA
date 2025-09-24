@@ -1,4 +1,6 @@
 db/conection.php
 db/proyecto_sena.sql
+db/ssa.sql
 functions/Tgo. ADSO.csv
+functions/Tgo.csv
 vendor

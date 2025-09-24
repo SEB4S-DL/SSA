@@ -1,4 +1,9 @@
 <?php
+ini_set('display_errors', 0);   // que no los muestre
+ini_set('log_errors', 1);       // que sí los guarde en el log
+ini_set('html_errors', 0);      // nada de <br /><b> en los mensajes
+error_reporting(E_ALL);         // pero sí loguear todo
+
 require_once '../db/conection.php';
 
 header('Content-Type: application/json');
