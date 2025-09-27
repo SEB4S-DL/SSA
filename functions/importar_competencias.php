@@ -28,7 +28,14 @@ try {
   $archivo_ruta = $_FILES['excel']['tmp_name'];
 
   $archivo = fopen($archivo_ruta, "r");
-  stream_filter_append($archivo, "convert.iconv.Windows-1252/UTF-8");
+  $linea = fgets($archivo);
+  rewind($archivo);
+
+  $encoding = mb_detect_encoding($linea, ["UTF-8", "ISO-8859-1", "Windows-1252"], true);
+
+  if ($encoding !== "UTF-8") {
+      stream_filter_append($archivo, "convert.iconv.$encoding/UTF-8");
+  }
 
   if (!$archivo) {
     throw new Exception("Error al leer el archivo");

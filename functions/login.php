@@ -1,7 +1,5 @@
 <?php
   // Código solo para el login. No reutilizar en otras páginas
-
-
   require_once "../db/conection.php";
 
   function validarDatos(){
