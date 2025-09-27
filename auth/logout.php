@@ -1,14 +1,20 @@
 <?php
-  session_start();
+session_start();
+require_once "../db/conection.php";
 
-  // Eliminar todas las variables de sesión
-  session_unset();
+if (isset($_SESSION['user_id'])) {
+    $id = $_SESSION['user_id'];
 
-  // Eliminar la cookie de sesión
-  setcookie(session_name(), "", time() - 3600);
+    $stmt = $conn->prepare("UPDATE usuarios SET is_logged_in = 0 WHERE nro_documento = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
 
-  session_destroy();
+// Limpiar sesión y cookies
+session_unset();
+setcookie(session_name(), "", time() - 3600);
+session_destroy();
 
-  header("Location: ./login.php");
-  exit();
-;?>
+header("Location: ./login.php");
+exit();
+?>
