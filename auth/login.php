@@ -5,7 +5,7 @@ session_start();
 
 $errores = [
     "1" => "Credenciales incorrectas",
-    "2" => "Ya existe una sesión activa de administrador"
+    "2" => "Ya existe una sesión activa con estas credenciales"
 ];
 
 // Si ya hay sesión iniciada → redirigir
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p><?= $traducciones['titulo_login']?></p>
 
         <form action="./login.php" class="login-form" method="POST">
-            <?php if (isset($_GET["status"]) && $_GET["status"] == 1): ?>
+            <?php if (isset($_GET["status"]) && $_GET["status"] == 1 || isset($_GET["status"]) && $_GET["status"] == 2): ?>
             <div class="error-container"><?= $errores[$_GET["status"]]; ?></div>
             <?php endif; ?>
 

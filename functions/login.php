@@ -8,12 +8,9 @@
       $password = $_POST["password"];
 
       // Hacer una consulta a la db para verificar que las credenciales sean correctas
-      
-      if (existeUsuario($email, $password)){
-        return true;
-      }
+      $user = existeUsuario($email, $password);
 
-      return false;
+      return $user;
     }
   }
 
@@ -34,7 +31,7 @@
         $user = $result->fetch_assoc();
 
         // 🔒 Si es admin y ya está logueado → bloquear
-        if ($user['rol'] === 'admin' && $user['is_logged_in'] == 1) {
+        if ($user['is_logged_in'] == 1) {
             return "ocupado"; 
         }
 
