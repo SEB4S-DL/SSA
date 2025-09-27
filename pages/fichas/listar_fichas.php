@@ -6,6 +6,7 @@
 
   require_once "./functions/listar_fichas.php";
 
+
   // Función que obtiene todas las fichas en etapa lectiva
   $resultado = obtener_fichas();
 
