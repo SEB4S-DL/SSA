@@ -33,7 +33,7 @@ function existe_Usuario($usuario){
 function obtener_usuario($usuario){
     global $conn;
 
-    $sql = "SELECT CONCAT_WS(' ', nombre, segundo_nombre, apellido, segundo_apellido) AS 'nombre', correo_institucional, tipo_documento, nro_documento, rol, tipo, fecha_inicio_contrato, fecha_fin_contrato FROM usuarios WHERE nro_documento = ?";
+    $sql = "SELECT CONCAT_WS(' ', nombre, segundo_nombre, apellido, segundo_apellido) AS 'nombre', correo_institucional, tipo_documento, nro_documento, rol, tipo, modalidad, fecha_inicio_contrato, fecha_fin_contrato FROM usuarios WHERE nro_documento = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $usuario);
     $stmt->execute();

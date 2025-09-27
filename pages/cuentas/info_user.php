@@ -54,6 +54,9 @@
         
         <div class="label"><?= $traducciones['tipo_instructor']?></div>
         <div class="value"><?php echo htmlspecialchars($usuario['tipo'] ?? ""); ?></div>
+
+        <div class="label"><?= $traducciones['modalidad_instructor']?></div>
+        <div class="value"><?php echo htmlspecialchars($usuario['modalidad'] ?? ""); ?></div>
         
         <div class="label"><?= $traducciones['contraseña']?></div>
         <div class="value">********</div>

@@ -66,6 +66,7 @@
     justify-content: center;
     gap: 2em;
     margin: 2em 0;
+    grid-column: 1 / -1;
 }
 
 .cancelar {
@@ -79,7 +80,7 @@
 }
 
 .actualizar {
-    background-color: green;
+    background-color: #39a900;
     color: white;
     border: none;
     padding: 0.7em 1.5em;

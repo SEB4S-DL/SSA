@@ -1,7 +1,7 @@
 .container {
-            padding: 2em;
-            background-color: f0f0f0;
-        }
+    padding: 2em;
+    background-color: f0f0f0;
+}
       
 
 
@@ -20,46 +20,47 @@
 
 
 
-        .user-info {
-            display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 30px;
-            margin: 40px ;
-            
-        }
-        
-        .label, .value {
-            background-color: #ddd;
-            padding: 12px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .label {
-            font-weight: bold;
-            background-color: #bbb;
-            
-        }
-
-        .value{
-            background-color: #fff;
-            border: 1px solid #aaa;
-        }
+.user-info {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 30px;
+    margin: 40px ;
     
-        
-        
-        /* Para campos que ocupan dos líneas */
-        .two-line {
-            line-height: 1.2;
-            display: flex;
-          
-           
-        }
+}
+
+.label, .value {
+    background-color: #ddd;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.label {
+    font-weight: bold;
+    background-color: #bbb;
+    
+}
+
+.value{
+    background-color: #fff;
+    border: 1px solid #aaa;
+}
+
+
+
+/* Para campos que ocupan dos líneas */
+.two-line {
+    line-height: 1.2;
+    display: flex;
+    
+    
+}
  .acciones {
     display: flex;
     justify-content: center;
     gap: 2em;
     margin: 2em 0;
+    grid-column: 1 / -1;
 }
 
 .cancelar {
@@ -73,7 +74,7 @@
 }
 
 .actualizar {
-    background-color: green;
+    background-color: #39a900;
     color: white;
     border: none;
     padding: 0.7em 1.5em;

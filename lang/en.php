@@ -163,6 +163,7 @@ return [
     "nro_identificacion"=>"Identification number",
     "tipo_rol"=>"Select role type",
     "tipo_instructor"=>"Instructor type",
+    "modalidad_instructor" => "Instructor mode",
     "input_tipo_usuario"=>"Select user type",
     "transversal"=>"Cross",
     "habilitado"=>"Enabled",
@@ -198,6 +199,11 @@ return [
     "formato"=>"When the excel meets the specified format, you need to convert it to CSV delimited by semicolon ( ; ) and then upload the csv file here.",
     "explicacion"=>"Below is an image with a suitable format for uploading apprentices using Excel.",
     "titulo_visualizar_ficha"=>"View group",
+    "planta" => "Root",
+    "contratista" => "Contractor",
+    "contrato_inicio" => "Start date",
+    "contrato_fin" => "End date",
+    "modalidad_instructor_input" => "Select instructor mode"
 
     
     

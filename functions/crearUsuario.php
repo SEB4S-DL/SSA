@@ -1,112 +1,117 @@
 <?php
 session_start();
+
+header("Content-Type: application/json; charset=utf-8");
+
 if (!isset($_SESSION["user"])) {
     header("Location: ../../auth/login.php");
     exit;
 }
 
+if ($_SERVER["REQUEST_METHOD"] != "POST"){
+    echo json_encode([
+        "msg" => "Método http inválido.",
+        "state" => 1
+    ]);
+    exit();
+}
+
 // Incluir la conexión a la base de datos
 require_once "../db/conection.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $primer_nombre = $_POST["primer_nombre"];
-    $segundo_nombre = $_POST["segundo_nombre"];
-    $primer_apellido = $_POST["primer_apellido"];
-    $segundo_apellido = $_POST["segundo_apellido"];
-    $correo = $_POST["correo"];
-    $tipo_documento = $_POST["tipo_documento"];
-    $numero_documento = $_POST["numero_documento"];
-    $rol = $_POST["rol"];
-    $tipo_instructor = $_POST["tipo_instructor"];
-    $contrasena_plana = $_POST["contrasena"];
-    $fecha_inicio_contrato = !empty($_POST["fecha_inicio_contrato"]) ? $_POST["fecha_inicio_contrato"] : null;
-    $fecha_fin_contrato = !empty($_POST["fecha_fin_contrato"]) ? $_POST["fecha_fin_contrato"] : null;
+// Recuperar datos
+$primer_nombre = $_POST["primer_nombre"];
+$segundo_nombre = $_POST["segundo_nombre"];
+$primer_apellido = $_POST["primer_apellido"];
+$segundo_apellido = $_POST["segundo_apellido"];
+$correo = $_POST["correo"];
+$tipo_documento = $_POST["tipo_documento"];
+$numero_documento = $_POST["numero_documento"];
+$rol = $_POST["rol"];
+$tipo_instructor = $_POST["tipo_instructor"];
+$modalidad_instructor = $_POST["modalidad_instructor"];
+$contrasena_plana = $_POST["contrasena"];
+$fecha_inicio_contrato = !empty($_POST["fecha_inicio_contrato"]) ? $_POST["fecha_inicio_contrato"] : null;
+$fecha_fin_contrato = !empty($_POST["fecha_fin_contrato"]) ? $_POST["fecha_fin_contrato"] : null;
 
-    function existe_usuario($usuario){
-        global $conn;
+// Verificar si ya existe un usuario con el numero de documento ingresado
+if (existe_usuario($numero_documento)){
+    echo json_encode([
+        "msg" => "Ya existe un usuario con el número de documento '$numero_documento'.",
+        "state" => 1
+    ]);
+    exit();
+}
 
-        $sql = "select * from usuarios where nro_documento = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $usuario);
-        $stmt->execute();
-        $resultado = $stmt->get_result(); 
+// Verificar si ya existe un usuario con el correo ingresado
+if (existe_usuario_email($correo)){
+    echo json_encode([
+        "msg" => "Ya existe un usuario con el correo ingresado.",
+        "state" => 1
+    ]);
+    exit();
+}
 
-        if( $resultado->num_rows > 0 ){
-            return true ; 
-        }else{
-            return false;
-        }
-    }
+$contrasena = md5($contrasena_plana);
 
-    if (existe_usuario($numero_documento)){
-        header("Refresh: 3, ../index.php?page=cuentas/listar_cuentas");
-        echo"<script>alert('ya existe un usuario registrado')</script>";
-        exit;
-    }
+// Verificar si el número de documento es numérico y contiene entre 1 y 10 digitos
 
+if (preg_match("/^\d{1,10}$/", $numero_documento) != 1){
+    echo json_encode([
+        "msg" => "El número de documento no es válido.",
+        "state" => 1
+    ]);
+    exit();
+}
 
+// Verificar si el correo es válido
+$correo_valido = false;
 
-    // verificar contraseña  
-    if (strlen($contrasena_plana) < 8) {
-        header("Refresh: 3, ../index.php?page=cuentas/listar_cuentas");
-        echo "<script>alert('La contraseña debe tener al menos 8 caracteres')</script>";
-        exit;
-    }
+if (filter_var($correo, FILTER_VALIDATE_EMAIL)){
+    $correo_valido = true;
+}
 
-    $contrasena = md5($contrasena_plana);
+if (!$correo_valido){
+    echo json_encode([
+        "msg" => "El correo ingresado no es un correo válido",
+        "state" => 1
+    ]);
+    exit();
+}
 
-    // Verificar si el número de documento es numérico y contiene entre 1 y 10 digitos
+// Validar que las fechas seán coherentes
+if (!fechas_validas($fecha_inicio_contrato, $fecha_fin_contrato)){
+    echo json_encode([
+        "msg" => "Las fechas deben ser coherentes.",
+        "state" => 1
+    ]);
+    exit();
+}
 
-    if (preg_match("/^\d{1,10}$/", $numero_documento) != 1){
-        header("Refresh: 3, ../index.php?page=cuentas/listar_cuentas");
-        echo "<script>alert('El número de documento no es válido')</script>";
-        exit;
-    }
-
-    // Verificar si el correo es válido ("soy.sena.edu.co" o "misena.edu.co")
-
-    $correo_valido1 = "/^\w+@soy.sena.edu.co$/";
-    $correo_valido2 = "/^\w+@misena.edu.co$/";
-
-    $correo_valido = false;
- 
-    if (preg_match($correo_valido1, $correo) === 1 || preg_match($correo_valido2, $correo) === 1){
-        $correo_valido = true;
-    }
-
-    if (!$correo_valido){
-        header("Refresh: 3, ../index.php?page=cuentas/listar_cuentas");
-        echo"<script>alert('El correo no es válido (debe ser institucional)')</script>";
-        exit;
-    }
-    $estado = 1; // esto es correcto si 1 significa “activo”
+$estado = 1; // Inicializar el usuario como habilitado
 
 
-    $sql = "INSERT INTO usuarios (
-    nombre,
-    segundo_nombre,
-    apellido,
-    segundo_apellido,
-    correo_institucional,
-    tipo_documento,
-    nro_documento,
-    rol,
-    tipo,
-    contrasena,
-    fecha_inicio_contrato,
-    fecha_fin_contrato,
-    estado
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO usuarios (
+nombre,
+segundo_nombre,
+apellido,
+segundo_apellido,
+correo_institucional,
+tipo_documento,
+nro_documento,
+rol,
+tipo,
+modalidad,
+contrasena,
+fecha_inicio_contrato,
+fecha_fin_contrato,
+estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
-    $stmt = $conn->prepare($sql);
-    if ($stmt) {
-        // Si los campos están vacíos, pasarlos como NULL para evitar error de fecha vacía
-        $fecha_inicio_contrato = $fecha_inicio_contrato ?: null;
-        $fecha_fin_contrato = $fecha_fin_contrato ?: null;
-
+$stmt = $conn->prepare($sql);
+if ($stmt) {
     $stmt->bind_param(
-    "ssssssisssssi", 
+    "ssssssissssssi", 
     $primer_nombre,
     $segundo_nombre,
     $primer_apellido,
@@ -116,28 +121,77 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $numero_documento,
     $rol,
     $tipo_instructor,
+    $modalidad_instructor,
     $contrasena,
     $fecha_inicio_contrato,
     $fecha_fin_contrato,
-    $estado
-);
+    $estado);
 
+    if ($stmt->execute()) {
+        echo json_encode([
+            "msg" => "Usuario creado exitosamente.",
+            "state" => 0
+        ]);
+        exit();
 
-
-        if ($stmt->execute()) {
-            header("refresh:3, ../index.php?page=cuentas/listar_cuentas");
-            echo "<script>alert('Usuario creado exitosamente');</script>";
-        } else {
-            header("refresh:3, ../index.php?page=cuentas/listar_cuentas");
-            echo "<script>alert('Error al crear el usuario');</script>";
-        }
-        
-            $stmt->close();
-            $conn->close();
+    } else {
+        echo json_encode([
+            "msg" => "Ocurrió un error inesperado. Intente de nuevo más tarde.",
+            "state" => 1
+        ]);
+        exit();
     }
 
-    else {
-        echo "Error al preparar la consulta: " . $conn->error;
+    $stmt->close();
+    $conn->close();
+}
+
+else {
+    echo json_encode([
+        "msg" => "Ocurrió un error inesperado. Intente de nuevo más tarde.",
+        "state" => 1
+    ]);
+    exit();
+}
+
+// Funciones
+
+function existe_usuario($usuario){
+    global $conn;
+
+    $sql = "select * from usuarios where nro_documento = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $usuario);
+    $stmt->execute();
+    $resultado = $stmt->get_result(); 
+
+    if( $resultado->num_rows > 0 ){
+        return true ; 
+    }else{
+        return false;
     }
+}
+
+function existe_usuario_email($email){
+    global $conn;
+
+    $sql = "select * from usuarios where correo_institucional = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+// Función para validar que las fechas tengan coherencia
+function fechas_validas($fecha_inicio, $fecha_fin){
+    return $fecha_fin >= $fecha_inicio;
 }
 ?>
