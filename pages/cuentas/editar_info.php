@@ -259,14 +259,14 @@
                     break;
             }
         })
-        .catch(err => console.error("Error en fetch: ", err));
-
-        // Ocultar el loader y mostrar los botones nuevamente
-        loader.style.display = "none";
-        buttons.forEach((button) => {
-            button.style.display = "block";
+        .catch(err => console.error("Error en fetch: ", err))
+        .finally(() =>{
+            // Ocultar el loader y mostrar los botones nuevamente
+            loader.style.display = "none";
+            buttons.forEach((button) => {
+                button.style.display = "block";
+            });
         });
-        
     });
 
     function validPassword(input){

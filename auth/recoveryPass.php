@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../assets/img/sena-logo.png">
   <link rel="stylesheet" href="../assets/css/recoveryPass.css">
+
+  <style>
+      .loader {
+          border-top: 2px solid #39a900;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 20px auto;
+          display: none;
+      }
+      @keyframes spin {
+          0%   { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
+  </style>
+
   <title>Recuperación de Contraseña</title>
 </head>
 <body>
@@ -20,6 +37,7 @@
       <label for="email">Correo Institucional:</label>
       <input type="email" name="email" id="email" placeholder="ejemplo@soy.sena.edu.co" required>
       <button id="formButton" type="submit">Enviar</button>
+      <div class="loader" id="loader"></div>
     </form>
   </div>
 
@@ -31,9 +49,15 @@
       1: "red"
     }
 
+    const loader = document.getElementById("loader");
+    const formButton = document.getElementById("formButton");
+
     form.addEventListener("submit", (e)=> {
       const userEmail = document.getElementById("email").value;
       e.preventDefault();
+
+      formButton.style.display = "none";
+      loader.style.display = "block";
 
       fetch("../functions/recoveryPass.php",
         {
@@ -48,6 +72,10 @@
           stateSpan.style.color = states[res.state];
         })
         .catch(err => console.error("Error en fetch: ", err))
+        .finally(() =>{
+          loader.style.display = "none";
+          formButton.style.display = "block";
+        });
     });
   </script>
 </body>

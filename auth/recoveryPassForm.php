@@ -67,7 +67,7 @@
       <label for="idInput2">Confirme la contraseña</label>
       <input type="password" id="idInput2" placeholder="Confirme la nueva contraseña" required>
 
-      <button type="submit">Enviar</button>
+      <button id="submitButton" type="submit">Enviar</button>
     </form>
     <?php else: ?>
       <h1><?= htmlspecialchars($mensaje) ?><br> Se le redireccionará dentro de 5 segundos.</h1>
@@ -88,6 +88,15 @@
       const pass1 = document.getElementById("idInput").value;
       const pass2 = document.getElementById("idInput2").value;
       const token = document.getElementById("tokenInput").value;
+      const passwordStateSpan = document.getElementById("stateSpan");
+      const submitButton = document.getElementById("submitButton");
+
+      if (!validPassword(pass1)){
+        passwordStateSpan.style.color = "red";
+        passwordStateSpan.innerHTML = "La contraseña debe tener almenos 8 carácteres.";
+        passwordStateSpan.scrollIntoView({behavior: "smooth"});
+        return;
+      }
 
       fetch("../functions/recoveryPassForm.php",{
         method: "POST",
@@ -100,6 +109,7 @@
         span.style.color = states[res.state];
 
         if (res.state === 0){
+          submitButton.style.display = "none";
           setTimeout(() => {
             window.location.href = "../index.php";
           }, 5000);
@@ -108,6 +118,10 @@
       .catch(err => console.error("Error en fetch: ", err));
 
     });
+
+    function validPassword(pass){
+      return pass.length >= 8;
+    }
   </script>
 </body>
 </html>
