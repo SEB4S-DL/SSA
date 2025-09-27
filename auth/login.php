@@ -1,32 +1,44 @@
 <?php
-    require_once "../functions/login.php";
-    session_start();
+    
+require_once "../functions/login.php";
+session_start();
 
-    $errores = [
-        "1" => "Credenciales incorrectas"
-    ];
+$errores = [
+    "1" => "Credenciales incorrectas",
+    "2" => "Ya existe una sesión activa de administrador"
+];
 
-    if (isset($_SESSION["user"])){
-        header("Location: ../index.php");
-    }
+// Si ya hay sesión iniciada → redirigir
+if (isset($_SESSION["user"])) {
+    header("Location: ../index.php");
+    exit;
+}
 
-    if (validarDatos()){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $resultado = validarDatos();
+
+    if ($resultado === "ocupado") {
+        // ❌ Admin ya tiene sesión activa
+        header("Location: ./login.php?status=2");
+        exit;
+    } elseif ($resultado === true) {
+        // ✅ Login exitoso
         $user = consultarUsuario();
 
-
-        $_SESSION["user"] = $user["nombre"];
-        $_SESSION["user_id"] = $user["nro_documento"];
-        $_SESSION["user_rol"] = $user["rol"];
+        $_SESSION["user"]       = $user["nombre"];
+        $_SESSION["user_id"]    = $user["nro_documento"];
+        $_SESSION["user_rol"]   = $user["rol"];
         $_SESSION["user_email"] = $user["correo_institucional"];
 
         header("Location: ../index.php");
-        unset($errores["1"]);
+        exit;
+    } else {
+        // ❌ Credenciales inválidas
+        header("Location: ./login.php?status=1");
+        exit;
     }
-    else{
-        if ($_SERVER["REQUEST_METHOD"] === "POST"){
-            header("Location: ./login.php?status=1");
-        }
-    }
+}
+
 
     $idiomasPermitidos = ['es', 'en'];
     $idioma = 'es';

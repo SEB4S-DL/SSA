@@ -33,7 +33,19 @@
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0){
-      return true;
+        $user = $result->fetch_assoc();
+
+        // 🔒 Si es admin y ya está logueado → bloquear
+        if ($user['rol'] === 'admin' && $user['is_logged_in'] == 1) {
+            return "ocupado"; 
+        }
+
+        // Si pasa la validación → marcar como logueado
+        $update = $conn->prepare("UPDATE usuarios SET is_logged_in = 1 WHERE nro_documento = ?");
+        $update->bind_param("i", $user['nro_documento']);
+        $update->execute();
+
+        return true;
     }
     
     return false;
