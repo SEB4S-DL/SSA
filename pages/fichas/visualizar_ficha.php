@@ -40,8 +40,8 @@
     </a>
   </div>
  <div class="container-grafica">
-          <canvas id="miGrafico"></canvas>
-        </div>
+    <canvas id="miGrafico" style="width: 90%; margin: 0 auto;"></canvas>
+  </div>
   <div class="main-content">
         
   <?php if (isset($_GET["ficha"])): ?>

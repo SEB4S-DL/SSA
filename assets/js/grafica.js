@@ -30,6 +30,19 @@ async function cargarGrafica() {
         data: data.values,
         backgroundColor: "#39a900"
       }]
+    },
+    options: {
+      scales: {
+        x: {
+          ticks: {
+            // Fuerza que el texto esté vertical
+            minRotation: 90,
+            maxRotation: 90
+          }
+        }
+      },
+      responsive: false,
+      maintainAspectRatio: false
     }
   });
 }
