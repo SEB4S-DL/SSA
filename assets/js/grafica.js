@@ -5,15 +5,15 @@ function getParametro(nombre) {
 
 let chart;
 
-async function cargarGrafica() {
+function cargarGrafica() {
   const ficha = getParametro("ficha"); // lee ?ficha=XXXX de la URL
   if (!ficha) {
     console.error("No se especificó ficha en la URL");
     return;
   }
 
-  const response = await fetch("functions/datosGrafica.php?ficha=" + ficha);
-  const data = await response.json();
+  const response = fetch("functions/datosGrafica.php?ficha=" + ficha);
+  const data = response.json();
 
   const ctx = document.getElementById("miGrafico").getContext("2d");
 
