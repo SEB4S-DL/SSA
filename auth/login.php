@@ -5,7 +5,7 @@ session_start();
 
 $errores = [
     "1" => "Credenciales incorrectas",
-    "2" => "Ya existe una sesión activa con estas credenciales"
+    "2" => "Ya existe una sesión activa para el administrador",
 ];
 
 // Si ya hay sesión iniciada → redirigir
