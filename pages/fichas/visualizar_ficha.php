@@ -1,6 +1,6 @@
 <?php
   if (!isset($_SESSION["user"])){
-      header("Location: ../../auth/login.php");
+    header("Location: ../../auth/login.php");
   }
 
   require "./functions/visualizar_ficha.php";
@@ -26,6 +26,7 @@
     
     <?php 
       if (isset($_GET["ficha"])):
+        if ($_SESSION["user_rol"] == "admin"):
     ?>
  
     <a href=".?page=fichas/importar_aprendices&ficha=<?= $_GET["ficha"]; ?>" class="importar-button">
@@ -33,7 +34,7 @@
       <i class="bi bi-file-earmark-spreadsheet"></i>
     </a>
 
-    <?php endif; ?>
+    <?php endif; endif; ?>
 
     <a href=".?page=fichas/listar_fichas" class="top-container-volver">
       <?= $traducciones['volver']?>

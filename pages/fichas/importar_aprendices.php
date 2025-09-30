@@ -3,6 +3,11 @@
       header("Location: ../../auth/login.php");
   }
 
+  if ($_SESSION["user_rol"] != "admin"){
+    echo "<meta http-equiv='refresh' content='0;url=./auth/login.php'>";
+    exit;
+  }
+
   if (!isset($_GET["ficha"])){
     header("Location: .");
   }

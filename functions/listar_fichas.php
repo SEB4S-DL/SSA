@@ -44,6 +44,26 @@
     return $resultado;
   }
 
+  function obtener_fichas_user($user_id){
+    global $conn;
+    $sql = "SELECT p.nombre_programa, f.nro_ficha, f.id_jefe_ficha, f.jornada,
+    CONCAT_WS(' ', u.nombre , u.segundo_nombre , u.apellido , u.segundo_apellido) AS 'nombre_jefe', f.tipo_oferta 
+    from fichas f
+    JOIN programa_formacion p
+    ON f.id_programa_formacion = p.id
+    JOIN usuarios u
+    ON f.id_jefe_ficha = u.nro_documento 
+    WHERE f.etapa = 'lectiva' AND f.id_jefe_ficha = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+
+    $resultado = $stmt->get_result();
+
+    return $resultado;
+  }
+
   // Obtener todos los instructores para el form de editar
   function obtener_instructores(){
     global $conn;

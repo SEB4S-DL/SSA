@@ -11,6 +11,12 @@ if (!isset($_SESSION["user"])) {
     exit;
 }
 
+// Si el usuario no es admin, redirigir a la página principal
+if ($_SESSION["user_rol"] != "admin"){
+    echo "<meta http-equiv='refresh' content='0;url=./auth/login.php'>";
+    exit;
+}
+
 if (!isset($_GET["programa"]) || !is_numeric($_GET["programa"])) {
     echo "<p style='color:red;'>ID de competencia no válido o no enviado.</p>";
     exit;

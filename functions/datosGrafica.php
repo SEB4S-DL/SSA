@@ -7,8 +7,8 @@ if (session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-// Validación de sesión y rol
-if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user_rol"] != "admin")){
+// Validación de sesión
+if (!isset($_SESSION["user"])){
     header("Location: ../auth/login.php");
     exit();
 }

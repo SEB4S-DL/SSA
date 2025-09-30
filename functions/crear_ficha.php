@@ -6,6 +6,7 @@
   // Si no hay sesión iniciada o el rol del usuario actual no es admin, no permite usar este archivo
   if (!isset($_SESSION["user"]) || isset($_SESSION["user"]) && $_SESSION["user_rol"] != "admin"){
     header("Location: ../auth/login.php");
+    exit;
   }
 
   if (str_contains($_SERVER["PHP_SELF"], "functions/crear_ficha.php")){

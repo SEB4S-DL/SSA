@@ -1,6 +1,14 @@
 <?php
   if (!isset($_SESSION["user"])){
-      header("Location: ../../auth/login.php");
+    header("Location: ../../auth/login.php");
+    exit;
+  }
+
+
+  // Si el usuario no es admin, redirigir a la página principal
+  if ($_SESSION["user_rol"] != "admin"){
+    echo "<meta http-equiv='refresh' content='0;url=./auth/login.php'>";
+    exit;
   }
 ?>
 

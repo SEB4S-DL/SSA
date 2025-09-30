@@ -3,6 +3,11 @@
         header("Location: ../../auth/login.php");
     }
 
+    if ($_SESSION["user_id"] != $_GET["usuario"]){
+        header("Location: .?page=cuentas/listar_cuentas");
+        exit;
+    }
+
     require "./functions/infoUser.php";
 
     if (!isset($_GET["usuario"])):

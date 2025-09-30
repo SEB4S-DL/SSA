@@ -6,7 +6,12 @@ if (!isset($_SESSION["user"])) {
 
 require './db/conection.php';
 
-$sql = "SELECT nro_documento, nombre,rol, tipo, correo_institucional, estado FROM usuarios";
+if ($_SESSION["user_rol"] === "admin"){
+    $sql = "SELECT nro_documento, nombre,rol, tipo, correo_institucional, estado FROM usuarios";
+}
+else{
+    $sql = "SELECT nro_documento, nombre,rol, tipo, correo_institucional, estado FROM usuarios WHERE nro_documento = " . $_SESSION["user_id"];
+}
 
 $result = $conn->query($sql);
 

@@ -8,7 +8,14 @@
 
 
   // Función que obtiene todas las fichas en etapa lectiva
-  $resultado = obtener_fichas();
+
+  // Si el usuario no es admin, mostrar solo las fichas que le corresponden
+  if ($_SESSION["user_rol"] !== "admin"){
+    $resultado = obtener_fichas_user($_SESSION["user_id"]);
+  }
+  else{
+    $resultado = obtener_fichas();
+  }
 
   $estados = [
     "0" => "Ficha modificada exitosamente.",
@@ -36,7 +43,11 @@
 
   <div class="listar-fichas-top-container">
     <h1><?= $traducciones['titulo_listado_fichas']?></h1>
+    <?php
+      if ($_SESSION["user_rol"] == "admin"):
+    ?>
     <button onclick="window.location.href = '.?page=fichas/crear_ficha'"><?= $traducciones['btn_crear_ficha']?><i class="bi bi-plus-lg"></i></button>
+    <?php endif; ?>
   </div>
       
   <div class="contenedor">
@@ -44,6 +55,7 @@
   <?php if ($resultado->num_rows > 0): ?>
       <?php while($dato = $resultado->fetch_assoc()): ?>
         <div class="card" onclick="window.location.href = '.?page=fichas/visualizar_ficha&ficha=<?= $dato['nro_ficha']; ?>'">
+          <?php if ($_SESSION["user_rol"] == "admin"): ?>
           <button 
           onclick="event.stopPropagation()" 
           title="Editar ficha" 
@@ -56,6 +68,7 @@
           customValue="<?= $dato["nro_ficha"] ?>">
             <i class="bi bi-pencil-fill"></i>
           </button>
+          <?php endif; ?>
 
           <p class="card-first-p"><?= htmlspecialchars($dato["nombre_programa"]) ?></p>
           <p><strong><?= $traducciones['ficha']?>:</strong> <?= htmlspecialchars($dato["nro_ficha"]) ?></p>

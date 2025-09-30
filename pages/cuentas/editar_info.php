@@ -5,6 +5,12 @@
 
     if (!isset($_GET["usuario"])){
         header("Location: .?page=cuentas/listar_cuentas");
+        exit;
+    }
+
+    if ($_SESSION["user_id"] != $_GET["usuario"]){
+        header("Location: .?page=cuentas/listar_cuentas");
+        exit;
     }
 
     function obtener_usuario($usuario){
@@ -90,22 +96,23 @@
                 <div class="label"><?= $traducciones['nro_identificacion']?></div>
                 <input class="value" type="text" id="documentInput" placeholder="Número identificacion" value="<?php echo $usuario['nro_documento']; ?>">
     
-                <div class="label"><?= $traducciones['rol']?></div>
-                <select id="rol" class="value" value="">
+                <div <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> class="label"><?= $traducciones['rol']?></div>
+
+                <select id="rol" class="value" value="" <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?>>
                     <option value="<?= $usuario["rol"] ?>"><?= $traducciones['tipo_rol']?></option>
                     <option value="user"><?= $traducciones['usuario']?></option>
                     <option value="admin"><?= $traducciones['administrador']?></option>
                 </select>
                 
-                <div class="label"><?= $traducciones['tipo_instructor']?></div>
-                <select id="tipoInstructor" class="value">
+                <div <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> class="label"><?= $traducciones['tipo_instructor']?></div>
+                <select <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> id="tipoInstructor" class="value">
                     <option value="<?= $usuario["tipo"] ?>"><?= $traducciones['input_tipo_usuario']?></option>
                     <option value="tecnico"><?= $traducciones['tecnico']?></option>
                     <option value="transversal"><?= $traducciones['transversal']?></option>
                 </select>
 
-                <div class="label"><?= $traducciones['modalidad_instructor']?></div>
-                <select id="modalidadInstructor" class="value">
+                <div <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> class="label"><?= $traducciones['modalidad_instructor']?></div>
+                <select <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> id="modalidadInstructor" class="value">
                     <option value="<?= $usuario["modalidad"] ?>"><?= $traducciones['modalidad_instructor_input']?></option>
                     <option value="planta"><?= $traducciones['planta']?></option>
                     <option value="contratista"><?= $traducciones['contratista']?></option>
@@ -124,8 +131,8 @@
                 <div style="display: <?= $usuario['modalidad'] == 'planta' ? 'none' : 'block' ?>" class="label two-line hideable-element"><?= $traducciones['fin_contrato']?></div>
                 <input style="display: <?= $usuario['modalidad'] == 'planta' ? 'none' : 'block' ?>" class="value contract-date-input hideable-element" id="contractEnd" type="date" value="<?= $usuario["fecha_fin_contrato"]; ?>">
 
-                <div class="label two-line"><?= $traducciones['estado']?></div>
-                <select id="estadoSelect" class="value" >
+                <div <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> class="label two-line"><?= $traducciones['estado']?></div>
+                <select <?= $_SESSION["user_rol"] == "admin" ? "" : "style='display:none'" ?> id="estadoSelect" class="value" >
                     <option value="<?= $usuario["estado"]; ?>"><?= $traducciones['input_select_estado']?></option>
                     <option value="habilitado"><?= $traducciones['habilitado']?></option>
                     <option value="deshabilitado"><?= $traducciones['deshabilitado']?></option>

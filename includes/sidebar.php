@@ -49,6 +49,7 @@ $traducciones = require __DIR__ . "/../lang/$idioma.php";
                     <span><i class="bi bi-person-fill"></i><?=$traducciones['cuentas']?></span>
                 </a>
             </div>
+            <?php if ($_SESSION["user_rol"] == "admin"): ?>
             <div>
                 <?php if (str_contains($actualPage, "programas") ): ?>
                     <span class="sidebar-indicator"></span>
@@ -58,6 +59,7 @@ $traducciones = require __DIR__ . "/../lang/$idioma.php";
                     <span><i class="bi bi-grid-fill"></i><?= $traducciones['programas']?></span>
                 </a>
             </div>
+            <?php endif; ?>
 
             <div>
                 <?php if (str_contains($actualPage, "manuales") ): ?>
