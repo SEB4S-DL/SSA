@@ -191,17 +191,17 @@ El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript
 
 ### Procedimiento de instalación:
 
-# 1. Clonar el repositorio
-git clone https://github.com/SEB4S-DL/SSA.git
-cd SSA
+ 1. Clonar el repositorio
+  - git clone https://github.com/SEB4S-DL/SSA.git
+  - cd SSA
 
-# 2. Instalar dependencias con Composer
-composer install
+ 2. Instalar dependencias con Composer
+ - composer install
 
-# 3. Configurar base de datos
-# - Crear una BD en MySQL
-# - Importar el archivo SQL del proyecto
-# - Ajustar credenciales en config.php o .env
+ 3. Configurar base de datos
+ - Crear una BD en MySQL
+ - Importar el archivo SQL del proyecto
+ - Ajustar credenciales en config.php o .env
 
 # 🌐 Acceso al sistema
 http://localhost/SSA
