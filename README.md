@@ -45,7 +45,7 @@ Este software va dirigido a los instructores y coordinador...
 - Si tiene sesión iniciada llevará a la página principal...
 - Para iniciar sesión debe diligenciar los campos...
 
-![Imagen de login](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/Login.png)
+![Imagen de login](/assets/img/imagenes%20del%20manual%20de%20usuarios/Login.png)
 
 - Tener en cuenta el botón para visualizar la contraseña...
 - Luego de diligenciar los campos correspondientes...
@@ -56,7 +56,7 @@ Este software va dirigido a los instructores y coordinador...
 # Guía de uso
 Al iniciar sesión verá que hay una barra lateral izquierda en la pantalla...
 
-![Sidebar](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/Sidebar.png)
+![Sidebar](/assets/img/imagenes%20del%20manual%20de%20usuarios/Sidebar.png)
 
 ### Volver a la página principal
 El icono del SENA en la barra de navegación es un enlace...
@@ -69,14 +69,14 @@ El icono del SENA en la barra de navegación es un enlace...
 ### Cambio de idioma
 La barra tiene un botón que permite cambiar el idioma...
 
-![Cambio de idioma](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/CambiarIdioma.png)  
-![Popup idiomas](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/PopUpIdiomas.png)
+![Cambio de idioma](/assets/img/imagenes%20del%20manual%20de%20usuarios/CambiarIdioma.png)  
+![Popup idiomas](/assets/img/imagenes%20del%20manual%20de%20usuarios/PopUpIdiomas.png)
 
 ### Barra de navegación en dispositivos móviles
 En los dispositivos móviles la barra de navegación aparecerá...
 
-![Sidebar responsive](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/SbResponsive.png)  
-![Sidebar abierta](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/SidebarNew.png)
+![Sidebar responsive](/assets/img/imagenes%20del%20manual%20de%20usuarios/SbResponsive.png)  
+![Sidebar abierta](/assets/img/imagenes%20del%20manual%20de%20usuarios/SidebarNew.png)
 
 ### Cerrar sesión
 El icono de cerrar sesión en la barra de navegación es un enlace...
@@ -84,16 +84,16 @@ El icono de cerrar sesión en la barra de navegación es un enlace...
 ### Cambiar tema
 Al dar clic en el botón de cambiar tema aparecerá una ventana emergente...
 
-![Cambiar tema](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/CambiarTema.png)
+![Cambiar tema](/assets/img/imagenes%20del%20manual%20de%20usuarios/CambiarTema.png)
 
-- Icono modo claro: ![Claro](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/Claro.png)
-- Icono modo oscuro: ![Oscuro](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/Oscuro.png)
-- Icono modo automático: ![Automático](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/Auto.png)
+- Icono modo claro: ![Claro](/assets/img/imagenes%20del%20manual%20de%20usuarios/Claro.png)
+- Icono modo oscuro: ![Oscuro](/assets/img/imagenes%20del%20manual%20de%20usuarios/Oscuro.png)
+- Icono modo automático: ![Automático](/assets/img/imagenes%20del%20manual%20de%20usuarios/Auto.png)
 
 ### Encabezado
 En cada página del software que no sea la de autenticación estará el encabezado...
 
-![Encabezado](/SSA/assets/img/imagenes%20del%20manual%20de%20usuarios/Encabezado.png)
+![Encabezado](/assets/img/imagenes%20del%20manual%20de%20usuarios/Encabezado.png)
 
 ---
 
@@ -141,19 +141,19 @@ Este manual describe los detalles técnicos de la aplicación **SSA** que permit
 # Descripción de procesos
 El sistema **SSA** soporta el caso de uso “Administrador” de acuerdo al siguiente gráfico:  
 
-![Diagrama de procesos](/SSA/assets/img/imagenesDelManualTecnico/DiagramaDeProcesos.png)
+![Diagrama de procesos](/assets/img/imagenesDelManualTecnico/DiagramaDeProcesos.png)
 
 ---
 
 # Diagrama de clases
-![Diagrama de clases](/SSA/assets/img/imagenesDelManualTecnico/DiagramaDeClases.png)
+![Diagrama de clases](/assets/img/imagenesDelManualTecnico/DiagramaDeClases.png)
 
 ---
 
 # Modelo relacional
 El modelo relacional del sistema es el siguiente:  
 
-![Modelo relacional](/SSA/assets/img/imagenesDelManualTecnico/ModeloRelacional.png)
+![Modelo relacional](/assets/img/imagenesDelManualTecnico/ModeloRelacional.png)
 
 ---
 
@@ -188,7 +188,7 @@ El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript
 # Documentación del código fuente
 
 ### Estructura del proyecto
-![Estructura del proyecto](/SSA/assets/img/imagenesDelManualTecnico/Estructure.png)
+![Estructura del proyecto](/assets/img/imagenesDelManualTecnico/Estructure.png)
 
 | Directorio / Archivo | Descripción |
 |-----------------------|-------------|
