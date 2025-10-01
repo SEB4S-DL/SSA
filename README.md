@@ -24,8 +24,6 @@ Además, permitirá mostrar qué aprendices están **aprobados para las pruebas 
 - [Procesos y diagramas](#-procesos-y-diagramas)
 - [Descripción de la plataforma](#-descripción-de-la-plataforma)
 - [Instalación y mantenimiento](#-instalación-y-mantenimiento)
-- [Documentación del código fuente](#-documentación-del-código-fuente)
-- [Licencia y Autor](#-licencia-y-autor)
 
 ---
 
@@ -192,7 +190,7 @@ El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript
 - Conocimientos básicos de administración.
 
 ### Procedimiento de instalación:
-```bash
+
 # 1. Clonar el repositorio
 git clone https://github.com/SEB4S-DL/SSA.git
 cd SSA
@@ -242,3 +240,14 @@ Para generar la carpeta **vendor** es necesario ejecutar:
 
 ```bash
 composer install
+```
+
+
+# 📜 Licencia y Autores
+
+Este proyecto está bajo la licencia MIT.
+Puedes usarlo, modificarlo y distribuirlo libremente.
+
+- 👤 Contributor 1: Sebastián D. L.
+- 👤 Contributor 2: Emmanuel O. L.
+- 👤 Contributor 3: Alejandra T. B.
