@@ -201,3 +201,10 @@ El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript
 | **PAGES**            | Vistas del sistema. |
 | **Config.php**       | URL o ruta raíz del proyecto. |
 | **Index.php**        | Arrancador de la aplicación. |
+
+> ⚠️ **Nota importante**  
+> Para generar la carpeta **vendor** es necesario ejecutar el siguiente comando después de clonar el repositorio:
+>
+> ```bash
+> composer install
+> ```
