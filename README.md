@@ -1,11 +1,35 @@
-# SSA
-## Sistema de Seguimiento de Aprendices (SSA)
+# 📌 SSA - Sistema de Seguimiento de Aprendices
 
-**SSA** es un proyecto final de graduación que ayudará a comprender y observar mejor las fichas del área de desarrollo de software, facilitando un manejo claro de los resultados de aprendizaje y de las observaciones de los instructores por cada aprendiz en dichas fichas.  
+[![PHP](https://img.shields.io/badge/PHP-%3E%3D8.0-blue?logo=php)](https://www.php.net/)  
+[![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql)](https://www.mysql.com/)  
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)  
+[![Status](https://img.shields.io/badge/Status-Finalizado-success)]()
+
+---
+
+## 📖 Descripción
+**SSA (Sistema de Seguimiento de Aprendices)** es un proyecto final de graduación que ayudará a comprender y observar mejor las fichas del área de desarrollo de software, facilitando un manejo claro de los resultados de aprendizaje y de las observaciones de los instructores por cada aprendiz en dichas fichas.  
 
 Además, permitirá mostrar qué aprendices están **aprobados para las pruebas TIT** en cada ficha.
 
-# Manual de Usuario - SSA
+---
+
+## 📑 Índice
+- [Manual de Usuario](#-manual-de-usuario---ssa)
+- [Requisitos del sistema](#-requisitos-del-sistema)
+- [Primeros pasos](#-primeros-pasos)
+- [Guía de uso](#-guía-de-uso)
+- [Manual Técnico](#-manual-técnico---ssa)
+- [Alcance](#-alcance)
+- [Procesos y diagramas](#-procesos-y-diagramas)
+- [Descripción de la plataforma](#-descripción-de-la-plataforma)
+- [Instalación y mantenimiento](#-instalación-y-mantenimiento)
+- [Documentación del código fuente](#-documentación-del-código-fuente)
+- [Licencia y Autor](#-licencia-y-autor)
+
+---
+
+# 📘 Manual de Usuario - SSA
 
 ## Introducción
 En este documento se dará explicación acerca del software **SSA**...
@@ -22,7 +46,7 @@ Este software va dirigido a los instructores y coordinador...
 
 ---
 
-# Requisitos del sistema
+# ⚙️ Requisitos del sistema
 
 ### Hardware mínimo
 - Procesador: Intel i3 de 7a generación o Superior.
@@ -40,7 +64,7 @@ Este software va dirigido a los instructores y coordinador...
 
 ---
 
-# Primeros pasos
+# 🚀 Primeros pasos
 - Ingresar a la página principal...
 - Si tiene sesión iniciada llevará a la página principal...
 - Para iniciar sesión debe diligenciar los campos...
@@ -53,7 +77,7 @@ Este software va dirigido a los instructores y coordinador...
 
 ---
 
-# Guía de uso
+# 🧭 Guía de uso
 Al iniciar sesión verá que hay una barra lateral izquierda en la pantalla...
 
 ![Sidebar](/assets/img/imagenes%20del%20manual%20de%20usuarios/Sidebar.png)
@@ -86,9 +110,9 @@ Al dar clic en el botón de cambiar tema aparecerá una ventana emergente...
 
 ![Cambiar tema](/assets/img/imagenes%20del%20manual%20de%20usuarios/CambiarTema.png)
 
-- Icono modo claro: ![Claro](/assets/img/imagenes%20del%20manual%20de%20usuarios/Claro.png)
-- Icono modo oscuro: ![Oscuro](/assets/img/imagenes%20del%20manual%20de%20usuarios/Oscuro.png)
-- Icono modo automático: ![Automático](/assets/img/imagenes%20del%20manual%20de%20usuarios/Auto.png)
+- Icono modo claro: ![Claro](/assets/img/imagenes%20del%20manual%20de%20usuarios/Claro.png)  
+- Icono modo oscuro: ![Oscuro](/assets/img/imagenes%20del%20manual%20de%20usuarios/Oscuro.png)  
+- Icono modo automático: ![Automático](/assets/img/imagenes%20del%20manual%20de%20usuarios/Auto.png)  
 
 ### Encabezado
 En cada página del software que no sea la de autenticación estará el encabezado...
@@ -97,7 +121,7 @@ En cada página del software que no sea la de autenticación estará el encabeza
 
 ---
 
-# Manual Técnico - SSA
+# 🛠 Manual Técnico - SSA
 
 ## Introducción
 Este documento es la guía técnica del software **SSA**, creado principalmente para hacer un seguimiento de juicios evaluativos y verificar el avance de los aprendices de los programas **Análisis y Desarrollo de Software** y **Técnico en Programación** del CDITI.  
@@ -115,7 +139,7 @@ Este software va dirigido a los instructores y coordinador(es) del CDITI que per
 
 ---
 
-# Requisitos del sistema
+# 📋 Requisitos del sistema
 
 ### Hardware mínimo
 - Procesador: Intel i3 de 7a generación o Superior.
@@ -133,36 +157,34 @@ Este software va dirigido a los instructores y coordinador(es) del CDITI que per
 
 ---
 
-# Alcance
+# 📌 Alcance
 Este manual describe los detalles técnicos de la aplicación **SSA** que permitirán al personal técnico suministrar el soporte de primer nivel.
 
 ---
 
-# Descripción de procesos
+# 🖇 Procesos y diagramas
+
+### Descripción de procesos
 El sistema **SSA** soporta el caso de uso “Administrador” de acuerdo al siguiente gráfico:  
 
 ![Diagrama de procesos](/assets/img/imagenesDelManualTecnico/DiagramaDeProcesos.png)
 
----
-
-# Diagrama de clases
+### Diagrama de clases
 ![Diagrama de clases](/assets/img/imagenesDelManualTecnico/DiagramaDeClases.png)
 
----
-
-# Modelo relacional
+### Modelo relacional
 El modelo relacional del sistema es el siguiente:  
 
 ![Modelo relacional](/assets/img/imagenesDelManualTecnico/ModeloRelacional.png)
 
 ---
 
-# Descripción de la plataforma
+# 🌐 Descripción de la plataforma
 El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript**, utilizando **MySQL** como base de datos y desplegada en **Apache**.
 
 ---
 
-# Instalación y mantenimiento
+# ⚡ Instalación y mantenimiento
 
 ### Requisitos:
 - Servidor web con soporte para PHP y MySQL (XAMPP, WAMP, LAMP).
@@ -170,25 +192,36 @@ El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript
 - Conocimientos básicos de administración.
 
 ### Procedimiento de instalación:
-1. Descargar los archivos del sistema SSA desde el repositorio oficial.
-2. Configurar el servidor web y la base de datos MySQL.
-3. Importar el archivo SQL proporcionado.
-4. Configurar el archivo de conexión a la base de datos.
-5. Subir los archivos al servidor web.
-6. Acceder a la aplicación desde el navegador.
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/SEB4S-DL/SSA.git
+cd SSA
 
-### Mantenimiento:
-- Realizar backups periódicos.
-- Actualizar el sistema regularmente.
-- Monitorear el rendimiento del servidor.
-- Dar soporte a los usuarios.
+# 2. Instalar dependencias con Composer
+composer install
+
+# 3. Configurar base de datos
+# - Crear una BD en MySQL
+# - Importar el archivo SQL del proyecto
+# - Ajustar credenciales en config.php o .env
+
+# 🌐 Acceso al sistema
+http://localhost/SSA
+
 
 ---
 
-# Documentación del código fuente
+# 🛠 Mantenimiento
+- Realizar **backups periódicos**.  
+- Actualizar el sistema regularmente.  
+- Monitorear el rendimiento del servidor.  
+- Dar soporte a los usuarios.  
 
-### Estructura del proyecto
-![Estructura del proyecto](/assets/img/imagenesDelManualTecnico/Estructure.png)
+---
+
+# 📂 Documentación del código fuente
+
+## Estructura del proyecto
 
 | Directorio / Archivo | Descripción |
 |-----------------------|-------------|
@@ -202,9 +235,10 @@ El sistema es una aplicación web desarrollada con **PHP, HTML, CSS y JavaScript
 | **Config.php**       | URL o ruta raíz del proyecto. |
 | **Index.php**        | Arrancador de la aplicación. |
 
-> ⚠️ **Nota importante**  
-> Para generar la carpeta **vendor** es necesario ejecutar el siguiente comando después de clonar el repositorio:
->
-> ```bash
-> composer install
-> ```
+---
+
+⚠️ **Nota importante**  
+Para generar la carpeta **vendor** es necesario ejecutar:
+
+```bash
+composer install
