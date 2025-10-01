@@ -1,0 +1,185 @@
+.listar-cuentas-container{
+    background-color: #272727;
+    padding: 0 0 2em 0;
+}
+
+.listar-cuentas-container *{
+    color: #fff;
+}
+
+.listar-cuentas-top-container{
+    display: flex;
+    margin: 2em auto;
+    justify-content: center;
+    position: relative;
+}
+
+.listar-cuentas-top-container > h1{
+    font-weight: 400;
+}
+
+.listar-cuentas-top-container > button{
+    position: absolute;
+    height: 100%;
+    right: 2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #39A900;
+    color: #fff;
+
+    padding: 0.5em 1em;
+}
+
+.listar-cuentas-top-container > button:hover{
+    cursor: pointer;
+    background-color: #2A7E00;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 30px;
+    padding: 20px;
+}
+
+.crear-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn-estado{
+  position: relative;
+  background-color: #2A7E00;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.btn-estado:hover{
+  cursor: pointer;
+  background-color: #4CAF50;
+}
+.btn-estado:active{
+  background-color: #2A7E00;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+    background-color: #323232;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+}
+
+.card:hover{
+  background-color: #454545;
+  cursor: pointer;
+}
+
+.card p {
+    margin: 10px 0;
+}
+
+/*responsive*/
+
+/* Media queries */
+
+/* Portátiles */
+@media (min-width: 768px) and (max-width: 1024px){
+  .grid {
+    grid-template-columns: 1fr; /* Una sola columna para más legibilidad */
+  }
+
+  .listar-cuentas-top-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .listar-cuentas-top-container > button {
+    position: static;
+    margin-top: 1em;
+  }
+
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .grid {
+    grid-template-columns: 1fr; /* Una columna en lugar de dos */
+  }
+
+  .listar-cuentas-top-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .listar-cuentas-top-container > button {
+    position: static;
+    margin-top: 1em;
+  }
+
+  .container {
+    margin: 15px;
+    padding: 10px;
+  }
+
+  .card {
+    margin: 15px auto;
+    width: 80%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px){
+  .grid {
+    grid-template-columns: 1fr; /* Una sola columna para pantallas pequeñas */
+  }
+
+  .listar-cuentas-top-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .listar-cuentas-top-container > h1 {
+    font-size: 20px;
+  }
+
+  .listar-cuentas-top-container > button {
+    position: static;
+    margin-top: 1em;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .card {
+    margin: 10px auto;
+    padding: 15px;
+    width: 80%;
+  }
+
+  .crear-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

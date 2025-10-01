@@ -1,0 +1,40 @@
+/* Este CSS solo contiene la fuente y la configuración de los contenedores principales */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Roboto', Arial;
+}
+
+main{
+  min-height: 100dvh;
+  display: flex;
+}
+
+.main-container{
+  width: 80%;
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: auto;
+}
+
+/* Media queries */
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .main-container{
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px){
+  .main-container{
+    width: 100%;
+  }
+}

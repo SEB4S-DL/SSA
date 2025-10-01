@@ -1,0 +1,161 @@
+.crear-aprendiz-container{
+  background-color: #f0f0f0;
+  padding-bottom: 2em;
+}
+
+.state-container{
+  padding: 1em;
+  text-align: center;
+  color: #fff;
+}
+
+.state-error{
+  background-color: red;
+}
+
+.state-succes{
+  background-color: green;
+}
+
+.top-container__text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+  position: relative;
+}
+
+.top-container-title{
+  font-weight: 400;
+}
+
+.top-container-button{
+  position: absolute;
+  right: 0;
+  background-color: #39A900;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.top-container-button:hover{
+  background-color: #2a7f00;
+}
+
+.top-container-button:active{
+  background-color: #1e5a00;
+}
+
+.crear-aprendiz-form{
+  width: 90%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-aprendiz-form h3{
+  font-weight: 400;
+
+  margin: 1em 0;
+}
+
+.crear-aprendiz-form input[type="text"], .crear-aprendiz-form select{
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+}
+
+.simpleLabel{
+  margin-bottom: 5px;
+}
+
+.form-buttons-container{
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.form-buttons-container *{
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-buttons-container *:hover{
+  filter: brightness(90%);
+  cursor: pointer;
+}
+
+.form-buttons-container *:active{
+  filter: brightness(80%);
+}
+
+.form-buttons-container button{
+  background-color: #ff0000;
+}
+
+.form-buttons-container input[type="submit"]{
+  background-color: #39a900;
+}
+
+.volver-button{
+  display: block;
+  background-color: #39A900;
+  padding: 0.5em;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  margin: 1em auto;
+}
+
+/* Portatiles */
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .top-container__text{
+    flex-direction: column;
+  } 
+
+  .top-container-button{
+    position: initial;
+    margin-top: 1em;
+  }
+}
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .top-container__text{
+    flex-direction: column;
+  } 
+
+  .top-container-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .form-buttons-container{
+    flex-direction: column;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .top-container__text{
+    flex-direction: column;
+  }
+
+  .top-container-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .form-buttons-container{
+    flex-direction: column;
+  }
+}

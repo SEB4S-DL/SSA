@@ -1,0 +1,112 @@
+.manual-container {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #111;
+  line-height: 1.6;
+}
+
+.manual-title {
+  color: #002f4d;
+  border-bottom: 3px solid #002f4d;
+  padding-bottom: 0.5rem;
+  margin: 2rem 0 1.5rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.manual-subtitle {
+  color: #111;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.manual-subtitle::before {
+  content: "◆";
+  color: #002f4d;
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+.manual-text,
+.manual-list {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.manual-list {
+  padding-left: 1rem;
+  white-space: pre-line;
+}
+
+.manual-img {
+  max-width: 100%;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 8px;
+  border: 2px solid #002f4d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para la tabla del manual */
+.table-melo {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #002f4d;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-melo thead {
+    background-color: #002f4d;
+    color: #ffffff;
+    text-align: left;
+}
+
+.table-melo th,
+.table-melo td {
+    padding: 12px 15px;
+    border: 3px solid #002f4d;
+}
+
+.table-melo tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-melo tbody tr:hover {
+    background-color: #002f4d;
+    color: #ffffff;
+    transition: 0.3s ease-in-out;
+}
+
+/* Encabezados destacados */
+.table-melo th {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+@media (max-width: 768px) {
+  .manual-container {
+    padding: 1rem;
+  }
+  .manual-title {
+    font-size: 1.5rem;
+  }
+  .manual-subtitle {
+    font-size: 1.1rem;
+  }
+}

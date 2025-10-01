@@ -1,0 +1,153 @@
+.visualizar-aprendiz-container{
+  padding: 0 2em 2em 2em;
+  background-color: #272727;
+}
+
+.visualizar-aprendiz-container *{
+  color: #fff;
+}
+
+.state-container{
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.state-succes{
+  color: green;
+}
+
+.state-error{
+  color: red;
+}
+
+.top-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+  position: relative;
+}
+
+.top-title{
+  font-weight: 400;
+  text-align: center;
+}
+
+.top-button{
+  position: absolute;
+  right: 0;
+  padding: 0.5em 1em;
+  background-color: #EFAF05;
+  color: #000;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.top-button:hover{
+  background-color: #ffbb00;
+}
+
+.top-left-button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5em 1em;
+  background-color: #39A900;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.top-left-button:hover{
+  background-color: #319300;
+}
+
+.no-listable-info{
+  margin-bottom: 2em;
+}
+
+.no-listable-info p{
+  margin-bottom: 1em;
+}
+
+.custom-table-container{
+  width: 100%;
+  overflow-x: auto;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 20% 60% 20% 40% 60% 60%;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.row:last-child{
+  margin-bottom: 0;
+}
+
+.row:first-child > div{
+  background-color: #808284;
+  color: #fff;
+}
+
+.row > div{
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+/* Media queries */
+
+/* Tablets */
+@media (min-width: 480px) and (max-width: 768px){
+  .top-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .top-container{
+    flex-direction: column;
+  }
+
+  .top-left-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .row{
+    grid-template-columns: repeat(6, 65%);
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .top-title{
+    font-size: 25px;
+  }
+
+  .top-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .top-left-button{
+    position: initial;
+    margin-top: 1em;
+  }
+
+  .top-container{
+    flex-direction: column;
+  }
+
+  .row{
+    grid-template-columns: repeat(6, 60%);
+  }
+}

@@ -1,0 +1,111 @@
+.container{
+  padding: 1em;
+  background-color: #F0F0F0;
+}
+
+.container h1{
+  margin: 0 auto 0.5em auto;
+  font-weight: 400;
+  text-align: center;
+}
+
+.crear-ficha-form{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-ficha-form label, .crear-ficha-form input[type="text"], .crear-ficha-form select{
+  margin-bottom: 0.5em;
+}
+
+.crear-ficha-form input[type="text"]{
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #000;
+
+  transition: outline 50ms;
+}
+
+.crear-ficha-form input[type="text"]:focus{
+  border: 1px solid #00000000;
+  outline: 2px solid blue;
+}
+
+.crear-ficha-form select{
+  padding: 0.5em;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.buttons-container{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.buttons-container a, .buttons-container input[type="submit"]{
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  transition: background 100ms;
+}
+
+.buttons-container a{
+  background-color: #FF0000;
+  text-align: center;
+}
+
+.buttons-container a:hover{
+  background-color: #ab0000;
+  cursor: pointer;
+}
+
+.buttons-container input[type="submit"]{
+  background-color: #39A900;
+}
+
+.buttons-container input[type="submit"]:hover{
+  background-color: #297c00;
+  cursor: pointer;
+}
+
+.buttons-container button:active{
+  background-color: #fff;
+  color: #FF0000;
+}
+
+.buttons-container input[type="submit"]:active{
+  background-color: #fff;
+  color: #39A900;
+}
+
+/* Media queries */
+
+/* Portatiles */
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .buttons-container{
+    margin-top: 1em;
+  }
+}
+
+/* Tablets */
+
+@media (min-width: 480px) and (max-width: 768px){
+  .buttons-container{
+    margin-top: 1em;
+    flex-direction: column;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 480px){
+  .buttons-container{
+    margin-top: 1em;
+    flex-direction: column;
+  }
+}
